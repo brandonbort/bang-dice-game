@@ -12,11 +12,11 @@ package bang_dice_game;
 
 class UserPlayer implements Player{  
     
-    String name = "";
-    String description = "";
-    String role = "";
-    int health;
-    int arrows;
+    private String name = "";
+    private String description = "";
+    private String role = "";
+    private int health;
+    private int arrows;
     
     
     public UserPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int playerArrows){
