@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bang_dice_game;
+package bang;
 
 /**
  *
@@ -11,23 +11,23 @@ package bang_dice_game;
  */
 public interface Player {
     
-    String name = "";
+    /*String name = "";
     String description = "";
     String role = "";
-    int health = 0;
-    int arrows = 0;
+    int health;
+    int arrows;*/
     
     
     public int getHealth();
-    public void setHealth(int health);
+    public void setHealth(int healthP);
     
     public String getRole();
-    public void setRole(String role);
+    public void setRole(String roleP);
     
     public String getDescription();
-    public void setDecription(String description);
+    public void setDecription(String descrip);
     
-    public int getArrow();
-    public void setArrow(int arrows);
+    public int getArrows();
+    public void setArrows(int arrowsP);
     
 }
