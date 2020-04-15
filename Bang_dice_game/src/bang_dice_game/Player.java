@@ -19,15 +19,15 @@ public interface Player {
     
     
     public int getHealth();
-    public void setHealth(int healthP);
+    public void setHealth(int health);
     
     public String getRole();
-    public void setRole(String roleP);
+    public void setRole(String role);
     
     public String getDescription();
     public void setDecription(String descrip);
     
     public int getArrows();
-    public void setArrows(int arrowsP);
+    public void setArrows(int arrows);
     
 }
