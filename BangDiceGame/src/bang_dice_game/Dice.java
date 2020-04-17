@@ -8,7 +8,7 @@ package bang_dice_game;
 /**
  *
  * @author airishimamura
- * :)))
+ * OwO
  */
 import java.lang.Math;
 import java.util.Random; 
