@@ -12,6 +12,36 @@ import java.util.*;
  */
 class PlayerController implements PlayerObserver {
     
+    private BangDiceGame game;
+    private Scanner in;
     
+    public PlayerController (UserPlayer player, BangDiceGame game, Scanner in){
+        this.game = game;
+        this.in = in;
+        player.register(this);
+    
+    }
+    
+    public void update(UserPlayer player, Dice dice){
+        int numArrows = player.getArrows();
+        player.setArrows(numArrows);
+        
+        int numHealth = player.getHealth();
+        player.setHealth(numHealth);
+        
+        String description = player.getDescription();
+        player.setDecription(description);
+        
+        String role = player.getRole();
+        player.setRole(role);
+        
+        // add dice class here ? 
+        //role
+        //read dice Num to reroll
+        //readNumberToReroll() {} 
+                
+    }
+            
+     //  private int readNumberToReroll() {} 
     
 }
