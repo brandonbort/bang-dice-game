@@ -10,6 +10,7 @@ package bang_dice_game;
  * @author sloan
  */
 
+//TEST 1234567890
 class UserPlayer implements Player{  
     
     private String name = "";
