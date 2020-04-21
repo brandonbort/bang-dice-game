@@ -9,7 +9,8 @@ package bang_dice_game;
  *
  * @author airishimamura
  */
-public interface PlayerObserver {
-    
-    
+ interface PlayerObserver {
+// public void update (UserPlayer player);   
+ 
+  
 }
