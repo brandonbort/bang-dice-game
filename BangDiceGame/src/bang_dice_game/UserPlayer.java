@@ -17,14 +17,16 @@ class UserPlayer implements Player{
     private String role = "";
     private int health;
     private int arrows;
+    private PlayerObserver controller; // Observer this Player reports to.
     
     
     public UserPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int playerArrows){
-        name = playerName;
-        role = playerRole;
-        description = playerDescription;
-        health = playerHealth;
-        arrows = playerArrows;
+        this.name = playerName;
+        this.role = playerRole;
+        this.description = playerDescription;
+        this.health = playerHealth;
+        this.arrows = playerArrows;
+        this.controller = null;
     }
     
     public int getHealth() {
@@ -38,7 +40,7 @@ class UserPlayer implements Player{
 
     
     public String getRole() {
-        return role;
+        return this.role;
     }
 
     
@@ -48,7 +50,7 @@ class UserPlayer implements Player{
 
     
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     
@@ -58,11 +60,19 @@ class UserPlayer implements Player{
 
     
     public int getArrows() {
-        return arrows;
+        return this.arrows;
     }
 
     
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
+    
+    
+    // Set the PlayerObserver this InteractivePlayer is to report to.
+    public void register (PlayerObserver controller){
+        this.controller = controller;
+    }
+    
+    
 }
