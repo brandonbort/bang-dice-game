@@ -35,7 +35,7 @@ class PlayerController implements PlayerObserver {
         String role = player.getRole();
         player.setRole(role);
         
-        // add dice class here ? 
+        // add dice class 
         //role
         //read dice Num to reroll
         //readNumberToReroll() {} 
