@@ -12,11 +12,6 @@ package bang_dice_game;
  */
 public interface Player {
     
-    /*String name = "";
-    String description = "";
-    String role = "";
-    int health;
-    int arrows;*/
     
     public int getHealth();
     public void setHealth(int health);
