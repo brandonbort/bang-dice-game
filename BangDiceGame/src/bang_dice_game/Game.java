@@ -45,10 +45,11 @@ class Game {
     return previousPlayer;
   }
   
+  // maybe idk
   public void setAlive(int alive){
       this.alive = alive;
   }
-  
+  // maybe idk
   public int getAlive(){
       return alive;
   }
