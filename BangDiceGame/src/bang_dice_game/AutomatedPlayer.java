@@ -67,7 +67,7 @@ public class AutomatedPlayer implements Player {
 
     @Override
     public void setArrows(int arrows) {
-        this.arrows = arrows;//owo
+        this.arrows = arrows;//UwU
     }
     
 }
