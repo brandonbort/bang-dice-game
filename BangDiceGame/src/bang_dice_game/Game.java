@@ -19,111 +19,92 @@ class Game {
   private Player previousPlayer;               // The Player who last played;
   private Player player1;
   private Player player2;
+  private int alive;        // maybe idk
   
   
-  
-                                               // null if no play has been made yet.
-  //private Pile pile;                           // The Pile.
-  // hi
-  /**
-   * Create a nim Game, with the specified Players and the specified number
-   * of sticks. The first Player specified (player1) plays first in the game.
-   * @require     sticks > 0
-   */
-  public Game (Player player1, Player player2, int sticks) {
-    assert sticks > 0 : "precondition: initial sticks > 0";
-    this.player1 = player1;
-    this.player2 = player2;
-    this.nextPlayer = player1;
+ 
+  public Game (ArrayList<Player> players, int alive) {
+    //assert sticks > 0 : "precondition: initial sticks > 0";
+    this.players = players;
+    this.alive = alive;
+    this.nextPlayer = players.get(0);
     this.previousPlayer = null;
-    //this.pile = new Pile(sticks);
   }
   
   /**
-   * The maximum number of sticks that can be removed on
-   * the next turn. Returns 0 if the game is over.
+   * The Player whose turn is next.
    */
+  public Player nextPlayer () {
+    return nextPlayer;
+  }
+  
+  /**
+   * The Player who last played; returns null if no play has been made yet.
+   */
+  public Player previousPlayer () {
+    return previousPlayer;
+  }
+  
+  public void setAlive(int alive){
+      this.alive = alive;
+  }
+  
+  public int getAlive(){
+      return alive;
+  }
+  
+      
   
   
   
-//  public int maxOnThisTurn () {
-//    if (pile.sticks() < MAX_ON_A_TURN)
-//      return pile.sticks();
-//    else
-//      return MAX_ON_A_TURN;
-//  }
-//  
-//  /**
-//   * The number of sticks remaining in the pile.
-//   * @ensure     this.sticksLeft() >= 0
-//   */
-//  public int sticksLeft () {
-//    return pile.sticks();
-//  }
-//  
-//  /**
-//   * The Player whose turn is next.
-//   */
-//  public Player nextPlayer () {
-//    return nextPlayer;
-//  }
-//  
-//  /**
-//   * The Player who last played; returns null if no play has been made yet.
-//   */
-//  public Player previousPlayer () {
-//    return previousPlayer;
-//  }
-//  
-//  /**
-//   * The game is over.
-//   */
-//  public boolean gameOver () {
-//    return true;
-//  }
-//  
-//  /**
-//   * The winning Player: the one who did not make the last play in the game.
-//   * Returns null if the game is not over.
-//   * @ensure     if this.gameOver()
-//   *               this.winner() != this.previousPlayer()
-//   */
-//  public Player winner () {
-//    if (gameOver())
-//      return otherPlayer(previousPlayer);
-//    else
-//      return null;
-//    
-//  }
-//  
-//  /**
-//   * Conduct a single move in the game, allowing the appropriate Player to
-//   * take a turn. Has no effect if the game is over.
-//   */
-//  public void play () {
-//    if (!gameOver()) {
-//      nextPlayer.takeTurn(pile,MAX_ON_A_TURN);
-//      previousPlayer = nextPlayer;
-//      nextPlayer = otherPlayer(nextPlayer);
-//    }
-//  }
-//  
-//  /**
-//   * A Dtring representation of this Game.
-//   */
-//  public String toString () {
-//    return "Game with players: " + player1 + ", and "
-//      + player2;
-//  }
-//  
-//  /**
-//   * The Player who is not the one specified.
-//   */
-//  private Player otherPlayer (Player player) {
-//    if (player == player1)
-//      return player2;
-//    else
-//      return player1;
-//  }
+  public Player winner () {
+    if (gameOver()){
+        for(int i = 0; i < players.size(); i++)
+        {
+            Player temp = players.get(i);
+            if (temp.getHealth() != 0)
+            {
+                return temp; 
+            }
+        }
+    }
+    
+    return null;
+  }
+    
+  /**
+   * The game is over.
+   */
+  public boolean gameOver () {
+    return alive == 1; 
+  }
   
+  /**
+   * Conduct a single move in the game, allowing the appropriate Player to
+   * take a turn. Has no effect if the game is over.
+   */
+  public void play () {
+    if (!gameOver()) {  
+      // next player takes their turn //nextPlayer.takeTurn(pile,MAX_ON_A_TURN);
+      previousPlayer = nextPlayer;
+      nextPlayer = otherPlayer(nextPlayer);
+    }
+  }
+  
+  /**
+   * The Player who is not the one specified.
+   */
+  private Player otherPlayer (Player player) {
+    
+    for (int i = 0; i < players.size(); i++)
+    {
+        if (player == players.get(i)){
+            if (player == (players.get(7)))
+                return players.get(0);
+            else 
+                return players.get(i+1);
+        }
+    }
+      return player;
+  }
 }
