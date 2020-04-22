@@ -17,8 +17,8 @@ class Game {
   private ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played;
-  private Player player1;
-  private Player player2;
+  //private Player player1;
+  //private Player player2;
   private int alive;        // maybe idk
   
   
