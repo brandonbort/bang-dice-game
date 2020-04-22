@@ -95,16 +95,19 @@ class Game {
    * The Player who is not the one specified.
    */
   private Player otherPlayer (Player player) {
+      
+      Player temp = player;
     
     for (int i = 0; i < players.size(); i++)
     {
-        if (player == players.get(i)){
-            if (player == (players.get(7)))
-                return players.get(0);
+        if (temp == players.get(i)){
+            if (temp == (players.get(7)))
+                temp = players.get(0);
             else 
-                return players.get(i+1);
+                temp = players.get(i+1);
+            //break; // breaks for loop
         }
     }
-      return player;
+      return temp;
   }
 }
