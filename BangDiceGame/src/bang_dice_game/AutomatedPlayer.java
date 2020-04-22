@@ -18,7 +18,6 @@ public class AutomatedPlayer implements Player {
     private String role = "";
     private int health;
     private int arrows;
-    private PlayerObserver controller; // Observer this Player reports to.
     
     
     public AutomatedPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int playerArrows){
@@ -27,7 +26,6 @@ public class AutomatedPlayer implements Player {
         this.description = playerDescription;
         this.health = playerHealth;
         this.arrows = playerArrows;
-        this.controller = null;
     }
     
     @Override
