@@ -18,7 +18,6 @@ public interface Player {
     int health;
     int arrows;*/
     
-    
     public int getHealth();
     public void setHealth(int health);
     
