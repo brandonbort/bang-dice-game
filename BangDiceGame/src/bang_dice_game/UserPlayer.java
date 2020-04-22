@@ -11,7 +11,7 @@ package bang_dice_game;
  */
 
 class UserPlayer implements Player{  
-    
+    // HI
     private String name = "";
     private String description = "";
     private String role = "";
