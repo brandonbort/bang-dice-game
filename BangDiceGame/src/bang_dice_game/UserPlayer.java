@@ -10,6 +10,8 @@ package bang_dice_game;
  * @author sloan
  */
 
+//TODO: Fix issues with getting dice
+
 class UserPlayer implements Player{  
     // HI
     private String name = "";
@@ -67,6 +69,18 @@ class UserPlayer implements Player{
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
+    
+    
+    public void takeTurn () {
+        System.out.println("Rolling Dice for " + this.name);
+        Dice.firstRoll();
+        
+        
+    if (controller != null)
+        //controller.update(this, dice);    // numberToTake set here
+        System.out.println("oof"); // having issues with getting dice
+  }
+    
     
     
     // Set the PlayerObserver this InteractivePlayer is to report to.
