@@ -24,5 +24,7 @@ public interface Player {
     
     public int getArrows();
     public void setArrows(int arrows);
+
+    public void takeTurn();
     
 }
