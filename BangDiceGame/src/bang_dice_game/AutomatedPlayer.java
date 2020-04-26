@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * AUTHOR: Carlos Cuartas
+ * CONTRIBUTORS: Aaron Sloan
+ *              - Added the basic setup for takeTurn Method
+ * 
  */
 package bang_dice_game;
 
@@ -10,7 +11,7 @@ package bang_dice_game;
  * @author carlos144green
  */
 
-
+//TODO: finish takeTurn method
 public class AutomatedPlayer implements Player {
     
     private String name = "";
@@ -67,5 +68,31 @@ public class AutomatedPlayer implements Player {
     public void setArrows(int arrows) {
         this.arrows = arrows;//UwU
     }
+    
+    
+    public void takeTurn () {
+        
+        System.out.println("Roling Dice for " + this.name);
+        
+        if (null != this.role) switch (this.role) {
+            case "Sheriff":
+                // go to certain method in AI class
+                break;
+            case "Renegade":
+                // go to certain method in AI class
+                break;
+            case "Outlaw":
+                // go to certain method in AI class
+                break;
+            case "Deputy":
+                // go to certain method in AI class
+                break;
+            default:
+                // go to certain method in AI class
+                break;
+        }
+        else
+            System.out.println("Invalid Role for" + this.name);
+  }
     
 }
