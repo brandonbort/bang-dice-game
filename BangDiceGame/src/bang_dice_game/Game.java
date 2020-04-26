@@ -19,14 +19,14 @@ class Game {
   private Player previousPlayer;               // The Player who last played;
   //private Player player1;
   //private Player player2;
-  private int alive;        // maybe idk
+  //private int alive;        // maybe idk
   
   
  
-  public Game (ArrayList<Player> players, int alive) {
+  public Game (ArrayList<Player> players) { //, int alive) {
     //assert sticks > 0 : "precondition: initial sticks > 0";
     this.players = players;
-    this.alive = alive;
+    //this.alive = alive;
     this.nextPlayer = players.get(0);
     this.previousPlayer = null;
   }
@@ -45,14 +45,14 @@ class Game {
     return previousPlayer;
   }
   
-  // maybe idk
+  /*// maybe idk
   public void setAlive(int alive){
       this.alive = alive;
   }
   // maybe idk
   public int getAlive(){
       return alive;
-  }
+  }*/
   
       
   
@@ -77,7 +77,8 @@ class Game {
    * The game is over.
    */
   public boolean gameOver () {
-    return alive == 1; 
+    return false; //alive == 1;  // because idk how we gonna set 
+                                 //how the game is over yet sooo
   }
   
   /**
@@ -85,8 +86,8 @@ class Game {
    * take a turn. Has no effect if the game is over.
    */
   public void play () {
-    if (!gameOver()) {  
-      // next player takes their turn //nextPlayer.takeTurn(pile,MAX_ON_A_TURN);
+    if (!gameOver()) { 
+      nextPlayer.takeTurn();
       previousPlayer = nextPlayer;
       nextPlayer = otherPlayer(nextPlayer);
     }
