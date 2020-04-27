@@ -5,7 +5,7 @@
  */
 package bang_dice_game;
 import java.util.*;
-
+import java.util.Scanner;
 /**
  *
  * @author airishimamura
@@ -14,10 +14,12 @@ class PlayerController implements PlayerObserver {
     
     private BangDiceGame game;
     private Scanner in;
+    private Dice dice;
     
-    public PlayerController (UserPlayer player, BangDiceGame game, Scanner in){
+    public PlayerController (UserPlayer player, BangDiceGame game, Scanner in, Dice dice){
         this.game = game;
         this.in = in;
+        this.dice = dice;
         player.register(this);
     
     }
@@ -35,13 +37,7 @@ class PlayerController implements PlayerObserver {
         String role = player.getRole();
         player.setRole(role);
         
-        // add dice class 
-        //role
-        //read dice Num to reroll
-        //readNumberToReroll() {} 
-                
-    }
-            
-     //  private int readNumberToReroll() {} 
-    
+        dice.reRoll();
+        }
+         
 }
