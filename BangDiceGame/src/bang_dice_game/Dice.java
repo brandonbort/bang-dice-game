@@ -22,7 +22,7 @@ public class Dice {
     { 
         IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
         
-        private static final Dice_Face [] dice = Dice_Face.values();
+        public static final Dice_Face [] dice = Dice_Face.values();
         private static final int SIZE = dice.length;
         private static final Random RANDOM = new Random((long)( Math.random() * (double)Long.SIZE));
         
@@ -119,13 +119,10 @@ public class Dice {
 //
 //    Dice roll = new Dice(Dice_Face.getRandomDice_Face());
 //    roll.firstRoll();
-//    
-//    for(int z = 0; z < 3; z++){
 //    roll.reRoll();
-//    }
 //
 //    
 //    }  
-//   
+   
  
  
