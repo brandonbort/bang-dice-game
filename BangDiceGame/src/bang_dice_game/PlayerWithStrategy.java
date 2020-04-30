@@ -14,12 +14,12 @@ package bang_dice_game;
 class PlayerWithStrategy {
 
     private String name = "";
-    private String description = "";
     private String role = "";
+    private String description = "";
     private int health = 0;
     private int arrows = 0;
     private PlayStrategy strategy;
-  
+    private PlayerObserver controller;  //I think this controls when its the NPC's turn
   /**
    * Create a NPC with the specified name, role, description, health, arrows, and strategy.
    */
@@ -30,13 +30,14 @@ class PlayerWithStrategy {
         this.health = health;
         this.arrows = arrows;       //arrows should always start at 0 but ill include it here anyways
         this.strategy= strategy;    //assign a strategy to the NPC
+        this.controller = null;     //I think this controls when its the NPC's turn
     }
   
-    public int getHealth() {
-        return health;
+     public String getName() {
+        return this.name;
     }
-    public void setHealth(int health) {
-        this.health = health;
+    public void setName(String name) {
+        this.name = name;
     }
     
     public String getRole() {
@@ -52,7 +53,14 @@ class PlayerWithStrategy {
     public void setDecription(String descrip) {
         this.description = descrip;
     }
-
+ 
+    public int getHealth() {
+        return health;
+    }
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    
     public int getArrows() {
         return this.arrows;
     }
@@ -67,22 +75,14 @@ class PlayerWithStrategy {
         this.strategy = strategy;
     }
   
-  /**
-   * Take a turn: remove sticks from the specified
-   * Pile. maxOnATurn is the maximum number of sticks
-   * a Player can remove on a turn. A Player will
-   * remove at least one stick.
-   * @require    pile.sticks() > 0
-   *             maxOnATurn > 0
-   * @ensure     1 <= this.sticksTaken() &&
-   *             this.sticksTaken() <= maxOnATurn &&
-   *             pile.sticks() == old.pile.sticks() -
-   *             this.sticksTaken()
-   */
-  public void takeTurn (Pile pile, int maxOnATurn) {
-    int number = strategy.numberToTake(pile, maxOnATurn);
-    pile.remove(number);
-    this.sticksTaken = number;
+ public void takeTurn () {
+        System.out.println("Rolling Dice for " + this.name);
+        Dice.firstRoll();
+        
+        
+    if (controller != null)
+        //controller.update(this, dice);    // numberToTake set here
+        System.out.println("oof"); // having issues with getting dice
   }
 }
 
