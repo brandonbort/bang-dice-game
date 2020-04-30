@@ -19,6 +19,7 @@ class PlayerWithStrategy {
     private int health = 0;
     private int arrows = 0;
     private PlayStrategy strategy;
+    private int[][] karma;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
   /**
    * Create a NPC with the specified name, role, description, health, arrows, and strategy.
@@ -77,22 +78,22 @@ class PlayerWithStrategy {
     public void takeTurn () {
         
         System.out.println("Roling Dice for " + this.name);
-        
+        AI NPC = new AI();
         if (null != this.role) switch (this.role) {
             case "Sheriff":
-                // go to certain method in AI class
+                NPC.SheriffTurn();
                 break;
             case "Renegade":
-                // go to certain method in AI class
+                NPC.RenegadeTurn();
                 break;
             case "Outlaw":
-                // go to certain method in AI class
+                NPC.OutLawTurn();
                 break;
             case "Deputy":
-                // go to certain method in AI class
+                NPC.DeputyTurn();
                 break;
             default:
-                // go to certain method in AI class
+                System.out.println("Something went wrong on " + this.name + "'s turn");
                 break;
         }
         else
