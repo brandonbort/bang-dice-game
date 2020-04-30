@@ -33,7 +33,7 @@ class PlayerWithStrategy {
         this.controller = null;     //I think this controls when its the NPC's turn
     }
   
-     public String getName() {
+    public String getName() {
         return this.name;
     }
     public void setName(String name) {
@@ -74,15 +74,29 @@ class PlayerWithStrategy {
     public void setStrategy(PlayStrategy strategy) { 
         this.strategy = strategy;
     }
-  
- public void takeTurn () {
-        System.out.println("Rolling Dice for " + this.name);
-        Dice.firstRoll();
+    public void takeTurn () {
         
+        System.out.println("Roling Dice for " + this.name);
         
-    if (controller != null)
-        //controller.update(this, dice);    // numberToTake set here
-        System.out.println("oof"); // having issues with getting dice
+        if (null != this.role) switch (this.role) {
+            case "Sheriff":
+                // go to certain method in AI class
+                break;
+            case "Renegade":
+                // go to certain method in AI class
+                break;
+            case "Outlaw":
+                // go to certain method in AI class
+                break;
+            case "Deputy":
+                // go to certain method in AI class
+                break;
+            default:
+                // go to certain method in AI class
+                break;
+        }
+        else
+            System.out.println("Invalid Role for" + this.name);
   }
 }
 
