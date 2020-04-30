@@ -55,7 +55,7 @@ class UserPlayer implements Player{
     }
 
     
-    public void setDecription(String descrip) {
+    public void setDescription(String descrip) {
         this.description = descrip;
     }
 
@@ -72,9 +72,9 @@ class UserPlayer implements Player{
     
     public void takeTurn () {
     System.out.println("Rolling Dice for " + this.name);
+    Dice dice = new Dice(Dice.Dice_Face.getRandomDice_Face());
     if (controller != null)
-        //controller.update(this);    // numberToTake set here
-        System.out.println("oof"); // having issues with getting dice
+        controller.update(this, dice);    // numberToTake set here
   }
     
     
@@ -84,5 +84,21 @@ class UserPlayer implements Player{
         this.controller = controller;
     }
     
+    
+    
+    
+//       //just for testing
+//   public static void main(String[] args) {
+//
+//    //Dice roll = new Dice(Dice_Face.getRandomDice_Face());
+//    roll.firstRoll();
+//    
+//    for(int z = 0; z < 3; z++){
+//    roll.reRoll();
+//    }
+//
+//    
+//    }  
+   
     
 }
