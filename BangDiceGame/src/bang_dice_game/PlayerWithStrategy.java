@@ -24,7 +24,7 @@ class PlayerWithStrategy {
   /**
    * Create a NPC with the specified name, role, description, health, arrows, and strategy.
    */
-  public PlayerWithStrategy(String name, String role, String description, int health, int arrows, PlayStrategy strategy){
+  public PlayerWithStrategy(String name, String role, String description, int health, int arrows, PlayStrategy strategy, int[][] karma){
         this.name = name;
         this.role = role;
         this.description = description;
@@ -32,6 +32,7 @@ class PlayerWithStrategy {
         this.arrows = arrows;       //arrows should always start at 0 but ill include it here anyways
         this.strategy= strategy;    //assign a strategy to the NPC
         this.controller = null;     //I think this controls when its the NPC's turn
+        this.karma = karma;
     }
   
     public String getName() {
@@ -51,7 +52,7 @@ class PlayerWithStrategy {
     public String getDescription() {
         return this.description;
     }
-    public void setDecription(String descrip) {
+    public void setDescription(String descrip) {
         this.description = descrip;
     }
  
