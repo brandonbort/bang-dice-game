@@ -24,6 +24,23 @@ class PlayerController implements PlayerObserver {
     
     }
     
+    // Aaron messign around with Stuff
+//      public void update(UserPlayer player){
+//        dice.firstRoll();
+//        dice.reRoll();
+//        
+//        Dice.Dice_Face diceFace;
+//        
+//        diceFace = dice.getDice_Face();
+//        
+//        int numArrows = player.getArrows();
+//        player.setArrows(numArrows);
+//        
+//        int numHealth = player.getHealth();
+//        player.setHealth(numHealth);
+//        
+//        }
+      
     public void update(UserPlayer player, Dice dice){
         int numArrows = player.getArrows();
         player.setArrows(numArrows);
