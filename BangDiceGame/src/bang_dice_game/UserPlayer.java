@@ -71,12 +71,9 @@ class UserPlayer implements Player{
     
     
     public void takeTurn () {
-        System.out.println("Rolling Dice for " + this.name);
-        Dice.firstRoll();
-        
-        
+    System.out.println("Rolling Dice for " + this.name);
     if (controller != null)
-        //controller.update(this, dice);    // numberToTake set here
+        //controller.update(this);    // numberToTake set here
         System.out.println("oof"); // having issues with getting dice
   }
     
