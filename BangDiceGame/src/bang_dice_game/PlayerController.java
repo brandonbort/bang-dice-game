@@ -24,37 +24,39 @@ class PlayerController implements PlayerObserver {
     
     }
     
-//     //Aaron messing around with stuff
-//      public void update(UserPlayer player, Dice dice){
-//        dice.firstRoll();
-//        dice.reRoll();
-//        
-//        Dice.Dice_Face diceFace;
-//        
-//        diceFace = dice.getDice_Face();
-//        
-//        int numArrows = player.getArrows();
-//        player.setArrows(numArrows);
-//        
-//        int numHealth = player.getHealth();
-//        player.setHealth(numHealth);
-//        
-//        }
-      
-    public void update(UserPlayer player, Dice dice){
+     //Aaron messing around with stuff
+      public void update(UserPlayer player, Dice dice){
+        dice.firstRoll();
+        dice.reRoll();
+        
+        ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
+        
+        for (int i = 0; i < 6; i++){
+            diceFace.add(Dice.Dice_Face.dice[i]);   
+        }
+        
         int numArrows = player.getArrows();
         player.setArrows(numArrows);
         
         int numHealth = player.getHealth();
         player.setHealth(numHealth);
         
-        String description = player.getDescription();
-        player.setDescription(description);
-        
-        String role = player.getRole();
-        player.setRole(role);
-        dice.firstRoll();
-        dice.reRoll();
         }
+      
+//    public void update(UserPlayer player, Dice dice){
+//        int numArrows = player.getArrows();
+//        player.setArrows(numArrows);
+//        
+//        int numHealth = player.getHealth();
+//        player.setHealth(numHealth);
+//        
+//        String description = player.getDescription();
+//        player.setDescription(description);
+//        
+//        String role = player.getRole();
+//        player.setRole(role);
+//        dice.firstRoll();
+//        dice.reRoll();
+//        }
          
 }
