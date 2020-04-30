@@ -13,7 +13,6 @@ package bang_dice_game;
 //TODO: Fix issues with getting dice
 
 class UserPlayer implements Player{  
-    // HI
     private String name = "";
     private String description = "";
     private String role = "";
