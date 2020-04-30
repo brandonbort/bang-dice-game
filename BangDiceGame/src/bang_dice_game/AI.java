@@ -56,8 +56,9 @@ import java.util.*;
 //So now deputy has good karma in sheriff's eyes so when sheriff decides to shoot
 // he wont shoot anyone with good karma. Thank you for coming to my ted talk.
 public class AI {
-   public void SheriffTurn (int[][] karma, int[][] roles) {
-        
+   public void SheriffTurn (int[][] karma) {
+        //shoot
+        for (int i=0; i<karma.length; i++)
     }
    public void DeputyTurn () {
         
