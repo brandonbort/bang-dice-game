@@ -24,8 +24,8 @@ class PlayerController implements PlayerObserver {
     
     }
     
-    // Aaron messign around with Stuff
-//      public void update(UserPlayer player){
+//     //Aaron messing around with stuff
+//      public void update(UserPlayer player, Dice dice){
 //        dice.firstRoll();
 //        dice.reRoll();
 //        
@@ -49,7 +49,7 @@ class PlayerController implements PlayerObserver {
         player.setHealth(numHealth);
         
         String description = player.getDescription();
-        player.setDecription(description);
+        player.setDescription(description);
         
         String role = player.getRole();
         player.setRole(role);
