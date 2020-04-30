@@ -20,7 +20,7 @@ public interface Player {
     public void setRole(String role);
     
     public String getDescription();
-    public void setDecription(String descrip);
+    public void setDescription(String descrip);
     
     public int getArrows();
     public void setArrows(int arrows);
