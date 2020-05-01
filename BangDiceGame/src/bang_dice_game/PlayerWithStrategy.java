@@ -5,6 +5,8 @@
  */
 package bang_dice_game;
 
+import java.util.Arrays;
+
 /**
  *
  * @author carlos144green
@@ -19,22 +21,34 @@ class PlayerWithStrategy {
     private int health = 0;
     private int arrows = 0;
     private PlayStrategy strategy;
-    private int[][] karma;
+    private int karma[][];
+    private int playerSize;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
   /**
    * Create a NPC with the specified name, role, description, health, arrows, and strategy.
    */
-  public PlayerWithStrategy(String name, String role, String description, int health, int arrows, PlayStrategy strategy, int[][] karma){
+  public PlayerWithStrategy(String name, String role, String description, int health, int arrows, PlayStrategy strategy, int playerSize){
         this.name = name;
         this.role = role;
         this.description = description;
         this.health = health;
-        this.arrows = arrows;       //arrows should always start at 0 but ill include it here anyways
-        this.strategy= strategy;    //assign a strategy to the NPC
-        this.controller = null;     //I think this controls when its the NPC's turn
-        this.karma = karma;
+        this.arrows = 0;                //arrows should always start at 0 but ill include it here anyways
+        this.strategy= strategy;        //assign a strategy to the NPC
+        this.controller = null;         //I think this controls when its the NPC's turn
+        this.playerSize = playerSize;
+        Arrays.fill(karma,null) ;  //this sets all to null *arrayList.set(0, null);* saving this 4 l8er
+        for (int i=0; i<playerSize; i++)//this sets all non diagonal numbers to 0
+        {
+            for (int j=0; j<playerSize; j++)
+            {
+                if(i==j)    //if numbers match(diagonal number) dont set to 0
+                    ;
+                else
+                    karma[i][j]=0;
+            }
+        }
+        
     }
-  
     public String getName() {
         return this.name;
     }
