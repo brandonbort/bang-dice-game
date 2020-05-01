@@ -21,7 +21,6 @@ class PlayerWithStrategy {
     private int health = 0;
     private int arrows = 0;
     private PlayStrategy strategy;
-    private int karma[][];
     private int playerSize;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
   /**
@@ -36,19 +35,25 @@ class PlayerWithStrategy {
         this.strategy= strategy;        //assign a strategy to the NPC
         this.controller = null;         //I think this controls when its the NPC's turn
         this.playerSize = playerSize;
-        Arrays.fill(karma,null) ;  //this sets all to null *arrayList.set(0, null);* saving this 4 l8er
-        for (int i=0; i<playerSize; i++)//this sets all non diagonal numbers to 0
+        char[][] karma = new char[playerSize][playerSize];
+        for (int i=0; i<karma.length; i++)//this sets all non diagonal numbers to 5
         {
-            for (int j=0; j<playerSize; j++)
+            for (int j=0; j<karma.length; j++)
             {
-                if(i==j)    //if numbers match(diagonal number) dont set to 0
-                    ;
+                if(i==j)    //if numbers match(diagonal number) dont set to 5
+                    karma[i][j]='x';
                 else
-                    karma[i][j]=0;
+                    karma[i][j]='5';
             }
         }
-        
+        for (int i=0; i<karma.length; i++)//this sets all non diagonal numbers to 5
+        {
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]);
+            System.out.print("\n");
+        }
     }
+  
     public String getName() {
         return this.name;
     }
