@@ -36,7 +36,7 @@ public class Dice {
       {
         for ( int i = 0; i < Dice_Face.SIZE; i++){
             Dice_Face.dice [i] = Dice_Face.getRandomDice_Face();
-            System.out.print("\t" + "Dice[" + i + "] = " + Dice_Face.dice[i] + "\n " );
+            System.out.print("\t" + "Dice[" + i + "] = " + Dice_Face.dice[i] + "\n" );
         }
       }
        
@@ -69,7 +69,7 @@ public class Dice {
     {
            // get a dice number you want to reroll 
             System.out.print("\nChose number of dice you want to reroll: ");
-            int num = scanner.nextInt();  
+            int num = Integer.parseInt(scanner.nextLine());  
             
        if (0 <= num && num < 6)
        {
@@ -87,7 +87,7 @@ public class Dice {
                      Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
                    }
                    //displaying the dice face after re-roll
-                    System.out.print("\t" + "Dice[" + j + "] = " + Dice_Face.dice[j] + "\n "); 
+                    System.out.print("\t" + "Dice[" + j + "] = " + Dice_Face.dice[j] + "\n"); 
                  }
                 }
        }
@@ -104,11 +104,9 @@ public class Dice {
             }
            //when response is not yes or no 
     else
-           System.out.println("Invalid");       
+           System.out.println("Invalid >"+response+"<");       
        }
-       
-    }        
-               
+    }                 
    }
        
    
