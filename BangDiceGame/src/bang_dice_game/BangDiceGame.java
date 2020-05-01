@@ -15,8 +15,13 @@ public class BangDiceGame{
 
     
     public static void main(String[] args) {
-        StartScreenUI start = new StartScreenUI();
-        start.launchGame(args);
+       // StartScreenUI start = new StartScreenUI();
+        //start.launchGame(args);
+        Dice roll = new Dice(Dice.Dice_Face.getRandomDice_Face());
+        roll.firstRoll();
+        roll.reRoll();
+        
+       
     }
     
 }
