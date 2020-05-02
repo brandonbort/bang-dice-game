@@ -12,11 +12,11 @@ import java.util.Scanner;
  */
 class PlayerController implements PlayerObserver {
     
-    private BangDiceGame game;
+    private Game game;
     private Scanner in;
     private Dice dice;
     
-    public PlayerController (UserPlayer player, BangDiceGame game, Scanner in, Dice dice){
+    public PlayerController (UserPlayer player, Game game, Scanner in, Dice dice){
         this.game = game;
         this.in = in;
         this.dice = dice;
@@ -24,7 +24,7 @@ class PlayerController implements PlayerObserver {
     
     }
     
-      public void update(UserPlayer player, Dice dice){
+      public void update(UserPlayer player){//, Dice dice){
         int countDynamite = 0;
         int countGatling = 0;
           
@@ -64,6 +64,7 @@ class PlayerController implements PlayerObserver {
                         int arrowAdd = player.getArrows();
                         arrowAdd = arrowAdd + 1;
                         player.setArrows(arrowAdd);
+                        System.out.println(player.getName() + " now has " + player.getArrows() + "!");
                         break;
                     case BullsEye1:
                         player.takeAim1();
@@ -75,7 +76,7 @@ class PlayerController implements PlayerObserver {
                         player.beerDice();
                         break;
                     default:
-                        System.out.println("Does not exist");
+                        System.out.println("Checking next dice...");
                         break;
                 }
             }
