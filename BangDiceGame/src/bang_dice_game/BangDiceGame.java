@@ -21,7 +21,7 @@ public class BangDiceGame{
         ArrayList<Player> players = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         System.out.println("How many players do you want?");
-        System.out.println("You are limited to 4 to 8 players:");
+        System.out.print("You are limited to 4 to 8 players:");
         
         int playerAmount = in.nextInt();
         
