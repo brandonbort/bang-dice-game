@@ -17,8 +17,7 @@ import java.util.Scanner;
 
 
 public class Dice {  
-    enum Dice_Face
-                 
+    enum Dice_Face          
     { 
         IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
         
@@ -32,14 +31,12 @@ public class Dice {
         }
      
     }  
-      public static void firstRoll() //method to roll 6 dice
-      {
+    public static void firstRoll(){ //method to roll 6 dice
         for ( int i = 0; i < Dice_Face.SIZE; i++){
             Dice_Face.dice [i] = Dice_Face.getRandomDice_Face();
             System.out.print("\t" + "Dice[" + i + "] = " + Dice_Face.dice[i] + "\n" );
         }
-      }
-       
+    }
     private final Dice_Face dice_face;
     
     //setter 
@@ -47,67 +44,59 @@ public class Dice {
     {
         this.dice_face = dice_face;
     }
-    
     //getter 
    public Dice_Face getDice_Face () 
    {  
     return this.dice_face;
-    
-    }
-   
-   public static void reRoll (){
-       Scanner scanner = new Scanner(System.in);
-      
-       boolean rollDecision = true; 
-       String yes = new String("Yes");
-       String no = new String("No");
-       while (rollDecision){
-           System.out.print("Do you want to reroll? (Yes/No): ");
-           String response = scanner.nextLine();
-    //When you want to reroll dices 
-    if(response.equals(yes))
-    {
-           // get a dice number you want to reroll 
-            System.out.print("\nChose number of dice you want to reroll: ");
-            int num = Integer.parseInt(scanner.nextLine());  
-            
-       if (0 <= num && num < 6)
-       {
-           //when the dice was dynamite, print "you cannot reroll"
-          if(Dice_Face.dice [num] == Dice.Dice_Face.Dynamite){
-              System.out.println("You cannot reroll");
-               
-                }
-          else{
-             System.out.println("Dice Face after reroll:\n");
-              for ( int j = 0; j < Dice_Face.SIZE; j++ )
-                {
-                  //get new dice face 
-                if(j == num){
-                     Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
-                   }
-                   //displaying the dice face after re-roll
-                    System.out.print("\t" + "Dice[" + j + "] = " + Dice_Face.dice[j] + "\n"); 
-                 }
-                }
-       }
-            //when the given number is invalid 
-            else{
-                  System.out.println("Invalid Dice number \n");
-                }  
-    }
- 
-    //when you don't want to reroll 
-    else if(response.equals(no)){
-           rollDecision = false;
-           System.out.println("Finish rolling dice");
-            }
-           //when response is not yes or no 
-    else
-           System.out.println("Invalid >"+response+"<");       
-       }
-    }                 
    }
+   
+    public static void reRoll (){
+        Scanner scanner = new Scanner(System.in);
+      
+        boolean rollDecision = true; 
+        String yes = new String("Yes");
+        String no = new String("No");
+        while (rollDecision){
+            System.out.print("Do you want to reroll? (Yes/No): ");
+            String response = scanner.nextLine();
+            //When you want to reroll dices 
+            if(response.equals(yes))
+            {
+                // get a dice number you want to reroll 
+                System.out.print("\nChose number of dice you want to reroll: ");
+                int num = Integer.parseInt(scanner.nextLine());  
+
+                if (0 <= num && num < 6)
+                {
+                    //when the dice was dynamite, print "you cannot reroll"
+                    if(Dice_Face.dice [num] == Dice.Dice_Face.Dynamite){
+                            System.out.println("You cannot reroll");
+
+                        }
+                    else
+                        System.out.println("Dice Face after reroll:\n");
+                        for ( int j = 0; j < Dice_Face.SIZE; j++ )
+                        {
+                            //get new dice face 
+                            if(j == num)
+                                Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
+                            //displaying the dice face after re-roll
+                            System.out.print("\t" + "Dice[" + j + "] = " + Dice_Face.dice[j] + "\n"); 
+                        }
+                }
+                else    //when the given number is invalid 
+                    System.out.println("Invalid Dice number \n");               
+            }
+ 
+            else if(response.equals(no)){       //when you don't want to reroll 
+                rollDecision = false;
+                System.out.println("Finish rolling dice");
+            }
+            else               //when response is not yes or no 
+                   System.out.println("Invalid >"+response+"<");       
+        }
+    }                 
+}
        
    
    
