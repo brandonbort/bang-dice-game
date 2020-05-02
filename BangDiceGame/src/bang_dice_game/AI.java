@@ -85,62 +85,43 @@ public class AI {
         System.out.print("\nBeer Player"+targetplayer+" with "+target+" karma");
     }
     public void Bang1 (char karma[][],int spot,int role) {
-        int range=1;
-        int target=9;           //0 for beer, 9 for bang
-        int targetplayer=spot;  //it works, dont fuc w it >:(
-        
-        for (int i=0; i<karma.length; i++)
-            for (int j=0; j<karma.length; j++)
-                if(i==j)                    
-                    karma[i][j]='x';
-                else
-                    karma[i][j]='5';
-                    
-        for (int i=0; i<karma.length; i++)
-            for (int j=0; j<karma.length; j++)
-                System.out.print(karma[i][j]+"   ");
-            System.out.println("\n");
-        
-        //R snipe
-        int spanR=spot+range;
-        for (int j=spot+1;j!=(spanR+1);++j)//find the lowest number in the row
-        {
-            if(spanR>karma.length)  //iffy if = should be there
-                spanR=spanR-karma.length;
-            if(j==karma.length)
-                j=0;
-
-            if(karma[role][j]=='x')
-                ++spanR;
-              
-            if (j==spanR)
-                if(Character.getNumericValue(karma[role][j])<target)
-                {
-                    target=Character.getNumericValue(karma[role][j]);
-                    targetplayer=j;
-                }
+        //////////////////////////////////////////////////////////////////////////  initializers
+        int range=1;                                                            //  set range of shot
+        int target=9;                                                           //  0 for beer, 9 for bang
+        int targetplayer=spot;                                                  //  it works, dont fuc w it >:(
+        int spanR=spot+range;                                                   //  right bang range
+        int spanL=spot-range;                                                   //  left bang range
+        //////////////////////////////////////////////////////////////////////////  right bang finder
+        for (int j=spot+1;j!=(spanR+1);++j)                                     //  find the lowest number in the row
+        {                                                                       //
+            if(spanR>karma.length)                                              //  truncate span if passes array
+                spanR=spanR-karma.length;                                       //
+            if(j==karma.length)                                                 //  reset j to start if passes array
+                j=0;                                                            //
+            if(karma[role][j]=='x')                                             //  if x found, ignore and bump up span
+                ++spanR;                                                        //  
+            if (j==spanR)                                                       //  if both pointers touch, record
+                if(Character.getNumericValue(karma[role][j])<target)            //
+                {                                                               //
+                    target=Character.getNumericValue(karma[role][j]);           //
+                    targetplayer=j;                                             //
+                }                                                               //
         }
-        int spanL=spot-range;
         for (int j=spot-1;j!=(spanL-1);--j)//find the lowest number in the row
         {
             if(spanL<0)
                 spanL=spanL+karma.length;
             if(j==-1)
                 j=karma.length-1;
-
             if(karma[role][j]=='x')
                 --spanL;
-              
             if (j==(spanL))
-            {
                 if(Character.getNumericValue(karma[role][j])<target)
                 {
                     target=Character.getNumericValue(karma[role][j]);
                     targetplayer=j;
                 }
-            }
         }
-        
         System.out.print("\nLShoot Player"+targetplayer+" with "+target+" karma ");
     }
     public void Bang2 () {
