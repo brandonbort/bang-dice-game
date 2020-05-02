@@ -21,7 +21,7 @@ class PlayerWithStrategy {
     private int health = 0;
     private int arrows = 0;
     private int spot = 0;
-    private PlayStrategy strategy;
+    //private PlayStrategy strategy;
     private int playerSize;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
     char[][] karma = new char[playerSize][playerSize];
@@ -29,13 +29,13 @@ class PlayerWithStrategy {
   /**
    * Create a NPC with the specified name, role, description, health, arrows, and strategy.
    */
-  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, PlayStrategy strategy, int playerSize){
+  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, int playerSize){
         this.name = name;
         this.role = role;
         this.description = description;
         this.health = health;
         this.arrows = 0;                //arrows should always start at 0 but ill include it here anyways
-        this.strategy= strategy;        //assign a strategy to the NPC
+        //this.strategy= strategy;        //assign a strategy to the NPC
         this.controller = null;         //I think this controls when its the NPC's turn
         this.playerSize = playerSize;
         for (int i=0; i<karma.length; i++)//this sets all non diagonal numbers to 5
@@ -90,13 +90,15 @@ class PlayerWithStrategy {
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
-    
+    /*
     public PlayStrategy getStrategy() {
         return this.strategy;
     }
     public void setStrategy(PlayStrategy strategy) { 
         this.strategy = strategy;
     }
+
+*/
     public void takeTurn () {
         
         System.out.println("Roling Dice for " + this.name);
