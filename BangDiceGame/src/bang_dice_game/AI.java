@@ -123,9 +123,12 @@ public class AI {
             if(spanR>karma.length)                                              //  truncate span if passes array
                 spanR=spanR-karma.length;                                       //
             if(j==karma.length)                                                 //  reset j to start if passes array
-                j=0;                                                            //
-            if(karma[role][j]=='x')                                             //  if x found, ignore and bump up span
-                ++spanR;                                                        //  
+                j=0;
+            System.out.println(j);//
+            if(karma[role][j]=='x'){                                            //  if x found, ignore and bump up span
+             System.out.println(j);   
+                ++spanR;
+            }  
             if (j==spanR)                                                       //  if both pointers touch, record
                 if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
                 {                                                               //
