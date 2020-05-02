@@ -5,6 +5,8 @@
  */
 package bang_dice_game;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author sloan
@@ -90,9 +92,12 @@ class UserPlayer implements Player{
     
     public void takeTurn () {
     System.out.println("Rolling Dice for " + this.name);
-    Dice dice = new Dice(Dice.Dice_Face.getRandomDice_Face());
+    //Dice dice;
+    //dice = new Dice(Dice.Dice_Face.getRandomDice_Face());
     if (controller != null)
-        controller.update(this, dice);    // numberToTake set here
+        controller.update(this);//, dice);    // numberToTake set here
+    
+        
     }
     
     public void takeAim1() {
@@ -102,16 +107,6 @@ class UserPlayer implements Player{
         currentPlayers = Game.getPlayers();
         int placement = 0;
         int amount = currentPlayers.size() - 1;
-        
-        
-        for (int i = 0; i < currentPlayers.size(); i++)
-        {
-            Player temp = currentPlayers.get(i);
-            if (this == temp)
-            {
-                placement = i;
-            }
-        }
         
         ArrayList<Player> attack = new ArrayList<>();
         
@@ -128,8 +123,8 @@ class UserPlayer implements Player{
             attack.add(currentPlayers.get(placement - 1));
         }
         System.out.println("Who would you like to attack?");
-        System.out.println("Option 1: " + attack.get(0));
-        System.out.println("Option 2: " + attack.get(1));
+        System.out.println("Option 1: " + attack.get(0).getName());
+        System.out.println("Option 2: " + attack.get(1).getName());
         
         int who = in.nextInt();
         int health = 0;
@@ -160,18 +155,10 @@ class UserPlayer implements Player{
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
         int placement = 0;
-        int amount = 0;
+        int amount = currentPlayers.size() - 1;
         
         
-        for (int i = 0; i < currentPlayers.size(); i++)
-        {
-            amount = amount + 1;
-            Player temp = currentPlayers.get(i);
-            if (this == temp)
-            {
-                placement = i;
-            }
-        }
+      
         
         ArrayList<Player> attack = new ArrayList<>();
         
@@ -209,10 +196,10 @@ class UserPlayer implements Player{
             attack.add(currentPlayers.get(placement - 2));
         }
         System.out.println("Who would you like to attack?");
-        System.out.println("Option 1: " + attack.get(0));
-        System.out.println("Option 2: " + attack.get(1));
-        System.out.println("Option 3: " + attack.get(2));
-        System.out.println("Option 4: " + attack.get(3));
+        System.out.println("Option 1: " + attack.get(0).getName());
+        System.out.println("Option 2: " + attack.get(1).getName());
+        System.out.println("Option 3: " + attack.get(2).getName());
+        System.out.println("Option 4: " + attack.get(3).getName());
         
         int who = in.nextInt();
         int health = 0;
