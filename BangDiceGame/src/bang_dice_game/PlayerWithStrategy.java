@@ -20,13 +20,16 @@ class PlayerWithStrategy {
     private String description = "";
     private int health = 0;
     private int arrows = 0;
+    private int spot = 0;
     private PlayStrategy strategy;
     private int playerSize;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
+    char[][] karma = new char[playerSize][playerSize];
+    
   /**
    * Create a NPC with the specified name, role, description, health, arrows, and strategy.
    */
-  public PlayerWithStrategy(String name, String role, String description, int health, int arrows, PlayStrategy strategy, int playerSize){
+  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, PlayStrategy strategy, int playerSize){
         this.name = name;
         this.role = role;
         this.description = description;
@@ -35,7 +38,6 @@ class PlayerWithStrategy {
         this.strategy= strategy;        //assign a strategy to the NPC
         this.controller = null;         //I think this controls when its the NPC's turn
         this.playerSize = playerSize;
-        char[][] karma = new char[playerSize][playerSize];
         for (int i=0; i<karma.length; i++)//this sets all non diagonal numbers to 5
         {
             for (int j=0; j<karma.length; j++)
@@ -101,16 +103,16 @@ class PlayerWithStrategy {
         AI NPC = new AI();
         if (null != this.role) switch (this.role) {
             case "Sheriff":
-                NPC.SheriffTurn();
-                break;
-            case "Renegade":
-                NPC.RenegadeTurn();
-                break;
-            case "Outlaw":
-                NPC.OutLawTurn();
+                NPC.Beer(karma,spot,0);
                 break;
             case "Deputy":
-                NPC.DeputyTurn();
+                NPC.Beer(karma,spot,1);
+                break;
+            case "Outlaw":
+                NPC.Beer(karma,spot,2);
+                break;
+            case "Renegade":
+                NPC.Beer(karma,spot,3);
                 break;
             default:
                 System.out.println("Something went wrong on " + this.name + "'s turn");
