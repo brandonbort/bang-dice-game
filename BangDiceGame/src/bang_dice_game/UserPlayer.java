@@ -18,15 +18,17 @@ class UserPlayer implements Player{
     private String role = "";
     private int health;
     private int arrows;
+    private int spot;
     private PlayerObserver controller; // Observer this Player reports to.
     
     
-    public UserPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int playerArrows){
+    public UserPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int spot){
         this.name = playerName;
         this.role = playerRole;
         this.description = playerDescription;
         this.health = playerHealth;
-        this.arrows = playerArrows;
+        this.spot = spot;
+        this.arrows = 0;
         this.controller = null;
     }
     
@@ -34,7 +36,6 @@ class UserPlayer implements Player{
         return this.name;
     }
 
-    
     public void setName(String name) {
         this.name = name;
     }
@@ -76,6 +77,14 @@ class UserPlayer implements Player{
     
     public void setArrows(int arrows) { 
         this.arrows = arrows;
+    }
+    
+    public int getSpot() {
+        return this.spot;
+    }
+
+    public void setSpot(int spot) { 
+        this.spot = spot;
     }
     
     
