@@ -24,8 +24,10 @@ class PlayerController implements PlayerObserver {
     
     }
     
-     //Aaron messing around with stuff
       public void update(UserPlayer player, Dice dice){
+        int countDynamite = 0;
+        int countGatling = 0;
+          
         dice.firstRoll();
         dice.reRoll();
         
@@ -35,28 +37,44 @@ class PlayerController implements PlayerObserver {
             diceFace.add(Dice.Dice_Face.dice[i]);   
         }
         
-        int numArrows = player.getArrows();
-        player.setArrows(numArrows);
-        
-        int numHealth = player.getHealth();
-        player.setHealth(numHealth);
-        
+        for (int i = 0; i <6; i++){
+            if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
+                countDynamite = countDynamite + 1;
+            if (diceFace.get(i) == Dice.Dice_Face.Gatling)
+                countGatling = countGatling + 1;
         }
-      
-//    public void update(UserPlayer player, Dice dice){
-//        int numArrows = player.getArrows();
-//        player.setArrows(numArrows);
-//        
-//        int numHealth = player.getHealth();
-//        player.setHealth(numHealth);
-//        
-//        String description = player.getDescription();
-//        player.setDescription(description);
-//        
-//        String role = player.getRole();
-//        player.setRole(role);
-//        dice.firstRoll();
-//        dice.reRoll();
-//        }
-         
+        
+        if (countDynamite >= 3){
+            System.out.println("You have lost your turn.");
+        }
+        else{
+            
+            if(countGatling >= 3)
+            {
+                player.gatlingDice();
+            }
+            for(int i = 0; i < 6; i++){
+                if(null != diceFace.get(i))
+                switch (diceFace.get(i)) {
+                    case IndianArrow:
+                        int arrowAdd = player.getArrows();
+                        arrowAdd = arrowAdd + 1;
+                        player.setArrows(arrowAdd);
+                        break;
+                    case BullsEye1:
+                        player.takeAim1();
+                        break;
+                    case BullsEye2:
+                        player.takeAim2();
+                        break;
+                    case Beer:
+                        player.beerDice();
+                        break;
+                    default:
+                        System.out.println("Does not exist");
+                        break;
+                }
+            }
+        }
+     }
 }
