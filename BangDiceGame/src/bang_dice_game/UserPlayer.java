@@ -110,21 +110,14 @@ class UserPlayer implements Player{
         
         ArrayList<Player> attack = new ArrayList<>();
         
-        if((placement - 1) < 0){
-            attack.add(currentPlayers.get(amount));
-            attack.add(currentPlayers.get(1));
-        }
-        else if ((placement + 1) >= currentPlayers.size()){
-            attack.add(currentPlayers.get(amount-1));
-            attack.add(currentPlayers.get(0));
-        }
-        else{
-            attack.add(currentPlayers.get(placement + 1));
-            attack.add(currentPlayers.get(placement - 1));
-        }
+        attack.add(currentPlayers.get(amount));
+        attack.add(currentPlayers.get(1));
+        
+        
         System.out.println("Who would you like to attack?");
-        System.out.println("Option 1: " + attack.get(0).getName());
-        System.out.println("Option 2: " + attack.get(1).getName());
+        System.out.println("1:  " + attack.get(0).getName());
+        System.out.println("2:  " + attack.get(1).getName());
+        System.out.println("Please enter one of the options: 1 or 2");
         
         int who = in.nextInt();
         int health = 0;
@@ -162,44 +155,27 @@ class UserPlayer implements Player{
         
         ArrayList<Player> attack = new ArrayList<>();
         
-        if(((placement - 2) < 0) && ((placement - 1) < 0))
+        attack.add(currentPlayers.get(amount));
+        attack.add(currentPlayers.get(amount-1));
+        attack.add(currentPlayers.get(1));
+        attack.add(currentPlayers.get(2));
+        
+        if (attack.size() == 4)
         {
-            attack.add(currentPlayers.get(amount));
-            attack.add(currentPlayers.get(amount-1));
-            attack.add(currentPlayers.get(1));
-            attack.add(currentPlayers.get(2));
+            attack.remove(3);
         }
-        else if (((placement - 2) < 0) && ((placement - 1) == 0))
-        {
-            attack.add(currentPlayers.get(amount));
-            attack.add(currentPlayers.get(0));
-            attack.add(currentPlayers.get(2));
-            attack.add(currentPlayers.get(3));
-        }
-        else if (((placement + 2) >= currentPlayers.size()) && ((placement + 1) >= currentPlayers.size())){
-            attack.add(currentPlayers.get(amount-1));
-            attack.add(currentPlayers.get(amount-2));
-            attack.add(currentPlayers.get(0));
-            attack.add(currentPlayers.get(1));
-        }
-        else if (((placement + 2) >= currentPlayers.size()) && ((placement + 1) == (currentPlayers.size()- 2))){
-            attack.add(currentPlayers.get(amount-2));
-            attack.add(currentPlayers.get(amount-3));
-            attack.add(currentPlayers.get(amount));
-            attack.add(currentPlayers.get(0));
-        }
-        else
-        {
-            attack.add(currentPlayers.get(placement + 1));
-            attack.add(currentPlayers.get(placement + 2));
-            attack.add(currentPlayers.get(placement - 1));
-            attack.add(currentPlayers.get(placement - 2));
-        }
+        
         System.out.println("Who would you like to attack?");
-        System.out.println("Option 1: " + attack.get(0).getName());
-        System.out.println("Option 2: " + attack.get(1).getName());
-        System.out.println("Option 3: " + attack.get(2).getName());
-        System.out.println("Option 4: " + attack.get(3).getName());
+        for (int i = 0; i < attack.size(); i++)
+        {
+            System.out.println((i+1) + ":   " +attack.get(i).getName());
+        }
+        System.out.print("Please enter one of the options: "); 
+        for (int i = 0; i < attack.size(); i++)
+        {
+            System.out.print(i+1 + " ");
+        }
+        System.out.println();
         
         int who = in.nextInt();
         int health = 0;
