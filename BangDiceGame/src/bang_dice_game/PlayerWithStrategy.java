@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang_dice_game;
-
-import java.util.Arrays;
-
 /**
  *
  * @author carlos144green
  */
-
-//I have no idea what im doing so edit to ur content
 class PlayerWithStrategy implements Player{
 
     private String name = "";
@@ -21,40 +11,26 @@ class PlayerWithStrategy implements Player{
     private int health = 0;
     private int arrows = 0;
     private int spot = 0;
-    //private PlayStrategy strategy;
     private int playerSize;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
     char[][] karma = new char[playerSize][playerSize];
     
-  /**
-   * Create a NPC with the specified name, role, description, health, arrows, and strategy.
-   */
+
   public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, int playerSize){
         this.name = name;
         this.role = role;
         this.description = description;
         this.health = health;
-        this.arrows = 0;                //arrows should always start at 0 but ill include it here anyways
+        this.arrows = 0;                    //arrows should always start at 0 but ill include it here anyways
         this.spot = spot;
-        //this.strategy= strategy;        //assign a strategy to the NPC
-        this.controller = null;         //I think this controls when its the NPC's turn
+        this.controller = null;             //I think this controls when its the NPC's turn
         this.playerSize = playerSize;
-        for (int i=0; i<karma.length; i++)//this sets all non diagonal numbers to 5
-        {
+        for (int i=0; i<karma.length; i++)  //this sets all non diagonal numbers to 5
             for (int j=0; j<karma.length; j++)
-            {
-                if(i==j)    //if numbers match(diagonal number) dont set to 5
+                if(i==j)                    //if numbers match(diagonal number) dont set to 5
                     karma[i][j]='x';
                 else
                     karma[i][j]='5';
-            }
-        }
-        for (int i=0; i<karma.length; i++)//this sets all non diagonal numbers to 5
-        {
-            for (int j=0; j<karma.length; j++)
-                System.out.print(karma[i][j]);
-            System.out.print("\n");
-        }
     }
   
     public String getName() {
@@ -62,13 +38,6 @@ class PlayerWithStrategy implements Player{
     }
     public void setName(String name) {
         this.name = name;
-    }
-    
-    public int getSpot() {
-        return this.spot;
-    }
-    public void setSpot(int spot) {
-        this.spot = spot;
     }
     
     public String getRole() {
@@ -98,15 +67,14 @@ class PlayerWithStrategy implements Player{
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
-    /*
-    public PlayStrategy getStrategy() {
-        return this.strategy;
+    
+    public int getSpot() {
+        return this.spot;
     }
-    public void setStrategy(PlayStrategy strategy) { 
-        this.strategy = strategy;
+    public void setSpot(int spot) {
+        this.spot = spot;
     }
 
-*/
     public void takeTurn () {
         
         System.out.println("Roling Dice for " + this.name);
