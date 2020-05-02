@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang_dice_game;
-
-import java.util.*;
 
 /**
  *
@@ -57,12 +50,11 @@ import java.util.*;
 // he wont shoot anyone with good karma. Thank you for coming to my ted talk.
 public class AI {
     /**
-     * Beer             class to heal peeps 
-     * @param karma     2D array
-     * @param spot      position located on karma
-     * @param role      sheriff=0, deputy=1, outlaw=2, renegade=3
-     * @param hp        how many points he has
-     *
+     * Beer             //  class to heal peeps 
+     * @param karma     //  2D array
+     * @param spot      //  position located on karma
+     * @param role      //  sheriff=0, deputy=1, outlaw=2, renegade=3
+     * @param hp        //  how many points he has
      */
     public void Beer (char karma[][],int spot,int role,int hp) {
         int target=0;   
@@ -103,9 +95,14 @@ public class AI {
                     System.out.print("Player"+spot+" hurt himself in confusion!?!?!");
                     break;
             }
-
-        
     }
+    /**
+     * Bang             //  Shooting Method
+     * @param karma     //  2D array
+     * @param spot      //  Position located on karma
+     * @param role      //  Sheriff=0, deputy=1, outlaw=2, renegade=3
+     * @param range     //  Range of 1 or 2?
+     */
     public void Bang (char karma[][],int spot,int role, int range) {
         //////////////////////////////////////////////////////////////////////////  initializers
         int target=9;                                                           //  0 for beer, 9 for bang
