@@ -14,8 +14,17 @@ class PlayerWithStrategy implements Player{
     private int playerSize;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
     char[][] karma = new char[playerSize][playerSize];
-    
-
+    //karma only needs one instance so idk if this will keep it like that
+/**
+ * 
+ * @param name          //  Player Name
+ * @param role          //  Sheriff, Deputy, Outlaw, or Renegade
+ * @param description   //  Atm idk
+ * @param health        //  Current HP
+ * @param arrows        //  Current arrow count
+ * @param spot          //  Location on karma array
+ * @param playerSize    //  Atm its used to set up karma... for now
+ */
   public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, int playerSize){
         this.name = name;
         this.role = role;
@@ -76,15 +85,14 @@ class PlayerWithStrategy implements Player{
     }
 
     public void takeTurn () {
-        
         System.out.println("Roling Dice for " + this.name);
         AI NPC = new AI();
         if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
-                    NPC.Beer(karma,spot,0,health);
-                    NPC.Bang(karma,spot,0,1);       //1=range of 1
-                    NPC.Bang(karma,spot,0,2);       //2=range of 2
+                    NPC.Beer(karma,spot,0,health);  //these all return spot values so yea
+                    NPC.Bang(karma,spot,0,1);       //1=range of 1 and not range of 2
+                    NPC.Bang(karma,spot,0,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
                     break;
                 case "Deputy":
                     NPC.Beer(karma,spot,1,health);
