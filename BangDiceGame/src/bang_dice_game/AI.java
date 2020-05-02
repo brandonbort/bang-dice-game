@@ -101,30 +101,32 @@ public class AI {
             if(karma[role][j]=='x')                                             //  if x found, ignore and bump up span
                 ++spanR;                                                        //  
             if (j==spanR)                                                       //  if both pointers touch, record
-                if(Character.getNumericValue(karma[role][j])<target)            //
+                if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
                 {                                                               //
-                    target=Character.getNumericValue(karma[role][j]);           //
+                    target=Character.getNumericValue(karma[role][j]);           //  overwrites old target n stuff
                     targetplayer=j;                                             //
                 }                                                               //
-        }
-        for (int j=spot-1;j!=(spanL-1);--j)//find the lowest number in the row
-        {
-            if(spanL<0)
-                spanL=spanL+karma.length;
-            if(j==-1)
-                j=karma.length-1;
-            if(karma[role][j]=='x')
-                --spanL;
-            if (j==(spanL))
-                if(Character.getNumericValue(karma[role][j])<target)
-                {
-                    target=Character.getNumericValue(karma[role][j]);
-                    targetplayer=j;
-                }
-        }
-        System.out.print("\nLShoot Player"+targetplayer+" with "+target+" karma ");
+        }                                                                       //
+        //////////////////////////////////////////////////////////////////////////  right bang finder
+        for (int j=spot-1;j!=(spanL-1);--j)                                     //  find the lowest number in the row  
+        {                                                                       //
+            if(spanL<0)                                                         //  truncate span if passes array
+                spanL=spanL+karma.length;                                       //
+            if(j==-1)                                                           //  reset j to start if passes array
+                j=karma.length-1;                                               //
+            if(karma[role][j]=='x')                                             //  if x found, ignore and bump up span
+                --spanL;                                                        //
+            if (j==(spanL))                                                     //  if both pointers touch, record
+                if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
+                {                                                               //
+                    target=Character.getNumericValue(karma[role][j]);           //  overwrites old target n stuff
+                    targetplayer=j;                                             //
+                }                                                               //
+        }                                                                       //
+        System.out.print("Bang"+targetplayer+" with "+target+" karma ");        //  publish results
+        //////////////////////////////////////////////////////////////////////////
     }
-    public void Bang2 () {
+    public void Bang2 () {                                                      
         
     }
 }
