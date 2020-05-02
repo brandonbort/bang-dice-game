@@ -82,7 +82,7 @@ class Game {
    * The game is over.
    */
   public boolean gameOver () {
-    return true; //alive == 1;  // because idk how we gonna set 
+    return false; //alive == 1;  // because idk how we gonna set 
                                  //how the game is over yet sooo
   }
   
@@ -93,6 +93,7 @@ class Game {
   public void play () {
     if (!gameOver()) { 
       nextPlayer.takeTurn();
+      //System.out.println(players);
       previousPlayer = nextPlayer;
       nextPlayer = otherPlayer(nextPlayer);
     }
@@ -104,15 +105,16 @@ class Game {
   private Player otherPlayer (Player player) {
       
       Player temp = player;
+      int size = players.size() - 1;
     
     for (int i = 0; i < players.size(); i++)
     {
         if (temp == players.get(i)){
-            if (temp == (players.get(7)))
+            if (temp == (players.get(size)))
                 temp = players.get(0);
             else 
                 temp = players.get(i+1);
-            //break; // breaks for loop
+            break; // breaks for loop
         }
     }
       return temp;
