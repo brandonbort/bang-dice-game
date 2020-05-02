@@ -51,7 +51,7 @@ public class Dice {
     { 
         IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
         public static Dice_Face dice[] = Dice_Face.values();
-        private static Dice_Face getRandomDice_Face(){      
+        public static Dice_Face getRandomDice_Face(){      
             return dice[RANDOM.nextInt(SIZE)];
             }
         
