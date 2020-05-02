@@ -57,14 +57,14 @@ public class AI {
      * @param hp        //  how many points he has
      */
     public int Beer (char karma[][],int spot,int role,int hp) {
-        //////////////////////////////////////////////////////////////////////////
-        int target=0;                                                           //
-        int targetSpot=spot;                                                    //
+        //////////////////////////////////////////////////////////////////////////  Initialize variables
+        int target=0;                                                           //  This chages as it finds better karma
+        int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
         int isDepDead=0;                                                        //  keep this here until ik how to add it
-        //////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////  AI part
         switch (role) {                                                         //  
-                case 0:                                                         //  sheriff
-                    if ((hp<7)||(isDepDead==0))                                 //
+                case 0:                                                         //  Sheriff's decision making
+                    if ((hp<7)||(isDepDead==0))                                 //  make sure ur not dying b4 healing other first
                         System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
                     else                                                        //  
                         for (int j=spot;j!=karma.length;++j)                    //  
@@ -75,7 +75,7 @@ public class AI {
                             }                                                   //  
                     System.out.print("Player"+spot+" healed Player"+targetSpot);//  Heal target with good karma
                     break;                                                      //
-                case 1:///////////////////////////////////////////////////////////  deputy
+                case 1:///////////////////////////////////////////////////////////  Deputy's decision making
                     if (hp<3)                                                   //  
                         System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
                     else                                                        //  
@@ -84,10 +84,10 @@ public class AI {
                         targetSpot=0;                                           //  
                     }                                                           //  
                     break;                                                      //  
-                case 2:///////////////////////////////////////////////////////////  outlaw
+                case 2:///////////////////////////////////////////////////////////  Outlaw's decision making
                     System.out.print("Player"+spot+" healed Player"+targetSpot);//  Heal himself
                     break;                                                      //
-                case 3:///////////////////////////////////////////////////////////  Renegade
+                case 3:///////////////////////////////////////////////////////////  Renegade's decision making
                     if (hp<5)                                                   //  
                         System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
                     else if(isDepDead!=0)                                       //  
@@ -98,11 +98,11 @@ public class AI {
                     else                                                        //  
                         System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself nonetheless
                     break;                                                      //  
-                default://////////////////////////////////////////////////////////  whoops
+                default://////////////////////////////////////////////////////////  FuckyWucky's decision making
                     System.out.print("Player"+spot+" hurt itself in confusion");//
                     break;                                                      //
             }                                                                   //
-        return targetSpot;////////////////////////////////////////////////////////  
+        return targetSpot;////////////////////////////////////////////////////////  Return location to heal
     }
     /**
      * Bang             //  Shooting Method
@@ -112,12 +112,12 @@ public class AI {
      * @param range     //  Range of 1 or 2?
      */
     public int Bang (char karma[][],int spot,int role, int range) {
-        //////////////////////////////////////////////////////////////////////////  initializers
+        //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=9;                                                           //  0 for beer, 9 for bang
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
         int spanR=spot+range;                                                   //  right bang range
         int spanL=spot-range;                                                   //  left bang range
-        //////////////////////////////////////////////////////////////////////////  right bang finder
+        //////////////////////////////////////////////////////////////////////////  Lowest karma on the Right
         for (int j=spot+1;j!=(spanR+1);++j)                                     //  find the lowest number in the row
         {                                                                       //
             if(spanR>karma.length)                                              //  truncate span if passes array
@@ -133,7 +133,7 @@ public class AI {
                     targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
-        //////////////////////////////////////////////////////////////////////////  right bang finder
+        //////////////////////////////////////////////////////////////////////////  Lowest karma on the Left
         for (int j=spot-1;j!=(spanL-1);--j)                                     //  find the lowest number in the row  
         {                                                                       //
             if(spanL<0)                                                         //  truncate span if passes array
@@ -149,10 +149,9 @@ public class AI {
                     targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
-        //System.out.print("Bang"+targetSpot+" with "+target+" karma ");        //  publish results
-        //////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////  AI part with target in mind
         switch (role) {                                                         //
-                case 0:///////////////////////////////////////////////////////////  sheriff
+                case 0:///////////////////////////////////////////////////////////  Sheriff's decision making
                     if (target>5)                                               //
                     {                                                           //  
                         System.out.print("Player"+spot+" rerolls");             //  dudes in range r good people
@@ -161,7 +160,7 @@ public class AI {
                     else                                                        //
                         System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
                     break;                                                      //
-                case 1:///////////////////////////////////////////////////////////  deputy
+                case 1:///////////////////////////////////////////////////////////  Deputy's decision making
                     if (target>5)                                               //
                     {                                                           //  
                         System.out.print("Player"+spot+" rerolls");             //  dudes in range r good people
@@ -170,16 +169,16 @@ public class AI {
                     else                                                        //  
                         System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
                     break;                                                      //  
-                case 2:///////////////////////////////////////////////////////////  outlaw
+                case 2:///////////////////////////////////////////////////////////  Outlaw's decision making
                         System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing                    
                     break;                                                      //  
-                case 3:///////////////////////////////////////////////////////////  renegade
+                case 3:///////////////////////////////////////////////////////////  Renegade's decision making
                         System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing karma will be edited elsewhere                    
                     break;                                                      //  
-                default://////////////////////////////////////////////////////////  whoops
+                default://////////////////////////////////////////////////////////  Whoops's decision making
                     System.out.print("Player"+spot+" hurt itself in confusion");//
                     break;                                                      //  
             }                                                                   //
-        return targetSpot;////////////////////////////////////////////////////////  returns position of target
+        return targetSpot;////////////////////////////////////////////////////////  Returns position of target 
     }
 }
