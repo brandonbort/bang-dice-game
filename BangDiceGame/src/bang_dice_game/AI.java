@@ -56,45 +56,53 @@ public class AI {
      * @param role      //  sheriff=0, deputy=1, outlaw=2, renegade=3
      * @param hp        //  how many points he has
      */
-    public void Beer (char karma[][],int spot,int role,int hp) {
-        int target=0;   
-        int targetplayer=spot;
-        int isDepDead=0;    //keep this here until ik how to add it
-        
-        switch (role) {
-                case 0:     //sheriff
-                    if ((hp<7)||(isDepDead==0))
-                        System.out.print("Player"+spot+" healed Player"+spot);          //Heal himself
-                    else
-                        for (int j=spot;j!=karma.length;++j)
+    public int Beer (char karma[][],int spot,int role,int hp) {
+        //////////////////////////////////////////////////////////////////////////
+        int target=0;                                                           //
+        int targetSpot=spot;                                                    //
+        int isDepDead=0;                                                        //  keep this here until ik how to add it
+        //////////////////////////////////////////////////////////////////////////
+        switch (role) {                                                         //  
+                case 0:                                                         //  sheriff
+                    if ((hp<7)||(isDepDead==0))                                 //
+                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                    else                                                        //  
+                        for (int j=spot;j!=karma.length;++j)                    //  
                             if((Character.getNumericValue(karma[role][j])>target)&&(karma[role][j]!='x'))
-                            {
-                                target=Character.getNumericValue(karma[role][j]);
-                                targetplayer=j;
-                            }
-                    System.out.print("Player"+spot+" healed Player"+targetplayer);      //Heal target with good karma
-                    break;
-                case 1:     //deputy
-                    if (hp<3)
-                        System.out.print("Player"+spot+" healed Player"+spot);          //Heal himself
-                    else
-                        System.out.print("Player"+spot+" healed Player"+0);             //Heal sheriff=0 
-                    break;
-                case 2:     //outlaw
-                    System.out.print("Player"+spot+" healed Player"+spot);              //Heal himself
-                    break;
-                case 3:     //renegade
-                    if (hp<5)
-                        System.out.print("Player"+spot+" healed Player"+spot);          //Heal himself
-                    else if(isDepDead!=0)
-                        System.out.print("Player"+spot+" healed Player"+0);             //Heal sheriff=0 
-                    else
-                        System.out.print("Player"+spot+" healed Player"+spot);          //Heal himself nonetheless
-                    break;
-                default:    //whoops
-                    System.out.print("Player"+spot+" hurt himself in confusion!?!?!");
-                    break;
-            }
+                            {                                                   //  
+                                target=Character.getNumericValue(karma[role][j]);// 
+                                targetSpot=j;                                   //  
+                            }                                                   //  
+                    System.out.print("Player"+spot+" healed Player"+targetSpot);//  Heal target with good karma
+                    break;                                                      //
+                case 1:///////////////////////////////////////////////////////////  deputy
+                    if (hp<3)                                                   //  
+                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                    else                                                        //  
+                    {                                                           //  
+                        System.out.print("Player"+spot+" healed Player"+0);     //  Heal sheriff=0 
+                        targetSpot=0;                                           //  
+                    }                                                           //  
+                    break;                                                      //  
+                case 2:///////////////////////////////////////////////////////////  outlaw
+                    System.out.print("Player"+spot+" healed Player"+targetSpot);//  Heal himself
+                    break;                                                      //
+                case 3:///////////////////////////////////////////////////////////  Renegade
+                    if (hp<5)                                                   //  
+                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                    else if(isDepDead!=0)                                       //  
+                    {                                                           //  
+                        System.out.print("Player"+spot+" healed Player"+0);     //  Heal sheriff=0 
+                        targetSpot=0;                                           //  
+                    }                                                           //
+                    else                                                        //  
+                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself nonetheless
+                    break;                                                      //  
+                default://////////////////////////////////////////////////////////  whoops
+                    System.out.print("Player"+spot+" hurt itself in confusion");//
+                    break;                                                      //
+            }                                                                   //
+        return targetSpot;////////////////////////////////////////////////////////  
     }
     /**
      * Bang             //  Shooting Method
@@ -103,10 +111,10 @@ public class AI {
      * @param role      //  Sheriff=0, deputy=1, outlaw=2, renegade=3
      * @param range     //  Range of 1 or 2?
      */
-    public void Bang (char karma[][],int spot,int role, int range) {
+    public int Bang (char karma[][],int spot,int role, int range) {
         //////////////////////////////////////////////////////////////////////////  initializers
         int target=9;                                                           //  0 for beer, 9 for bang
-        int targetplayer=spot;                                                  //  it works, dont fuc w it >:(
+        int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
         int spanR=spot+range;                                                   //  right bang range
         int spanL=spot-range;                                                   //  left bang range
         //////////////////////////////////////////////////////////////////////////  right bang finder
@@ -122,7 +130,7 @@ public class AI {
                 if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
                 {                                                               //
                     target=Character.getNumericValue(karma[role][j]);           //  overwrites old target n stuff
-                    targetplayer=j;                                             //
+                    targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
         //////////////////////////////////////////////////////////////////////////  right bang finder
@@ -138,34 +146,40 @@ public class AI {
                 if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
                 {                                                               //
                     target=Character.getNumericValue(karma[role][j]);           //  overwrites old target n stuff
-                    targetplayer=j;                                             //
+                    targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
-        //System.out.print("Bang"+targetplayer+" with "+target+" karma ");      //  publish results
+        //System.out.print("Bang"+targetSpot+" with "+target+" karma ");        //  publish results
         //////////////////////////////////////////////////////////////////////////
         switch (role) {                                                         //
-                case 0:                                                         //  sheriff
+                case 0:///////////////////////////////////////////////////////////  sheriff
                     if (target>5)                                               //
+                    {                                                           //  
                         System.out.print("Player"+spot+" rerolls");             //  dudes in range r good people
+                        targetSpot=-1;                                          //  
+                    }                                                           //  
                     else                                                        //
-                        System.out.print("Player"+spot+" Bangs Player"+targetplayer+"!");//guns blazing
+                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
                     break;                                                      //
-                case 1:                                                         //  deputy
-                    if (targetplayer==0)                                        //
+                case 1:///////////////////////////////////////////////////////////  deputy
+                    if (target>5)                                               //
+                    {                                                           //  
                         System.out.print("Player"+spot+" rerolls");             //  dudes in range r good people
+                        return -1;                                              //  
+                    }                                                           //  
                     else                                                        //  
-                        System.out.print("Player"+spot+" Bangs Player"+targetplayer+"!");//guns blazing
+                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
                     break;                                                      //  
-                case 2:                                                         //  outlaw
-                        System.out.print("Player"+spot+" Bangs Player"+targetplayer+"!");//guns blazing                    
+                case 2:///////////////////////////////////////////////////////////  outlaw
+                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing                    
                     break;                                                      //  
-                case 3:                                                         //  renegade
-                        System.out.print("Player"+spot+" Bangs Player"+targetplayer+"!");//guns blazing karma will be edited elsewhere                    
+                case 3:///////////////////////////////////////////////////////////  renegade
+                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing karma will be edited elsewhere                    
                     break;                                                      //  
-                default:                                                        //  whoops
-                    System.out.print("Player"+spot+" hurt himself in confusion!?!?!");
+                default://////////////////////////////////////////////////////////  whoops
+                    System.out.print("Player"+spot+" hurt itself in confusion");//
                     break;                                                      //  
             }                                                                   //
-        //////////////////////////////////////////////////////////////////////////
+        return targetSpot;////////////////////////////////////////////////////////  returns position of target
     }
 }
