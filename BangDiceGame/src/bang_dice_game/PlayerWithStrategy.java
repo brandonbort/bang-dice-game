@@ -82,15 +82,23 @@ class PlayerWithStrategy implements Player{
         if (null != this.role) switch (this.role) {
             case "Sheriff":
                 NPC.Beer(karma,spot,0);
+                NPC.Bang(karma,spot,0,1);       //1=range of 1
+                NPC.Bang(karma,spot,0,2);       //2=range of 2
                 break;
             case "Deputy":
                 NPC.Beer(karma,spot,1);
+                NPC.Bang(karma,spot,1,1);       //1=range of 1
+                NPC.Bang(karma,spot,1,2);       //2=range of 2
                 break;
             case "Outlaw":
                 NPC.Beer(karma,spot,2);
+                NPC.Bang(karma,spot,2,1);       //1=range of 1
+                NPC.Bang(karma,spot,2,2);       //2=range of 2
                 break;
             case "Renegade":
                 NPC.Beer(karma,spot,3);
+                NPC.Bang(karma,spot,3,1);       //1=range of 1
+                NPC.Bang(karma,spot,3,2);       //2=range of 2
                 break;
             default:
                 System.out.println("Something went wrong on " + this.name + "'s turn");
