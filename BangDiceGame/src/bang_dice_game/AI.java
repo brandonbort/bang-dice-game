@@ -56,27 +56,36 @@ import java.util.*;
 //So now deputy has good karma in sheriff's eyes so when sheriff decides to shoot
 // he wont shoot anyone with good karma. Thank you for coming to my ted talk.
 public class AI {
-    public void SheriffTurn (char karma[][]) {
-        //shoot1
-        int spot=0;                                         //Sheriff position always
-        int target=Character.getNumericValue(karma[0][1]);  //change 1 to 0 for any other roll
-        for (int j=0; j<karma.length; j++)                  //find the lowest number in the row
+    /**
+     * Beer             class to heal peeps 
+     * @param karma
+     * @param spot
+     * @param role      sheriff=0, deputy=1, 
+     */
+    public void Beer (char karma[][],int spot,int role) {
+        int target=0;   
+        int targetplayer=spot;
+        
+        for (int j=spot;j!=karma.length;++j)
+            if((Character.getNumericValue(karma[role][j])>target)&&(karma[role][j]!='x'))
+            {
+                target=Character.getNumericValue(karma[role][j]);
+                targetplayer=j;
+            }
+        
+                for (int i=0; i<karma.length; i++)
         {
-            if(karma[0][j]=='x')
-                ;
-            else if(Character.getNumericValue(karma[0][j])<target)
-                target=Character.getNumericValue(karma[0][j]);
-            else
-                ;
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]+"   ");
+            System.out.println("\n");
         }
+        
+        System.out.print("\nBeer Player"+targetplayer+" with "+target+" karma");
     }
-    public void DeputyTurn () {
+    public void Bang1 () {
         
     }
-    public void OutLawTurn () {
-        
-    }
-    public void RenegadeTurn () {
+    public void Bang2 () {
         
     }
 }
