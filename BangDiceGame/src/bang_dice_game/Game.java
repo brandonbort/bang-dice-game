@@ -14,11 +14,9 @@ import java.util.*;
 
 class Game {
   
-  private ArrayList<Player> players = new ArrayList<Player>();
+  private static ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
-  private Player previousPlayer;               // The Player who last played;
-  //private Player player1;
-  //private Player player2;
+  private Player previousPlayer;               // The Player who last played
   //private int alive;        // maybe idk
   
   
@@ -43,6 +41,13 @@ class Game {
    */
   public Player previousPlayer () {
     return previousPlayer;
+  }
+  
+  public static ArrayList<Player> getPlayers(){
+      return Game.players;
+  }
+  public static void setPlayers(ArrayList<Player> players){
+      Game.players = players;
   }
   
   /*// maybe idk
