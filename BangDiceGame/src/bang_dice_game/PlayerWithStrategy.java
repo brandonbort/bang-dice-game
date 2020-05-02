@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 
 //I have no idea what im doing so edit to ur content
-class PlayerWithStrategy {
+class PlayerWithStrategy implements Player{
 
     private String name = "";
     private String role = "";
