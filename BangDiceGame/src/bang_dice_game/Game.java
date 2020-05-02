@@ -82,7 +82,7 @@ class Game {
    * The game is over.
    */
   public boolean gameOver () {
-    return false; //alive == 1;  // because idk how we gonna set 
+    return true; //alive == 1;  // because idk how we gonna set 
                                  //how the game is over yet sooo
   }
   
