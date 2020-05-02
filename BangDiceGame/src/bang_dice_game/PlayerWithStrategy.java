@@ -35,6 +35,7 @@ class PlayerWithStrategy implements Player{
         this.description = description;
         this.health = health;
         this.arrows = 0;                //arrows should always start at 0 but ill include it here anyways
+        this.spot = spot;
         //this.strategy= strategy;        //assign a strategy to the NPC
         this.controller = null;         //I think this controls when its the NPC's turn
         this.playerSize = playerSize;
@@ -61,6 +62,13 @@ class PlayerWithStrategy implements Player{
     }
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public int getSpot() {
+        return this.spot;
+    }
+    public void setSpot(int spot) {
+        this.spot = spot;
     }
     
     public String getRole() {
