@@ -58,13 +58,15 @@ import java.util.*;
 public class AI {
     /**
      * Beer             class to heal peeps 
-     * @param karma
-     * @param spot
-     * @param role      sheriff=0, deputy=1, 
+     * @param karma     2D array
+     * @param spot      position located on karma
+     * @param role      sheriff=0, deputy=1, outlaw=2, renegade=3
+     *
      */
     public void Beer (char karma[][],int spot,int role) {
         int target=0;   
         int targetplayer=spot;
+        int isDepDead=0;    //keep this here until ik what to do
         
         for (int j=spot;j!=karma.length;++j)
             if((Character.getNumericValue(karma[role][j])>target)&&(karma[role][j]!='x'))
