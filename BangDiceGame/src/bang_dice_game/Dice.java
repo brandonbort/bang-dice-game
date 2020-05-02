@@ -241,12 +241,12 @@ public class Dice {
                  }
                 }
        }
-                }
+                  
             //when the given number is invalid 
             else{
                   System.out.println("Invalid Dice number \n");
                 }  
-     
+     }
     }
     //when you don't want to reroll 
     else if(response.equals(no)){
