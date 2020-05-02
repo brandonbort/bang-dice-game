@@ -84,9 +84,8 @@ public class AI {
         
         System.out.print("\nBeer Player"+targetplayer+" with "+target+" karma");
     }
-    public void Bang1 (char karma[][],int spot,int role) {
+    public void Bang (char karma[][],int spot,int role, int range) {
         //////////////////////////////////////////////////////////////////////////  initializers
-        int range=1;                                                            //  set range of shot
         int target=9;                                                           //  0 for beer, 9 for bang
         int targetplayer=spot;                                                  //  it works, dont fuc w it >:(
         int spanR=spot+range;                                                   //  right bang range
@@ -125,8 +124,5 @@ public class AI {
         }                                                                       //
         System.out.print("Bang"+targetplayer+" with "+target+" karma ");        //  publish results
         //////////////////////////////////////////////////////////////////////////
-    }
-    public void Bang2 () {                                                      
-        
     }
 }
