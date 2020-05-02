@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package bang_dice_game;
+import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author airishimamura
@@ -77,6 +80,11 @@ class PlayerController implements PlayerObserver {
                         break;
                     default:
                         System.out.println("Checking next dice...");
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         break;
                 }
             }
