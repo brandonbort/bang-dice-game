@@ -208,16 +208,16 @@ class UserPlayer implements Player{
     }
     
     public void gatlingDice(){
+        ArrayList<Player> currentPlayers = new ArrayList<Player>();
+        currentPlayers = Game.getPlayers();
         ArrayList<Player> attack = new ArrayList<Player>();
-        attack = Game.getPlayers();
         
         int health;
         
-        for (int i = 0; i < attack.size(); i++)
-            if (this == attack.get(i)){
-                attack.remove(i);
-                break;
-            }
+        for (int i = 0; i < currentPlayers.size(); i++)
+            if (this != currentPlayers.get(i))
+                attack.add(currentPlayers.get(i));  
+        
 
         for (int i = 0; i < attack.size(); i++){
             health = 0;
@@ -260,7 +260,7 @@ class UserPlayer implements Player{
             if (who == (i+1)){ 
                 health = 0;
                 health = heal.get(i).getHealth();
-                health = health - 1;
+                health = health + 1;
                 heal.get(i).setHealth(health);
                 System.out.println(heal.get(i).getName() + " has gained 1 health!");
                 try {
