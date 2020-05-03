@@ -40,7 +40,7 @@ static char [][] karma;
 
                 UserPlayer playerHuman1 = new UserPlayer("ME", "Sheriff", "is good guy :D", 4, 0);
                 players.add(playerHuman1);
-                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Brandon", "Renegade", "description", 4, 0, 1,karma);
+                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Player1", "Renegade", "description", 4, 0, 1,karma);
                 players.add(playerComp1);
                 PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Mario", "Outlaw", "description", 4, 0, 2, karma);
                 players.add(playerComp2);
