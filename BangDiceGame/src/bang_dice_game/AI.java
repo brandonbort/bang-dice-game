@@ -13,6 +13,7 @@ public class AI {
      * @param hp        //  how many points he has
      */
     static public int Beer (char[][] karma,int spot,int role,int hp) {
+        //System.out.print(karma.length+"Bang");
         //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=0;                                                           //  This chages as it finds better karma
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
@@ -68,7 +69,7 @@ public class AI {
      * @param range     //  Range of 1 or 2?
      */
     static public int Bang (char [][] karma,int spot,int role, int range) {
-        System.out.print(karma.length+"Bang");
+        //System.out.print(karma.length+"Bang");
         //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=9;                                                           //  0 for beer, 9 for bang
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
@@ -77,27 +78,12 @@ public class AI {
         //////////////////////////////////////////////////////////////////////////  Lowest karma on the Right
         for (int j=spot+1;j!=(spanR+1);++j)                                     //  find the lowest number in the row
         {                   
-            
-            System.out.println(j);//
-            System.out.println(target);//
-            System.out.println(spot);//
-            System.out.println(targetSpot);//
-            System.out.println(karma.length);//
-//
             if(spanR>karma.length)                                              //  truncate span if passes array
                 spanR=spanR-karma.length;                                       //
             if(j==karma.length)                                                 //  reset j to start if passes array
                 j=0;
-            for (int i=0;i<karma.length;++i)
-                System.out.println("> "+karma[role][i]);//
-            if(karma[role][j]=='x'){                                            //  if x found, ignore and bump up span
-             System.out.println(j);   
+            if(karma[role][j]=='x')                                            //  if x found, ignore and bump up span   
                 ++spanR;
-            }
-            
-            
-            
-            
             if (j==spanR)                                                       //  if both pointers touch, record
                 if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
                 {                                                               //
