@@ -14,6 +14,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Random; 
 import java.util.Scanner;
+import java.security.SecureRandom;
 
 //*
 
@@ -39,8 +40,9 @@ public class Dice {
     
         public int numOfDices = 5;
         private static int SIZE = 6;
-        private static final Random RANDOM = new Random((long)( Math.random() * (double)Long.SIZE));
-        
+        //private static final Random RANDOM = new Random((long)( Math.random() * (double)Long.SIZE));
+        private static final Random RANDOM = new SecureRandom();
+
         String yes = new String("Yes");
         String no = new String("No");
         
