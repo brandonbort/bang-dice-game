@@ -25,49 +25,55 @@ class UserPlayer implements Player{
         this.arrows = 0;
         this.controller = null;
     }
-    
+    @Override
     public String getName() {
         return this.name;
     }
+    @Override
     public void setName(String name) {
         this.name = name;
     }
-    
+    @Override
     public int getHealth() {
         return health;
     }
+    @Override
     public void setHealth(int health) {
         this.health = health;
     }
-
+    @Override
     public String getRole() {
         return this.role;
     }
+    @Override
     public void setRole(String role) {
         this.role = role;
     }
-    
+    @Override
     public String getDescription() {
         return this.description;
     }
+    @Override
     public void setDescription(String descrip) {
         this.description = descrip;
     }
-    
+    @Override
     public int getArrows() {
         return this.arrows;
     }
+    @Override
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
-    
+    @Override
     public int getSpot() {
         return this.spot;
     }
+    @Override
     public void setSpot(int spot) { 
         this.spot = spot;
     }
-    
+    @Override
     public void takeTurn () {
         System.out.println("Rolling Dice for " + this.name);
         //Dice dice;
