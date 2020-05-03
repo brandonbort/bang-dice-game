@@ -57,7 +57,7 @@ public class BangDiceGame{
             
             // currently have the game set to be over when game starts :)
             Player winner = bangGame.winner(); 
-            //System.out.println("The winner is: " + winner.getName());
+            System.out.println("The winner is: " + winner.getName());
     }
     
     
