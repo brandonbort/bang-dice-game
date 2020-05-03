@@ -1,4 +1,9 @@
 package bang_dice_game;
+
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author carlos144green
@@ -96,6 +101,12 @@ class PlayerWithStrategy implements Player{
 
     public void takeTurn () {
         System.out.println("Roling Dice for " + this.name);
+            try {
+                sleep(1000);
+            }
+            catch (InterruptedException ex) {
+                Logger.getLogger(PlayerWithStrategy.class.getName()).log(Level.SEVERE, null, ex);
+            }        
         if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
