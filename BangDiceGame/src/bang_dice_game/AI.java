@@ -26,7 +26,6 @@ public class AI {
         int isDepDead=0;                                                        //  keep this here until ik how to add it
         ArrayList<Player> currentPlayers = new ArrayList<Player>();             //
         currentPlayers = Game.getPlayers();                                     //
-        int targetHealth = currentPlayers.get(targetSpot).getHealth();          //
         //////////////////////////////////////////////////////////////////////////  AI part
         switch (role) {                                                         //  
                 case 0:                                                         //  Sheriff's decision making
@@ -72,6 +71,7 @@ public class AI {
             catch (InterruptedException ex) {                                   //
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);//
             }                                                                   //
+            int targetHealth = currentPlayers.get(targetSpot).getHealth();      //
             targetHealth += 1;                                                  //
             currentPlayers.get(targetSpot).setHealth(targetHealth);             //
         return targetSpot;////////////////////////////////////////////////////////  Return location to heal
@@ -90,6 +90,8 @@ public class AI {
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
         int spanR=spot+range;                                                   //  right bang range
         int spanL=spot-range;                                                   //  left bang range
+        ArrayList<Player> currentPlayers = new ArrayList<Player>();             //
+        currentPlayers = Game.getPlayers();                                     //
         //////////////////////////////////////////////////////////////////////////  Lowest karma on the Right
         for (int j=spot+1;j!=(spanR+1);++j)                                     //  find the lowest number in the row
         {                                                                       //
@@ -158,6 +160,9 @@ public class AI {
                         catch (InterruptedException ex) {                       //
                             Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
                         }                                                       //
+            int targetHealth = currentPlayers.get(targetSpot).getHealth();      //
+            targetHealth -= 1;                                                  //
+            currentPlayers.get(targetSpot).setHealth(targetHealth);             //
         return targetSpot;////////////////////////////////////////////////////////  Returns position of target 
     }
 }
