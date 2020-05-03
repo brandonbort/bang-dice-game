@@ -1,53 +1,9 @@
 package bang_dice_game;
-
+//LOOK AT BOTTOM OF CODE FOR EXPLANATION OF KARMA!!!
 /**
  *
  * @author carlos144green
  */
-//karma is a 2d array of all player's history for each player and depending on the 
-// value in each position will determine who the player shoots. the sheriff will
-// be at position 0 and all the players will fill in the array counter clockwise
-// in the array. So if the sheriff gets shot by a person 2 distance away to his
-// left from him the array will be as follows with 5 players. x
-// karma_points:    x, 5, 4, 5, 5
-//                  5, x, 5, 5, 5
-//                  5, 5, x, 5, 5
-//                  5, 5, 5, x, 5
-//                  5, 5, 5, 5, x
-    
-//if the sheriff then gets shot by a person to his right but healed by a person
-// from his left and the person 2 distance away from his right dies and reveals
-// his roll it will look something like this. 
-// karma_points:    x, 6, 4, x, 4
-//                  5, x, 5, x, 5
-//                  5, 5, x, x, 5
-//                  x, x, x, x, x
-//                  5, 5, 5, x, x
-//
-//Clearly this is only if the sheriff gets attacked and roles arent revealed yet
-// because once roles start to get revealed karma will be used more or less
-// depending on type of AI. So lets say a fresh game starts with 5 players. and 
-// say all 5 players are AI. The players have their own rows and all start off
-// with opinions about the sheriff because you want to kill or save him. Renagade
-// will be a special case because his opinion of the sheriff will change once the 
-// outlaws are dead.
-// karma_points:    x, 5, 5, 5, 5   <Sheriff
-//                  0, x, 5, 5, 5   <Outlaw1
-//                  9, 5, x, 5, 5   <Renegade
-//                  0, 5, 5, x, 5   <Outlaw2
-//                  9, 5, 5, 5, x   <Deputy
-    
-//Lets say the Sheriff shoots deputy accidentally, outlaw1 shoots sheriff, renegade
-// shoots outlaw to his right (outlaw1), outlaw2 shoots outlaw1, deputy heals
-// sheriff.
-// karma_points:    x, 4, 5, 5, 6   <Sheriff
-//                  0, x, 4, 4, 5   <Outlaw1
-//                  9, 5, x, 5, 5   <Renegade
-//                  0, 5, 5, x, 5   <Outlaw2
-//                  8, 5, 5, 5, x   <Deputy
-
-//So now deputy has good karma in sheriff's eyes so when sheriff decides to shoot
-// he wont shoot anyone with good karma. Thank you for coming to my ted talk.
 public class AI {
     /**
      * Beer             //  class to heal peeps 
@@ -111,7 +67,7 @@ public class AI {
      * @param role      //  Sheriff=0, deputy=1, outlaw=2, renegade=3
      * @param range     //  Range of 1 or 2?
      */
-    public int Bang (char karma[][],int spot,int role, int range) {
+    public int Bang (char [][] karma,int spot,int role, int range) {
         //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=9;                                                           //  0 for beer, 9 for bang
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
@@ -119,16 +75,28 @@ public class AI {
         int spanL=spot-range;                                                   //  left bang range
         //////////////////////////////////////////////////////////////////////////  Lowest karma on the Right
         for (int j=spot+1;j!=(spanR+1);++j)                                     //  find the lowest number in the row
-        {                                                                       //
+        {                   
+            
+            System.out.println(j);//
+            System.out.println(target);//
+            System.out.println(spot);//
+            System.out.println(targetSpot);//
+            System.out.println(karma.length);//
+//
             if(spanR>karma.length)                                              //  truncate span if passes array
                 spanR=spanR-karma.length;                                       //
             if(j==karma.length)                                                 //  reset j to start if passes array
                 j=0;
-            System.out.println(j);//
+            for (int i=0;i<karma.length;++i)
+                System.out.println("> "+karma[role][i]);//
             if(karma[role][j]=='x'){                                            //  if x found, ignore and bump up span
              System.out.println(j);   
                 ++spanR;
-            }  
+            }
+            
+            
+            
+            
             if (j==spanR)                                                       //  if both pointers touch, record
                 if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
                 {                                                               //
@@ -152,7 +120,7 @@ public class AI {
                     targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
-        //////////////////////////////////////////////////////////////////////////  AI part with target in mind
+        //////////////////////////////////////////////////////////////////////////  AI part with target in mind 
         switch (role) {                                                         //
                 case 0:///////////////////////////////////////////////////////////  Sheriff's decision making
                     if (target>5)                                               //
@@ -185,3 +153,47 @@ public class AI {
         return targetSpot;////////////////////////////////////////////////////////  Returns position of target 
     }
 }
+//karma is a 2d array of all player's history for each player and depending on the 
+// value in each position will determine who the player shoots. the sheriff will
+// be at position 0 and all the players will fill in the array counter clockwise
+// in the array. So if the sheriff gets shot by a person 2 distance away to his
+// left from him the array will be as follows with 5 players. x
+// karma_points:    x, 5, 4, 5, 5
+//                  5, x, 5, 5, 5
+//                  5, 5, x, 5, 5
+//                  5, 5, 5, x, 5
+//                  5, 5, 5, 5, x
+    
+//if the sheriff then gets shot by a person to his right but healed by a person
+// from his left and the person 2 distance away from his right dies and reveals
+// his roll it will look something like this. 
+// karma_points:    x, 6, 4, x, 4
+//                  5, x, 5, x, 5
+//                  5, 5, x, x, 5
+//                  x, x, x, x, x
+//                  5, 5, 5, x, x
+//
+//Clearly this is only if the sheriff gets attacked and roles arent revealed yet
+// because once roles start to get revealed karma will be used more or less
+// depending on type of AI. So lets say a fresh game starts with 5 players. and 
+// say all 5 players are AI. The players have their own rows and all start off
+// with opinions about the sheriff because you want to kill or save him. Renagade
+// will be a special case because his opinion of the sheriff will change once the 
+// outlaws are dead.
+// karma_points:    x, 5, 5, 5, 5   <Sheriff
+//                  0, x, 5, 5, 5   <Outlaw1
+//                  9, 5, x, 5, 5   <Renegade
+//                  0, 5, 5, x, 5   <Outlaw2
+//                  9, 5, 5, 5, x   <Deputy
+    
+//Lets say the Sheriff shoots deputy accidentally, outlaw1 shoots sheriff, renegade
+// shoots outlaw to his right (outlaw1), outlaw2 shoots outlaw1, deputy heals
+// sheriff.
+// karma_points:    x, 4, 5, 5, 6   <Sheriff
+//                  0, x, 4, 4, 5   <Outlaw1
+//                  9, 5, x, 5, 5   <Renegade
+//                  0, 5, 5, x, 5   <Outlaw2
+//                  8, 5, 5, 5, x   <Deputy
+
+//So now deputy has good karma in sheriff's eyes so when sheriff decides to shoot
+// he wont shoot anyone with good karma. Thank you for coming to my ted talk.
