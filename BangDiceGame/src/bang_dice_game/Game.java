@@ -5,7 +5,10 @@
  */
 package bang_dice_game;
 
+import static java.lang.Thread.sleep;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +20,7 @@ class Game {
   private static ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played
+  private static int gameArrows = 9;                      // total arrows in game
   
   
  
@@ -47,14 +51,12 @@ class Game {
       Game.players = players;
   }
   
-  /*// maybe idk
-  public void setAlive(int alive){
-      this.alive = alive;
+  public static int getGameArrows(){
+      return Game.gameArrows;
   }
-  // maybe idk
-  public int getAlive(){
-      return alive;
-  }*/
+  public static void setGameArrows(int gameArrows){
+      Game.gameArrows = gameArrows;
+  }
   
       
   
@@ -96,10 +98,41 @@ class Game {
       nextPlayer = otherPlayer(nextPlayer);
     }
     System.out.println();
+    if (gameArrows == 0)
+    {
+         ArrayList<Player> attack = new ArrayList<Player>();
+        for (int i = 0; i < players.size(); i++)
+        {
+            if (players.get(i).getArrows() >= 1)
+                attack.add(players.get(i));
+        }
+        for (int i = 0; i < attack.size(); i++)
+        {
+            int amount = attack.get(i).getArrows();
+            for (int j = 0; j < amount; j++)
+            {
+                int health = attack.get(i).getHealth();
+                health = health - 1;
+                attack.get(i).setHealth(health);
+            }
+            attack.get(i).setArrows(0);
+            System.out.println(attack.get(i).getName() + " has lost " + amount + " health!");
+            System.out.println(attack.get(i).getName() + " has " + attack.get(i).getArrows() +" arrows!");
+        }
+        gameArrows = 9;
+        try {
+                sleep(3000);
+            }catch (InterruptedException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
     for(int i = 0; i < players.size(); i++){
         System.out.println(players.get(i).getName() + "  " + players.get(i).getHealth());
     }
     System.out.println();
+    
+    
     ArrayList<Player> died = new ArrayList<Player>();
     for (int i = 0; i < players.size(); i++){
         if (players.get(i).getHealth() <= 0){
