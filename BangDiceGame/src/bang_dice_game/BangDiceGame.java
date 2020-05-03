@@ -37,13 +37,13 @@ public class BangDiceGame{
                 //PlayerWithStrategy playerComp = new PlayerWithStrategy("name", "role", "description", 4, 0, i+1, playerAmount);
                 //players.add(playerComp);
             //}
-                UserPlayer playerHuman1 = new UserPlayer("getto", "Sheriff", "is good guy :D", 4, 0);
+                UserPlayer playerHuman1 = new UserPlayer("ME", "Sheriff", "is good guy :D", 4, 0);
                 players.add(playerHuman1);
-                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("bro", "Renegade", "description", 4, 0, 1,karma);
+                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Brandon", "tRenegade", "description", 4, 0, 1,karma);
                 players.add(playerComp1);
-                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("yo", "Outlaw", "description", 4, 0, 2, karma);
+                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Mario", "tOutlaw", "description", 4, 0, 2, karma);
                 players.add(playerComp2);
-                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("low", "Outlaw", "description", 4, 0, 3, karma);
+                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Brittney", "tOutlaw", "description", 4, 0, 3, karma);
                 players.add(playerComp3);
 
          
