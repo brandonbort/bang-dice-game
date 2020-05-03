@@ -113,27 +113,62 @@ class PlayerWithStrategy implements Player{
             catch (InterruptedException ex) {
                 Logger.getLogger(PlayerWithStrategy.class.getName()).log(Level.SEVERE, null, ex);
             }        
+        int targetKarmaSpot;
+        int points;
         if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
-                    AI.Beer(karma,spot,0,health);  //these all return spot values so yea
-                    AI.Bang(karma,spot,0,1);       //1=range of 1 and not range of 2
-                    AI.Bang(karma,spot,0,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
+                    
+                    targetKarmaSpot=AI.Beer(karma,spot,0,health);  //these all return spot values so yea
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,0,1);       //1=range of 1 and not range of 2
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,0,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
                     break;
                 case "Deputy":
-                    AI.Beer(karma,spot,1,health);
-                    AI.Bang(karma,spot,1,1);       //1=range of 1
-                    AI.Bang(karma,spot,1,2);       //2=range of 2
+                    targetKarmaSpot=AI.Beer(karma,spot,1,health);  //these all return spot values so yea
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,1,1);       //1=range of 1 and not range of 2
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,1,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
                     break;
                 case "Outlaw":
-                    AI.Beer(karma,spot,2,health);
-                    AI.Bang(karma,spot,2,1);       //1=range of 1
-                    AI.Bang(karma,spot,2,2);       //2=range of 2
+                    targetKarmaSpot=AI.Beer(karma,spot,2,health);  //these all return spot values so yea
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,2,1);       //1=range of 1 and not range of 2
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,2,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
                     break;
                 case "Renegade":
-                    AI.Beer(karma,spot,3,health);
-                    AI.Bang(karma,spot,3,1);       //1=range of 1
-                    AI.Bang(karma,spot,3,2);       //2=range of 2
+                    targetKarmaSpot=AI.Beer(karma,spot,3,health);  //these all return spot values so yea
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,3,1);       //1=range of 1 and not range of 2
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
+                    
+                    targetKarmaSpot=AI.Bang(karma,spot,3,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
+                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
+                    karma[targetKarmaSpot][spot]=(char)points;
                     break;
                 default:
                     System.out.println("Something went wrong on " + this.name + "'s turn");
