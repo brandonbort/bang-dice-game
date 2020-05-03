@@ -160,6 +160,10 @@ public class AI {
                         catch (InterruptedException ex) {                       //
                             Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
                         }                                                       //
+                        System.out.print(targetSpot);
+                        System.out.print(targetSpot);
+                        
+                        
             int targetHealth = currentPlayers.get(targetSpot).getHealth();      //
             targetHealth -= 1;                                                  //
             currentPlayers.get(targetSpot).setHealth(targetHealth);             //
