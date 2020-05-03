@@ -148,13 +148,8 @@ class UserPlayer implements Player{
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
-        attack.add(currentPlayers.get(amount));
         attack.add(currentPlayers.get(amount-1));
-        attack.add(currentPlayers.get(1));
         attack.add(currentPlayers.get(2));
-        
-        if (currentPlayers.size() == 4)
-            attack.remove(3);
         
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
@@ -181,18 +176,6 @@ class UserPlayer implements Player{
                 health = health - 1;
                 attack.get(1).setHealth(health);
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
-                break;
-            case 3:
-                health = attack.get(2).getHealth();
-                health = health - 1;
-                attack.get(2).setHealth(health);
-                System.out.println(attack.get(2).getName() + " has lost 1 health!");
-                break;
-            case 4:
-                health = attack.get(3).getHealth();
-                health = health - 1;
-                attack.get(3).setHealth(health);
-                System.out.println(attack.get(3).getName() + " has lost 1 health!");
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
