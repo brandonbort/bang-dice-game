@@ -38,11 +38,11 @@ static char [][] karma;
             //}
                 UserPlayer playerHuman1 = new UserPlayer("ME", "Sheriff", "is good guy :D", 4, 0);
                 players.add(playerHuman1);
-                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Brandon", "tRenegade", "description", 4, 0, 1,karma);
+                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Brandon", "Renegade", "description", 4, 0, 1,karma);
                 players.add(playerComp1);
-                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Mario", "tOutlaw", "description", 4, 0, 2, karma);
+                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Mario", "Outlaw", "description", 4, 0, 2, karma);
                 players.add(playerComp2);
-                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Brittney", "tOutlaw", "description", 4, 0, 3, karma);
+                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Brittney", "Outlaw", "description", 4, 0, 3, karma);
                 players.add(playerComp3);
 
          
@@ -53,8 +53,6 @@ static char [][] karma;
             while (!bangGame.gameOver()) {
                 bangGame.play();
             }
-            
-            // currently have the game set to be over when game starts :)
             Player winner = bangGame.winner(); 
             System.out.println("The winner is: " + winner.getName());
             
