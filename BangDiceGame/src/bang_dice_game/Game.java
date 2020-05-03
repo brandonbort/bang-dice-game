@@ -17,14 +17,11 @@ class Game {
   private static ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played
-  //private int alive;        // maybe idk
   
   
  
-  public Game (ArrayList<Player> players) { //, int alive) {
-    //assert sticks > 0 : "precondition: initial sticks > 0";
+  public Game (ArrayList<Player> players) { 
     this.players = players;
-    //this.alive = alive;
     this.nextPlayer = players.get(0);
     this.previousPlayer = null;
   }
@@ -65,14 +62,16 @@ class Game {
   
   public Player winner () {
     if (gameOver()){
-        for(int i = 0; i < players.size(); i++)
-        {
-            Player temp = players.get(i);
-            if (temp.getHealth() != 0)
-            {
-                return temp; 
-            }
-        }
+        
+        return players.get(0);
+//        for(int i = 0; i < players.size(); i++)
+//        {
+//            Player temp = players.get(i);
+//            if (temp.getHealth() != 0)
+//            {
+//                return temp; 
+//            }
+//        }
     }
     
     return null;
@@ -82,10 +81,7 @@ class Game {
    * The game is over.
    */
   public boolean gameOver () {
-      if (players.size() == 1)
-          return true;
-      else 
-          return false;
+      return players.size() == 1;
   }
   
   /**
@@ -99,12 +95,18 @@ class Game {
       previousPlayer = nextPlayer;
       nextPlayer = otherPlayer(nextPlayer);
     }
+    for(int i = 0; i < players.size(); i++){
+        System.out.println(players.get(i).getName() + " " + players.get(i).getHealth());
+    }
+    ArrayList<Player> died = new ArrayList<Player>();
     for (int i = 0; i < players.size(); i++){
-        if (players.get(i).getHealth() == 0){
+        if (players.get(i).getHealth() <= 0){
             System.out.println(players.get(i).getName() + " has died!");
-            players.remove(i);
+            died.add(players.get(i));
         }
     }
+    for (int i = 0; i < died.size(); i++)
+        players.remove(died.get(i));
   }
   
   /**
