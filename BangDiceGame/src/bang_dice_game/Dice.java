@@ -51,7 +51,6 @@ public class Dice {
         ArrayList <String> BasicResult  = new ArrayList<>();
         ArrayList <Dice.Loudmouth> Option1 = new ArrayList<>();
      public enum Dice_Face
-                 
     { 
         IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
         
@@ -112,8 +111,8 @@ public class Dice {
  
             for ( int i = 0; i < numOfDices; i++){
             
-             //BasicResult.add(name(Dice_Face.dice[i]));
-          String value = Dice_Face.toString();
+            //BasicResult.add(name(Dice_Face.dice[i]));
+            String value = Dice_Face.toString();
              
             System.out.print("\t" + "Dice[" + i + "] = "  + "\n" );
         }  
