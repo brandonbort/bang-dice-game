@@ -32,6 +32,7 @@ class PlayerController implements PlayerObserver {
         int countGatling = 0;
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
+        int health = 0;
           
         dice.firstRoll();
          for (int i = 0; i < 5; i++){
@@ -39,7 +40,7 @@ class PlayerController implements PlayerObserver {
             if (dice.Result.get(i).equals("Dynamite"))
                 countDynamite = countDynamite + 1;
         }
-        dice.reRoll();
+        
 //        
 //        ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
 //        
@@ -47,20 +48,29 @@ class PlayerController implements PlayerObserver {
 //            diceFace.add(Dice.Dice_Face.dice[i]);   
 //        }
        
-        for (int i = 0; i < 5; i++){
-            //if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
-            if(dice.Result.get(i).equals("Dynamite"))
-                countDynamite = countDynamite + 1;
-           // if (diceFace.get(i) == Dice.Dice_Face.Gatling)
-           if(dice.Result.get(i).equals("Gatling"))
-                countGatling = countGatling + 1;
-        }
-        
+
         if (countDynamite >= 3){
-            System.out.println("You have lost your turn.");
+            System.out.println("You have lost your turn and 1 health!");
+            health = currentPlayers.get(0).getHealth();
+            health = health - 1;
+            currentPlayers.get(0).setHealth(health);
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+            }            
         }
         else{
-            
+            dice.reRoll();
+            for (int i = 0; i < 5; i++){
+                //if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
+    //            if(dice.Result.get(i).equals("Dynamite"))
+    //                countDynamite = countDynamite + 1;
+               // if (diceFace.get(i) == Dice.Dice_Face.Gatling)
+               if(dice.Result.get(i).equals("Gatling"))
+                    countGatling = countGatling + 1;
+            }
+                    
             if(countGatling >= 3)
             {
                 player.gatlingDice();
