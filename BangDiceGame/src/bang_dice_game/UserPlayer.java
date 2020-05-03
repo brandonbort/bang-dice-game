@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang_dice_game;
 import static java.lang.Thread.sleep;
 import java.util.*;
@@ -12,9 +7,6 @@ import java.util.logging.Logger;
  *
  * @author sloan
  */
-
-//TODO: Fix issues with getting dice
-
 class UserPlayer implements Player{  
     private String name = "";
     private String description = "";
@@ -23,7 +15,6 @@ class UserPlayer implements Player{
     private int arrows;
     private int spot;
     private PlayerObserver controller; // Observer this Player reports to.
-    
     
     public UserPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int spot){
         this.name = playerName;
@@ -38,7 +29,6 @@ class UserPlayer implements Player{
     public String getName() {
         return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -46,38 +36,27 @@ class UserPlayer implements Player{
     public int getHealth() {
         return health;
     }
-
-    
     public void setHealth(int health) {
         this.health = health;
     }
 
-    
     public String getRole() {
         return this.role;
     }
-
-    
     public void setRole(String role) {
         this.role = role;
     }
-
     
     public String getDescription() {
         return this.description;
     }
-
-    
     public void setDescription(String descrip) {
         this.description = descrip;
     }
-
     
     public int getArrows() {
         return this.arrows;
     }
-
-    
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
@@ -85,24 +64,19 @@ class UserPlayer implements Player{
     public int getSpot() {
         return this.spot;
     }
-
     public void setSpot(int spot) { 
         this.spot = spot;
     }
     
-    
     public void takeTurn () {
-    System.out.println("Rolling Dice for " + this.name);
-    //Dice dice;
-    //dice = new Dice(Dice.Dice_Face.getRandomDice_Face());
-    if (controller != null)
-        controller.update(this);//, dice);    // numberToTake set here
-    
-        
+        System.out.println("Rolling Dice for " + this.name);
+        //Dice dice;
+        //dice = new Dice(Dice.Dice_Face.getRandomDice_Face());
+        if (controller != null)
+            controller.update(this);//, dice);    // numberToTake set here    
     }
     
     public void takeAim1() {
-        
         Scanner in = new Scanner(System.in);
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
@@ -116,7 +90,6 @@ class UserPlayer implements Player{
         if (currentPlayers.size() == 2)
             attack.remove(1);
         
-        
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
             System.out.println((i+1) + ":   " +attack.get(i).getName());
@@ -127,7 +100,6 @@ class UserPlayer implements Player{
             System.out.print(i+1 + " ");
         
         System.out.println();
-        
         
         int who = in.nextInt();
         int health = 0;
@@ -146,30 +118,27 @@ class UserPlayer implements Player{
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
-               try {
+                try {
                     sleep(1000);
-               } catch (InterruptedException ex) {
+                } 
+                catch (InterruptedException ex) {
                     Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }                
+                }                
                 this.takeAim1();
                 break;
         }
-               try {
-                    sleep(1000);
-               } catch (InterruptedException ex) {
-                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }        
+        try {
+            sleep(1000);
+        }
+        catch (InterruptedException ex) {
+            Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
-    
-    public void takeAim2() {
-        
+    public void takeAim2() {   
         Scanner in = new Scanner(System.in);
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
-        
-        
-      
         
         ArrayList<Player> attack = new ArrayList<>();
         
@@ -183,14 +152,12 @@ class UserPlayer implements Player{
         
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
-        {
             System.out.println((i+1) + ":   " +attack.get(i).getName());
-        }
+        
         System.out.print("Please enter one of the options: "); 
         for (int i = 0; i < attack.size(); i++)
-        {
             System.out.print(i+1 + " ");
-        }
+        
         System.out.println();
         
         int who = in.nextInt();
@@ -223,19 +190,21 @@ class UserPlayer implements Player{
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
-               try {
+                try {
                     sleep(1000);
-               } catch (InterruptedException ex) {
+                }
+                catch (InterruptedException ex) {
                     Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }                
+                }                
                 this.takeAim2();
                 break;
         }
-               try {
-                    sleep(1000);
-               } catch (InterruptedException ex) {
-                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }        
+        try {
+            sleep(1000);
+        }
+        catch (InterruptedException ex) {
+            Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
     
     public void gatlingDice(){
@@ -244,79 +213,77 @@ class UserPlayer implements Player{
         
         int health;
         
-        for (int i = 0; i < attack.size(); i++){
-            if (this == attack.get(i))
-            {
+        for (int i = 0; i < attack.size(); i++)
+            if (this == attack.get(i)){
                 attack.remove(i);
                 break;
             }
-        }
-        
+
         for (int i = 0; i < attack.size(); i++){
             health = 0;
             health = attack.get(i).getHealth();
             health = health - 1;
             attack.get(i).setHealth(health);
             System.out.println(attack.get(i).getName() + " has lost 1 health!");
-               try {
-                    sleep(1000);
-               } catch (InterruptedException ex) {
-                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }            
+            try {
+                sleep(1000);
+            }
+            catch (InterruptedException ex) {
+                Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+            }            
         }
         
         this.setArrows(0);
         System.out.println(this.getName() + " no longer has any arrows!");
-               try {
-                    sleep(1000);
-               } catch (InterruptedException ex) {
-                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }        
+        try {
+            sleep(1000);
+        }
+        catch (InterruptedException ex) {
+            Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+            }        
     }
     
     public void beerDice() {
-       Scanner in = new Scanner(System.in);
-       ArrayList<Player> heal = new ArrayList<>();
-       heal = Game.getPlayers();
-       int health;
+        Scanner in = new Scanner(System.in);
+        ArrayList<Player> heal = new ArrayList<>();
+        heal = Game.getPlayers();
+        int health;
        
-       System.out.println("Who would you like to heal?");
-       for (int i = 0; i < heal.size(); i++){
-          System.out.println("Option " + (i + 1) + ": " + heal.get(i).getName()); 
-       }
+        System.out.println("Who would you like to heal?");
+        for (int i = 0; i < heal.size(); i++){
+            System.out.println("Option " + (i + 1) + ": " + heal.get(i).getName()); 
+        }
        
-       int who = in.nextInt();
+        int who = in.nextInt();
        
-       for (int i = 0; i < heal.size(); i++){
-           if (who == i){
-               health = 0;
-               health = heal.get(i).getHealth();
-               health = health - 1;
-               heal.get(i).setHealth(health);
-               System.out.println(heal.get(i).getName() + " has gained 1 health!");
-               try {
+        for (int i = 0; i < heal.size(); i++){
+            if (who == i){
+                health = 0;
+                health = heal.get(i).getHealth();
+                health = health - 1;
+                heal.get(i).setHealth(health);
+                System.out.println(heal.get(i).getName() + " has gained 1 health!");
+                try {
                     sleep(1000);
-               } catch (InterruptedException ex) {
+                }
+                catch (InterruptedException ex) {
                     Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }
-           }
-       }
-       if ((who > heal.size()) || (who <= 0)){
-           System.out.println("Did not enter a valid option... Try again.");
-               try {
+                }
+            }
+        }
+        if ((who > heal.size()) || (who <= 0)){
+            System.out.println("Did not enter a valid option... Try again.");
+                try {
                     sleep(1000);
-               } catch (InterruptedException ex) {
+                }
+                catch (InterruptedException ex) {
                     Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
-               }           
-           this.beerDice();
-       }
+                }           
+            this.beerDice();
+        }
     }
-    
-    
     // Set the PlayerObserver this InteractivePlayer is to report to.
     public void register (PlayerObserver controller){
         this.controller = controller;
     }
-    
-    
 }
