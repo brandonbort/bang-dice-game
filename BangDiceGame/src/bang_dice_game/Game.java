@@ -108,7 +108,7 @@ class Game {
     for (int i = 0; i < died.size(); i++)
     {
         players.remove(died.get(i));
-        BangDiceGame.karma
+        //BangDiceGame.karma
     }
         
   }
