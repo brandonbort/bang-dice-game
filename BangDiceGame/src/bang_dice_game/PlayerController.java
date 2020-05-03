@@ -32,7 +32,7 @@ class PlayerController implements PlayerObserver {
         int countGatling = 0;
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
-        int health = 0;
+        int health;
           
         dice.firstRoll();
          for (int i = 0; i < 5; i++){
@@ -41,16 +41,10 @@ class PlayerController implements PlayerObserver {
                 countDynamite = countDynamite + 1;
         }
         
-//        
-//        ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
-//        
-//        for (int i = 0; i < 5; i++){
-//            diceFace.add(Dice.Dice_Face.dice[i]);   
-//        }
-       
 
         if (countDynamite >= 3){
             System.out.println("You have lost your turn and 1 health!");
+            health = 0;
             health = currentPlayers.get(0).getHealth();
             health = health - 1;
             currentPlayers.get(0).setHealth(health);
@@ -62,62 +56,74 @@ class PlayerController implements PlayerObserver {
         }
         else{
             dice.reRoll();
+            countDynamite = 0;
             for (int i = 0; i < 5; i++){
-                //if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
-    //            if(dice.Result.get(i).equals("Dynamite"))
-    //                countDynamite = countDynamite + 1;
-               // if (diceFace.get(i) == Dice.Dice_Face.Gatling)
-               if(dice.Result.get(i).equals("Gatling"))
+                if(dice.Result.get(i).equals("Dynamite"))
+                    countDynamite = countDynamite + 1;
+                if(dice.Result.get(i).equals("Gatling"))
                     countGatling = countGatling + 1;
             }
-                    
-            if(countGatling >= 3)
-            {
-                player.gatlingDice();
-            }
-            for(int i = 0; i < 5; i++){
-               // if(null != diceFace.get(i))
-                   if(null != dice.Result.get(i)) 
-                //switch (diceFace.get(i)) {
-                 switch (dice.Result.get(i)) {
-                    case "IndianArrow":
-                        int arrowAdd = player.getArrows();
-                        arrowAdd = arrowAdd + 1;
-                        player.setArrows(arrowAdd);
-                        System.out.println(player.getName() + " now has " + player.getArrows() + " arrow(s)!");
-                        try {
-                            sleep(1000);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
-                        
-                    case "BullsEye1":
-                        player.takeAim1();
-                        break;
-                        
-                    case "BullsEye2":
-                        if (currentPlayers.size() <= 3){
-                           player.takeAim1(); 
-                        }
-                        else
-                            player.takeAim2();
-                        break;
-                        
-                    case "Beer":
-                        player.beerDice();
-                        break;
-                        
-                    default:
-                        System.out.println("Checking next dice...");
-                        try {
-                            sleep(1000);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        break;
+            if (countDynamite >= 3){
+                System.out.println("You have lost your turn and 1 health!");
+                health = 0;
+                health = currentPlayers.get(0).getHealth();
+                health = health - 1;
+                currentPlayers.get(0).setHealth(health);
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                }            
+            }   
+            else{        
+                if(countGatling >= 3)
+                {
+                    player.gatlingDice();
+                }
+                for(int i = 0; i < 5; i++){
+                   // if(null != diceFace.get(i))
+                       if(null != dice.Result.get(i)) 
+                    //switch (diceFace.get(i)) {
+                     switch (dice.Result.get(i)) {
+                        case "IndianArrow":
+                            int arrowAdd = player.getArrows();
+                            arrowAdd = arrowAdd + 1;
+                            player.setArrows(arrowAdd);
+                            System.out.println(player.getName() + " now has " + player.getArrows() + " arrow(s)!");
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            break;
+
+                        case "BullsEye1":
+                            player.takeAim1();
+                            break;
+
+                        case "BullsEye2":
+                            if (currentPlayers.size() <= 3){
+                               player.takeAim1(); 
+                            }
+                            else
+                                player.takeAim2();
+                            break;
+
+                        case "Beer":
+                            player.beerDice();
+                            break;
+
+                        default:
+                            System.out.println("Checking next dice...");
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            break;
+                    }
                 }
             }
-        }
+        }  
      }
 }
