@@ -1,5 +1,11 @@
 package bang_dice_game;
 //LOOK AT BOTTOM OF CODE FOR EXPLANATION OF KARMA!!!
+
+import static java.lang.Thread.sleep;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author carlos144green
@@ -18,47 +24,97 @@ public class AI {
         int target=0;                                                           //  This chages as it finds better karma
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
         int isDepDead=0;                                                        //  keep this here until ik how to add it
+        int health = 0;
+        ArrayList<Player> currentPlayers = new ArrayList<Player>();
+        currentPlayers = Game.getPlayers();         
         //////////////////////////////////////////////////////////////////////////  AI part
         switch (role) {                                                         //  
                 case 0:                                                         //  Sheriff's decision making
-                    if ((hp<7)||(isDepDead==0))                                 //  make sure ur not dying b4 healing other first
-                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
-                    else                                                        //  
+                    if ((hp<7)||(isDepDead==0)){                                 //  make sure ur not dying b4 healing other first
+                        System.out.println("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
+                    else{  // AARON ADDED BRACKETS BC IDK IF THE PRINT WAS SUPPOSED TO BE A PART OF THE ELSE//  
                         for (int j=spot;j!=karma.length;++j)                    //  
                             if((Character.getNumericValue(karma[role][j])>target)&&(karma[role][j]!='x'))
                             {                                                   //  
                                 target=Character.getNumericValue(karma[role][j]);// 
                                 targetSpot=j;                                   //  
                             }                                                   //  
-                    System.out.print("Player"+spot+" healed Player"+targetSpot);//  Heal target with good karma
+                        System.out.println("Player"+spot+" healed Player"+targetSpot);//  Heal target with good karma
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
                     break;                                                      //
                 case 1:///////////////////////////////////////////////////////////  Deputy's decision making
-                    if (hp<3)                                                   //  
-                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                    if (hp<3){                                                   //  
+                        System.out.println("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
                     else                                                        //  
                     {                                                           //  
-                        System.out.print("Player"+spot+" healed Player"+0);     //  Heal sheriff=0 
+                        System.out.println("Player"+spot+" healed Player"+0);     //  Heal sheriff=0 
                         targetSpot=0;                                           //  
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
                     }                                                           //  
                     break;                                                      //  
                 case 2:///////////////////////////////////////////////////////////  Outlaw's decision making
-                    System.out.print("Player"+spot+" healed Player"+targetSpot);//  Heal himself
+                    System.out.println("Player"+spot+" healed Player"+targetSpot);//  Heal himself
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                    
                     break;                                                      //
                 case 3:///////////////////////////////////////////////////////////  Renegade's decision making
-                    if (hp<5)                                                   //  
-                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                    if (hp<5){                                                   //  
+                        System.out.println("Player"+spot+" healed Player"+targetSpot);//Heal himself
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
                     else if(isDepDead!=0)                                       //  
                     {                                                           //  
-                        System.out.print("Player"+spot+" healed Player"+0);     //  Heal sheriff=0 
+                        System.out.println("Player"+spot+" healed Player"+0);     //  Heal sheriff=0 
                         targetSpot=0;                                           //  
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
                     }                                                           //
-                    else                                                        //  
-                        System.out.print("Player"+spot+" healed Player"+targetSpot);//Heal himself nonetheless
+                    else{                                                        //  
+                        System.out.println("Player"+spot+" healed Player"+targetSpot);//Heal himself nonetheless
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health + 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
                     break;                                                      //  
                 default://////////////////////////////////////////////////////////  FuckyWucky's decision making
-                    System.out.print("Player"+spot+" hurt itself in confusion");//
+                    System.out.println("Player"+spot+" hurt itself in confusion");//
+                        health = 0;
+                        health = currentPlayers.get(spot).getHealth();
+                        health = health - 1;
+                        currentPlayers.get(spot).setHealth(health);                    
                     break;                                                      //
             }                                                                   //
+                        try {
+                            sleep(2000);
+                        }
+                        catch (InterruptedException ex) {
+                            Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
+                        }        
         return targetSpot;////////////////////////////////////////////////////////  Return location to heal
     }
     /**
@@ -75,6 +131,9 @@ public class AI {
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
         int spanR=spot+range;                                                   //  right bang range
         int spanL=spot-range;                                                   //  left bang range
+        int health = 0;
+        ArrayList<Player> currentPlayers = new ArrayList<Player>();
+        currentPlayers = Game.getPlayers();        
         //////////////////////////////////////////////////////////////////////////  Lowest karma on the Right
         for (int j=spot+1;j!=(spanR+1);++j)                                     //  find the lowest number in the row
         {                   
@@ -112,31 +171,59 @@ public class AI {
                 case 0:///////////////////////////////////////////////////////////  Sheriff's decision making
                     if (target>5)                                               //
                     {                                                           //  
-                        System.out.print("Player"+spot+" rerolls");             //  dudes in range r good people
+                        System.out.println("Player"+spot+" rerolls");             //  dudes in range r good people
                         targetSpot=-1;                                          //  
                     }                                                           //  
-                    else                                                        //
-                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
+                    else{                                                        //
+                        System.out.println("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health - 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
                     break;                                                      //
                 case 1:///////////////////////////////////////////////////////////  Deputy's decision making
                     if (target>5)                                               //
                     {                                                           //  
-                        System.out.print("Player"+spot+" rerolls");             //  dudes in range r good people
+                        System.out.println("Player"+spot+" rerolls");             //  dudes in range r good people
                         return -1;                                              //  
                     }                                                           //  
-                    else                                                        //  
-                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
+                    else{                                                        //  
+                        System.out.println("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health - 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
+                    }
                     break;                                                      //  
                 case 2:///////////////////////////////////////////////////////////  Outlaw's decision making
-                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing                    
+                        System.out.println("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health - 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
                     break;                                                      //  
                 case 3:///////////////////////////////////////////////////////////  Renegade's decision making
-                        System.out.print("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing karma will be edited elsewhere                    
+                        System.out.println("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing karma will be edited elsewhere 
+                        health = 0;
+                        health = currentPlayers.get(targetSpot).getHealth();
+                        health = health - 1;
+                        currentPlayers.get(targetSpot).setHealth(health);                        
                     break;                                                      //  
                 default://////////////////////////////////////////////////////////  Whoops's decision making
-                    System.out.print("Player"+spot+" hurt itself in confusion");//
+                    System.out.println("Player"+spot+" hurt itself in confusion");//
+                        health = 0;
+                        health = currentPlayers.get(spot).getHealth();
+                        health = health - 1;
+                        currentPlayers.get(spot).setHealth(health);                    
                     break;                                                      //  
             }                                                                   //
+                        try {
+                            sleep(2000);
+                        }
+                        catch (InterruptedException ex) {
+                            Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
+                        }        
         return targetSpot;////////////////////////////////////////////////////////  Returns position of target 
     }
 }
