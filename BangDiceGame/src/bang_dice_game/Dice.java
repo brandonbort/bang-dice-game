@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang_dice_game;
 
 /**
@@ -10,7 +5,6 @@ package bang_dice_game;
  * @author airishimamura
  * 
  */ 
-
 import java.util.ArrayList;
 import java.util.Random; 
 import java.util.Scanner;
@@ -21,7 +15,6 @@ import java.security.SecureRandom;
  *
  * @author airishimamura
  */
-
 public class Dice {  
 //    enum Dice_Face
 //                 
@@ -37,10 +30,6 @@ public class Dice {
 //
 //        }
 
-    /**
-     *
-     */
-    
         public int numOfDices = 5;
         private static final int SIZE = 6;
        
@@ -57,8 +46,7 @@ public class Dice {
     /**
      *To store basic dice faces and generate them randomly
      */
-    public enum Dice_Face
-                 
+    public enum Dice_Face          
     { 
             IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
         public static Dice_Face dice[] = Dice_Face.values();
@@ -69,7 +57,7 @@ public class Dice {
         public static Dice_Face getRandomDice_Face(){      
             return dice[RANDOM.nextInt(SIZE)];
             }
-        }
+    }
         
     /**
      *To store loudmouth dice faces and generate them randomly 
