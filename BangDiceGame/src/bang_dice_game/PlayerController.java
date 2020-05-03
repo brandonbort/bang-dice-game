@@ -34,7 +34,7 @@ class PlayerController implements PlayerObserver {
         currentPlayers = Game.getPlayers();
           
         dice.firstRoll();
-         for (int i = 0; i <6; i++){
+         for (int i = 0; i < 5; i++){
             if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
                 countDynamite = countDynamite + 1;
         }
@@ -42,11 +42,11 @@ class PlayerController implements PlayerObserver {
         
         ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
         
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i < 5; i++){
             diceFace.add(Dice.Dice_Face.dice[i]);   
         }
         
-        for (int i = 0; i <6; i++){
+        for (int i = 0; i < 5; i++){
             if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
                 countDynamite = countDynamite + 1;
             if (diceFace.get(i) == Dice.Dice_Face.Gatling)
@@ -62,7 +62,7 @@ class PlayerController implements PlayerObserver {
             {
                 player.gatlingDice();
             }
-            for(int i = 0; i < 6; i++){
+            for(int i = 0; i < 5; i++){
                 if(null != diceFace.get(i))
                 switch (diceFace.get(i)) {
                     case IndianArrow:
