@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 
 /**
  *
- * @author sloan
+ * @author sloan, airishimamura
  */
 public class Characters{
 
