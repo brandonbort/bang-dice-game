@@ -13,6 +13,7 @@ import User_Interface_Components.*;
  * @author Brandon
  */
 public class BangDiceGame{
+static char [][] karma;
 
     
     public static void main(String[] args) {
@@ -26,9 +27,7 @@ public class BangDiceGame{
         System.out.print("You are limited to 4 to 8 players:");
         
         int playerAmount = in.nextInt();
-        char[][] karma = new char[playerAmount][playerAmount];
-            
-      
+        karma = new char[playerAmount][playerAmount];
         
 //            UserPlayer playerHuman = new UserPlayer("getto", "sheriff", "is good guy :D", 4, 0);
 //            players.add(playerHuman);
@@ -58,9 +57,7 @@ public class BangDiceGame{
             // currently have the game set to be over when game starts :)
             Player winner = bangGame.winner(); 
             System.out.println("The winner is: " + winner.getName());
+            
     }
-    
-    
-    
     
 }
