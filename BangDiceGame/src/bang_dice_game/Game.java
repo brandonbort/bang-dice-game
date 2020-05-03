@@ -95,9 +95,11 @@ class Game {
       previousPlayer = nextPlayer;
       nextPlayer = otherPlayer(nextPlayer);
     }
+    System.out.println();
     for(int i = 0; i < players.size(); i++){
-        System.out.println(players.get(i).getName() + " " + players.get(i).getHealth());
+        System.out.println(players.get(i).getName() + "  " + players.get(i).getHealth());
     }
+    System.out.println();
     ArrayList<Player> died = new ArrayList<Player>();
     for (int i = 0; i < players.size(); i++){
         if (players.get(i).getHealth() <= 0){
@@ -105,11 +107,10 @@ class Game {
             died.add(players.get(i));
         }
     }
-    for (int i = 0; i < died.size(); i++)
-    {
+    for (int i = 0; i < died.size(); i++){
         players.remove(died.get(i));
-        //BangDiceGame.karma
     }
+    System.out.println();
         
   }
   
