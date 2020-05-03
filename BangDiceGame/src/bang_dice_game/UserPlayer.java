@@ -78,11 +78,11 @@ class UserPlayer implements Player{
     
     public void takeAim1() {
         Scanner in = new Scanner(System.in);
-        ArrayList<Player> currentPlayers = new ArrayList<>();
+        ArrayList<Player> currentPlayers = new ArrayList<Player>();
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
         
-        ArrayList<Player> attack = new ArrayList<>();
+        ArrayList<Player> attack = new ArrayList<Player>();
         
         attack.add(currentPlayers.get(amount));
         attack.add(currentPlayers.get(1));
@@ -136,11 +136,11 @@ class UserPlayer implements Player{
     }
     public void takeAim2() {   
         Scanner in = new Scanner(System.in);
-        ArrayList<Player> currentPlayers = new ArrayList<>();
+        ArrayList<Player> currentPlayers = new ArrayList<Player>();
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
         
-        ArrayList<Player> attack = new ArrayList<>();
+        ArrayList<Player> attack = new ArrayList<Player>();
         
         attack.add(currentPlayers.get(amount));
         attack.add(currentPlayers.get(amount-1));
@@ -208,7 +208,7 @@ class UserPlayer implements Player{
     }
     
     public void gatlingDice(){
-        ArrayList<Player> attack = new ArrayList<>();
+        ArrayList<Player> attack = new ArrayList<Player>();
         attack = Game.getPlayers();
         
         int health;
@@ -245,19 +245,19 @@ class UserPlayer implements Player{
     
     public void beerDice() {
         Scanner in = new Scanner(System.in);
-        ArrayList<Player> heal = new ArrayList<>();
+        ArrayList<Player> heal = new ArrayList<Player>();
         heal = Game.getPlayers();
         int health;
        
         System.out.println("Who would you like to heal?");
         for (int i = 0; i < heal.size(); i++){
-            System.out.println("Option " + (i + 1) + ": " + heal.get(i).getName()); 
+            System.out.println((i + 1) + ":  " + heal.get(i).getName()); 
         }
        
         int who = in.nextInt();
        
         for (int i = 0; i < heal.size(); i++){
-            if (who == i){
+            if (who == (i+1)){ 
                 health = 0;
                 health = heal.get(i).getHealth();
                 health = health - 1;
