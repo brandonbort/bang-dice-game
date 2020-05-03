@@ -11,9 +11,10 @@ class PlayerWithStrategy implements Player{
     private int health = 0;
     private int arrows = 0;
     private int spot = 0;
-    private int playerSize;
+    private char [][]karma;
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
-    char[][] karma = new char[playerSize][playerSize];
+    
+    
     //karma only needs one instance so idk if this will keep it like that
 /**
  * 
@@ -25,7 +26,7 @@ class PlayerWithStrategy implements Player{
  * @param spot          //  Location on karma array
  * @param playerSize    //  Atm its used to set up karma... for now
  */
-  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, int playerSize){
+  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, char[][] karma){
         this.name = name;
         this.role = role;
         this.description = description;
@@ -33,7 +34,7 @@ class PlayerWithStrategy implements Player{
         this.arrows = 0;                    //arrows should always start at 0 but ill include it here anyways
         this.spot = spot;
         this.controller = null;             //I think this controls when its the NPC's turn
-        this.playerSize = playerSize;
+
         for (int i=0; i<karma.length; i++)  //this sets all non diagonal numbers to 5
             for (int j=0; j<karma.length; j++)
                 if(i==j)                    //if numbers match(diagonal number) dont set to 5
