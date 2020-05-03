@@ -238,9 +238,13 @@ class UserPlayer implements Player{
                 Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
             }            
         }
-        
+        int gameArrows = Game.getGameArrows();
+        int userArrows = this.getArrows();
+        gameArrows = gameArrows + userArrows;
+        Game.setGameArrows(gameArrows);
         this.setArrows(0);
         System.out.println(this.getName() + " no longer has any arrows!");
+        System.out.println("There are now " + gameArrows + " left!");
         try {
             sleep(1000);
         }
