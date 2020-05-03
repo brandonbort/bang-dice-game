@@ -23,13 +23,12 @@ public class AI {
         //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=0;                                                           //  This chages as it finds better karma
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
-        int isDepDead=0;                                                        //  keep this here until ik how to add it
         ArrayList<Player> currentPlayers = new ArrayList<Player>();             //
         currentPlayers = Game.getPlayers();                                     //
         //////////////////////////////////////////////////////////////////////////  AI part
         switch (role) {                                                         //  
                 case 0:                                                         //  Sheriff's decision making
-                    if ((hp>6)&&(isDepDead!=0))                                 //  make sure ur not dying b4 healing other first
+                    if ((hp>6)&&(BangDiceGame.isDepDead!=0))                    //  make sure ur not dying b4 healing other first
                         for (int j=0;j!=karma.length;++j)                       //  
                             if((Character.getNumericValue(karma[spot][j])>target)&&(karma[spot][j]!='x'))
                             {                                                   //  
@@ -53,7 +52,7 @@ public class AI {
                 case 3:///////////////////////////////////////////////////////////  Renegade's decision making
                     if (hp<5)                                                   //  
                         System.out.println("Player"+spot+" healed Player"+targetSpot);//Heal himself
-                    else if(isDepDead!=0)                                       //  
+                    else if(BangDiceGame.isDepDead!=0)                          //  
                     {                                                           //  
                         System.out.println("Player"+spot+" healed Player"+0);   //  Heal sheriff=0 
                         targetSpot=0;                                           //              
@@ -160,8 +159,8 @@ public class AI {
                         catch (InterruptedException ex) {                       //
                             Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
                         }                                                       //
-                        System.out.print(targetSpot);
-                        System.out.print(targetSpot);
+                        //System.out.print(targetSpot);
+                        //System.out.print(targetSpot);
                         
                         
             int targetHealth = currentPlayers.get(targetSpot).getHealth();      //
