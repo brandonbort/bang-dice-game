@@ -31,9 +31,9 @@ public class AI {
                 case 0:                                                         //  Sheriff's decision making
                     if ((hp>6)&&(isDepDead!=0))                                 //  make sure ur not dying b4 healing other first
                         for (int j=0;j!=karma.length;++j)                       //  
-                            if((Character.getNumericValue(karma[role][j])>target)&&(karma[role][j]!='x'))
+                            if((Character.getNumericValue(karma[spot][j])>target)&&(karma[spot][j]!='x'))
                             {                                                   //  
-                                target=Character.getNumericValue(karma[role][j]);// 
+                                target=Character.getNumericValue(karma[spot][j]);// 
                                 targetSpot=j;                                   //  
                             }                                                   //  
                     System.out.println("Player"+spot+" healed Player"+targetSpot);//  Heal target with good karma
@@ -99,12 +99,12 @@ public class AI {
                 spanR=spanR-karma.length;                                       //
             if(j==karma.length)                                                 //  reset j to start if passes array
                 j=0;                                                            //
-            if(karma[role][j]=='x')                                             //  if x found, ignore and bump up span   
+            if(karma[spot][j]=='x')                                             //  if x found, ignore and bump up span   
                 ++spanR;                                                        //
             if (j==spanR)                                                       //  if both pointers touch, record
-                if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
+                if(Character.getNumericValue(karma[spot][j])<target)            //  checks if target is better or not
                 {                                                               //
-                    target=Character.getNumericValue(karma[role][j]);           //  overwrites old target n stuff
+                    target=Character.getNumericValue(karma[spot][j]);           //  overwrites old target n stuff
                     targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
@@ -115,12 +115,12 @@ public class AI {
                 spanL=spanL+karma.length;                                       //
             if(j==-1)                                                           //  reset j to start if passes array
                 j=karma.length-1;                                               //
-            if(karma[role][j]=='x')                                             //  if x found, ignore and bump up span
+            if(karma[spot][j]=='x')                                             //  if x found, ignore and bump up span
                 --spanL;                                                        //
             if (j==(spanL))                                                     //  if both pointers touch, record
-                if(Character.getNumericValue(karma[role][j])<target)            //  checks if target is better or not
+                if(Character.getNumericValue(karma[spot][j])<target)            //  checks if target is better or not
                 {                                                               //
-                    target=Character.getNumericValue(karma[role][j]);           //  overwrites old target n stuff
+                    target=Character.getNumericValue(karma[spot][j]);           //  overwrites old target n stuff
                     targetSpot=j;                                               //
                 }                                                               //
         }                                                                       //
