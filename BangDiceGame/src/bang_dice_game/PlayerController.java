@@ -34,22 +34,25 @@ class PlayerController implements PlayerObserver {
         currentPlayers = Game.getPlayers();
           
         dice.firstRoll();
-//         for (int i = 0; i < 5; i++){
-//            if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
-//                countDynamite = countDynamite + 1;
-//        }
-        dice.reRoll();
-        
-        ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
-        
-        for (int i = 0; i < 5; i++){
-            diceFace.add(Dice.Dice_Face.dice[i]);   
-        }
-        
-        for (int i = 0; i < 5; i++){
-            if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
+         for (int i = 0; i < 5; i++){
+           // if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
+            if (dice.Result.get(i).equals("Dynamite"))
                 countDynamite = countDynamite + 1;
-            if (diceFace.get(i) == Dice.Dice_Face.Gatling)
+        }
+        dice.reRoll();
+//        
+//        ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
+//        
+//        for (int i = 0; i < 5; i++){
+//            diceFace.add(Dice.Dice_Face.dice[i]);   
+//        }
+       
+        for (int i = 0; i < 5; i++){
+            //if (diceFace.get(i) == Dice.Dice_Face.Dynamite)
+            if(dice.Result.get(i).equals("Dynamite"))
+                countDynamite = countDynamite + 1;
+           // if (diceFace.get(i) == Dice.Dice_Face.Gatling)
+           if(dice.Result.get(i).equals("Gatling"))
                 countGatling = countGatling + 1;
         }
         
@@ -63,9 +66,11 @@ class PlayerController implements PlayerObserver {
                 player.gatlingDice();
             }
             for(int i = 0; i < 5; i++){
-                if(null != diceFace.get(i))
-                switch (diceFace.get(i)) {
-                    case IndianArrow:
+               // if(null != diceFace.get(i))
+                   if(null != dice.Result.get(i)) 
+                //switch (diceFace.get(i)) {
+                 switch (dice.Result.get(i)) {
+                    case "IndianArrow":
                         int arrowAdd = player.getArrows();
                         arrowAdd = arrowAdd + 1;
                         player.setArrows(arrowAdd);
@@ -77,11 +82,11 @@ class PlayerController implements PlayerObserver {
                         }
                         break;
                         
-                    case BullsEye1:
+                    case "BullsEye1":
                         player.takeAim1();
                         break;
                         
-                    case BullsEye2:
+                    case "BullsEye2":
                         if (currentPlayers.size() <= 3){
                            player.takeAim1(); 
                         }
@@ -89,7 +94,7 @@ class PlayerController implements PlayerObserver {
                             player.takeAim2();
                         break;
                         
-                    case Beer:
+                    case "Beer":
                         player.beerDice();
                         break;
                         
