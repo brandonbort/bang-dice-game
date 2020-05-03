@@ -36,6 +36,8 @@ static char [][] karma;
                 //PlayerWithStrategy playerComp = new PlayerWithStrategy("name", "role", "description", 4, 0, i+1, playerAmount);
                 //players.add(playerComp);
             //}
+             if(playerAmount >=4 && playerAmount<= 8){
+
                 UserPlayer playerHuman1 = new UserPlayer("ME", "Sheriff", "is good guy :D", 4, 0);
                 players.add(playerHuman1);
                 PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Brandon", "Renegade", "description", 4, 0, 1,karma);
@@ -44,9 +46,7 @@ static char [][] karma;
                 players.add(playerComp2);
                 PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Brittney", "Outlaw", "description", 4, 0, 3, karma);
                 players.add(playerComp3);
-
-         
-
+                
         
             Game bangGame = new Game(players);
             new PlayerController(playerHuman1,bangGame,in,dice);
@@ -55,6 +55,11 @@ static char [][] karma;
             }
             Player winner = bangGame.winner(); 
             System.out.println("The winner is: " + winner.getName());
+            
+               }
+             else
+                System.out.println("Wrong number!! Please do it again");
+
             
     }
     
