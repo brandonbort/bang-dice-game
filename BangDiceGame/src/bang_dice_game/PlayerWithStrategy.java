@@ -115,6 +115,14 @@ class PlayerWithStrategy implements Player{
             }        
         int targetKarmaSpot;
         int points;
+        
+        
+                for (int i=0; i<karma.length; i++)
+        {//this sets all non diagonal numbers to 5
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]+" ");
+            System.out.print("\n");
+        }
         if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
@@ -123,60 +131,126 @@ class PlayerWithStrategy implements Player{
                     if(targetKarmaSpot!=spot)
                     {
                         points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                        karma[targetKarmaSpot][spot]=(char)points;
+                        karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     }
+                    
+                    
+                                    for (int i=0; i<karma.length; i++)
+        {//this sets all non diagonal numbers to 5
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]+" ");
+            System.out.print("\n");
+        }
+                    
+                    
+                    
                     targetKarmaSpot=AI.Bang(karma,spot,0,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
+                    
+                    
+                                    for (int i=0; i<karma.length; i++)
+        {//this sets all non diagonal numbers to 5
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]+" ");
+            System.out.print("\n");
+        }
+                    
                     
                     targetKarmaSpot=AI.Bang(karma,spot,0,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     break;
                 case "Deputy":
                     targetKarmaSpot=AI.Beer(karma,spot,1,health);  //these all return spot values so yea
                     if(targetKarmaSpot!=spot)
                     {
                         points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                        karma[targetKarmaSpot][spot]=(char)points;
+                        karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     }
+                    
                     targetKarmaSpot=AI.Bang(karma,spot,1,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     
                     targetKarmaSpot=AI.Bang(karma,spot,1,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     break;
                 case "Outlaw":
                     targetKarmaSpot=AI.Beer(karma,spot,2,health);  //these all return spot values so yea
                     if(targetKarmaSpot!=spot)
                     {
                         points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                        karma[targetKarmaSpot][spot]=(char)points;
+                        karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     }
+                    
+                                    for (int i=0; i<karma.length; i++)
+        {//this sets all non diagonal numbers to 5
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]+" ");
+            System.out.print("\n");
+        }
+                    
+                    
                     targetKarmaSpot=AI.Bang(karma,spot,2,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     
+                    
+                    
+                                    for (int i=0; i<karma.length; i++)
+        {//this sets all non diagonal numbers to 5
+            for (int j=0; j<karma.length; j++)
+                System.out.print(karma[i][j]+" ");
+            System.out.print("\n");
+        }
+                
                     targetKarmaSpot=AI.Bang(karma,spot,2,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     break;
                 case "Renegade":
                     targetKarmaSpot=AI.Beer(karma,spot,3,health);  //these all return spot values so yea
                     if(targetKarmaSpot!=spot)
                     {
                         points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                        karma[targetKarmaSpot][spot]=(char)points;
+                        karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     }
+                    
+                    
+                                for (int i=0; i<karma.length; i++)
+                {//this sets all non diagonal numbers to 5
+                    for (int j=0; j<karma.length; j++)
+                        System.out.print(karma[i][j]+" ");
+                    System.out.print("\n");
+                }
+        
+                    
                     targetKarmaSpot=AI.Bang(karma,spot,3,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
+                    
+                    
+                                for (int i=0; i<karma.length; i++)
+                {//this sets all non diagonal numbers to 5
+                    for (int j=0; j<karma.length; j++)
+                        System.out.print(karma[i][j]+" ");
+                    System.out.print("\n");
+                }
+        
                     
                     targetKarmaSpot=AI.Bang(karma,spot,3,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
-                    karma[targetKarmaSpot][spot]=(char)points;
+                    System.out.print((char)points);
+                    karma[targetKarmaSpot][spot]=Character.forDigit(points, 10);
                     break;
                 default:
                     System.out.println("Something went wrong on " + this.name + "'s turn");
@@ -184,6 +258,14 @@ class PlayerWithStrategy implements Player{
             }
         else
             System.out.println("Invalid Role for" + this.name);
+        
+                    for (int i=0; i<karma.length; i++)
+                {//this sets all non diagonal numbers to 5
+                    for (int j=0; j<karma.length; j++)
+                        System.out.print(karma[i][j]+" ");
+                    System.out.print("\n");
+                }
+        
   }
 }
 
