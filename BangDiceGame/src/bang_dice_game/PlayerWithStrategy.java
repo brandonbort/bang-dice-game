@@ -120,9 +120,11 @@ class PlayerWithStrategy implements Player{
                 case "Sheriff":
                     
                     targetKarmaSpot=AI.Beer(karma,spot,0,health);  //these all return spot values so yea
-                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                    karma[targetKarmaSpot][spot]=(char)points;
-                    
+                    if(targetKarmaSpot!=spot)
+                    {
+                        points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                        karma[targetKarmaSpot][spot]=(char)points;
+                    }
                     targetKarmaSpot=AI.Bang(karma,spot,0,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
                     karma[targetKarmaSpot][spot]=(char)points;
@@ -133,9 +135,11 @@ class PlayerWithStrategy implements Player{
                     break;
                 case "Deputy":
                     targetKarmaSpot=AI.Beer(karma,spot,1,health);  //these all return spot values so yea
-                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                    karma[targetKarmaSpot][spot]=(char)points;
-                    
+                    if(targetKarmaSpot!=spot)
+                    {
+                        points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                        karma[targetKarmaSpot][spot]=(char)points;
+                    }
                     targetKarmaSpot=AI.Bang(karma,spot,1,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
                     karma[targetKarmaSpot][spot]=(char)points;
@@ -146,9 +150,11 @@ class PlayerWithStrategy implements Player{
                     break;
                 case "Outlaw":
                     targetKarmaSpot=AI.Beer(karma,spot,2,health);  //these all return spot values so yea
-                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                    karma[targetKarmaSpot][spot]=(char)points;
-                    
+                    if(targetKarmaSpot!=spot)
+                    {
+                        points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                        karma[targetKarmaSpot][spot]=(char)points;
+                    }
                     targetKarmaSpot=AI.Bang(karma,spot,2,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
                     karma[targetKarmaSpot][spot]=(char)points;
@@ -159,9 +165,11 @@ class PlayerWithStrategy implements Player{
                     break;
                 case "Renegade":
                     targetKarmaSpot=AI.Beer(karma,spot,3,health);  //these all return spot values so yea
-                    points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
-                    karma[targetKarmaSpot][spot]=(char)points;
-                    
+                    if(targetKarmaSpot!=spot)
+                    {
+                        points=Character.getNumericValue(karma[targetKarmaSpot][spot])+1;
+                        karma[targetKarmaSpot][spot]=(char)points;
+                    }
                     targetKarmaSpot=AI.Bang(karma,spot,3,1);       //1=range of 1 and not range of 2
                     points=Character.getNumericValue(karma[targetKarmaSpot][spot])-1;
                     karma[targetKarmaSpot][spot]=(char)points;
