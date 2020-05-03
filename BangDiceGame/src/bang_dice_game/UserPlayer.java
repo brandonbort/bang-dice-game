@@ -151,6 +151,11 @@ class UserPlayer implements Player{
         attack.add(currentPlayers.get(amount-1));
         attack.add(currentPlayers.get(2));
         
+        if(currentPlayers.size() == 4)
+        {
+            attack.remove(1);
+        }
+        
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
             System.out.println((i+1) + ":   " + attack.get(i).getName() + "  " + attack.get(i).getHealth());
