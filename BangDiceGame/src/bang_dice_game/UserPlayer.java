@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package bang_dice_game;
+import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -105,7 +106,6 @@ class UserPlayer implements Player{
         Scanner in = new Scanner(System.in);
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
-        int placement = 0;
         int amount = currentPlayers.size() - 1;
         
         ArrayList<Player> attack = new ArrayList<>();
@@ -113,11 +113,21 @@ class UserPlayer implements Player{
         attack.add(currentPlayers.get(amount));
         attack.add(currentPlayers.get(1));
         
+        if (currentPlayers.size() == 2)
+            attack.remove(1);
+        
         
         System.out.println("Who would you like to attack?");
-        System.out.println("1:  " + attack.get(0).getName());
-        System.out.println("2:  " + attack.get(1).getName());
-        System.out.println("Please enter one of the options: 1 or 2");
+        for (int i = 0; i < attack.size(); i++)
+            System.out.println((i+1) + ":   " +attack.get(i).getName());
+        
+        System.out.print("Please enter one of the options: "); 
+        
+        for (int i = 0; i < attack.size(); i++)
+            System.out.print(i+1 + " ");
+        
+        System.out.println();
+        
         
         int who = in.nextInt();
         int health = 0;
@@ -136,10 +146,19 @@ class UserPlayer implements Player{
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }                
                 this.takeAim1();
                 break;
         }
-        
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }        
     }
     
     public void takeAim2() {
@@ -147,7 +166,6 @@ class UserPlayer implements Player{
         Scanner in = new Scanner(System.in);
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
-        int placement = 0;
         int amount = currentPlayers.size() - 1;
         
         
@@ -160,10 +178,8 @@ class UserPlayer implements Player{
         attack.add(currentPlayers.get(1));
         attack.add(currentPlayers.get(2));
         
-        if (attack.size() == 4)
-        {
+        if (currentPlayers.size() == 4)
             attack.remove(3);
-        }
         
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
@@ -207,9 +223,19 @@ class UserPlayer implements Player{
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }                
                 this.takeAim2();
                 break;
-        } 
+        }
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }        
     }
     
     public void gatlingDice(){
@@ -231,11 +257,21 @@ class UserPlayer implements Player{
             health = attack.get(i).getHealth();
             health = health - 1;
             attack.get(i).setHealth(health);
-            System.out.println(attack.get(i).getName() + " has lost 1 health!");  
+            System.out.println(attack.get(i).getName() + " has lost 1 health!");
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }            
         }
         
         this.setArrows(0);
         System.out.println(this.getName() + " no longer has any arrows!");
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }        
     }
     
     public void beerDice() {
@@ -258,10 +294,20 @@ class UserPlayer implements Player{
                health = health - 1;
                heal.get(i).setHealth(health);
                System.out.println(heal.get(i).getName() + " has gained 1 health!");
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }
            }
        }
        if ((who > heal.size()) || (who <= 0)){
            System.out.println("Did not enter a valid option... Try again.");
+               try {
+                    sleep(1000);
+               } catch (InterruptedException ex) {
+                    Logger.getLogger(UserPlayer.class.getName()).log(Level.SEVERE, null, ex);
+               }           
            this.beerDice();
        }
     }
