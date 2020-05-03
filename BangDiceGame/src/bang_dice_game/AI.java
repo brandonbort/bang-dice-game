@@ -26,6 +26,7 @@ public class AI {
         int isDepDead=0;                                                        //  keep this here until ik how to add it
         ArrayList<Player> currentPlayers = new ArrayList<Player>();             //
         currentPlayers = Game.getPlayers();                                     //
+        int targetHealth = currentPlayers.get(targetSpot).getHealth();          //
         //////////////////////////////////////////////////////////////////////////  AI part
         switch (role) {                                                         //  
                 case 0:                                                         //  Sheriff's decision making
@@ -71,11 +72,8 @@ public class AI {
             catch (InterruptedException ex) {                                   //
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);//
             }                                                                   //
-            
-                    //    health = currentPlayers.get(targetSpot).getHealth();
-                    //    health = health + 1;
-                    //    currentPlayers.get(targetSpot).setHealth(health); 
-            
+            targetHealth += 1;                                                  //
+            currentPlayers.get(targetSpot).setHealth(targetHealth);             //
         return targetSpot;////////////////////////////////////////////////////////  Return location to heal
     }
     /**
@@ -154,12 +152,12 @@ public class AI {
                     System.out.println("Player"+spot+" hurt itself in confusion");//     
                     break;                                                      //  
             }                                                                   //
-                        try {
-                            sleep(2000);
-                        }
-                        catch (InterruptedException ex) {
+                        try {                                                   //
+                            sleep(2000);                                        //
+                        }                                                       //
+                        catch (InterruptedException ex) {                       //
                             Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
-                        }        
+                        }                                                       //
         return targetSpot;////////////////////////////////////////////////////////  Returns position of target 
     }
 }
