@@ -26,8 +26,10 @@ public class BangDiceGame{
         System.out.print("You are limited to 4 to 8 players:");
         
         int playerAmount = in.nextInt();
-        
+        char[][] karma = new char[playerAmount][playerAmount];
             
+      
+        
 //            UserPlayer playerHuman = new UserPlayer("getto", "sheriff", "is good guy :D", 4, 0);
 //            players.add(playerHuman);
             
@@ -37,11 +39,11 @@ public class BangDiceGame{
             //}
                 UserPlayer playerHuman1 = new UserPlayer("getto", "Sheriff", "is good guy :D", 4, 0);
                 players.add(playerHuman1);
-                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("bro", "tRenegade", "description", 4, 0, 1, playerAmount);
+                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("bro", "Renegade", "description", 4, 0, 1,karma);
                 players.add(playerComp1);
-                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("yo", "tOutlaw", "description", 4, 0, 2, playerAmount);
+                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("yo", "Outlaw", "description", 4, 0, 2, karma);
                 players.add(playerComp2);
-                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("low", "tOutlaw", "description", 4, 0, 3, playerAmount);
+                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("low", "Outlaw", "description", 4, 0, 3, karma);
                 players.add(playerComp3);
 
          
