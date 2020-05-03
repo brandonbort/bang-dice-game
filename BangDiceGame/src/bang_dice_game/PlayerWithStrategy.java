@@ -108,18 +108,11 @@ class PlayerWithStrategy implements Player{
             catch (InterruptedException ex) {
                 Logger.getLogger(PlayerWithStrategy.class.getName()).log(Level.SEVERE, null, ex);
             }        
-            
-            
-       
-        ArrayList<Player> currentPlayers = new ArrayList<Player>();
-        currentPlayers = Game.getPlayers();         
         int targetSpot=0;
         if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
-                        targetSpot = AI.Beer(karma,spot,0,health);  //these all return spot values so yea
-                                 
-
+                    AI.Beer(karma,spot,0,health);  //these all return spot values so yea
                     AI.Bang(karma,spot,0,1);       //1=range of 1 and not range of 2
                     AI.Bang(karma,spot,0,2);       //Bang will return -1 if people in range dont deserve to get shot so re roll if it happens
                     break;
