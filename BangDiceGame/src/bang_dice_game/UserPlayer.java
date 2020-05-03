@@ -92,7 +92,7 @@ class UserPlayer implements Player{
         
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
-            System.out.println((i+1) + ":   " +attack.get(i).getName());
+            System.out.println((i+1) + ":   " +attack.get(i).getName() + "  " + attack.get(i).getHealth());
         
         System.out.print("Please enter one of the options: "); 
         
@@ -152,7 +152,7 @@ class UserPlayer implements Player{
         
         System.out.println("Who would you like to attack?");
         for (int i = 0; i < attack.size(); i++)
-            System.out.println((i+1) + ":   " +attack.get(i).getName());
+            System.out.println((i+1) + ":   " + attack.get(i).getName() + "  " + attack.get(i).getHealth());
         
         System.out.print("Please enter one of the options: "); 
         for (int i = 0; i < attack.size(); i++)
@@ -251,7 +251,7 @@ class UserPlayer implements Player{
        
         System.out.println("Who would you like to heal?");
         for (int i = 0; i < heal.size(); i++){
-            System.out.println((i + 1) + ":  " + heal.get(i).getName()); 
+            System.out.println((i + 1) + ":  " + heal.get(i).getName() + "  " + heal.get(i).getHealth()); 
         }
        
         int who = in.nextInt();
