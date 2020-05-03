@@ -109,6 +109,12 @@ class Game {
     }
     for (int i = 0; i < died.size(); i++){
         players.remove(died.get(i));
+        for(int j=0; j<BangDiceGame.karma.length;++j)
+        {
+            BangDiceGame.karma[died.get(i).getSpot()][j]='x';
+            BangDiceGame.karma[j][died.get(i).getSpot()]='x';
+        }
+        
     }
     System.out.println();
         
