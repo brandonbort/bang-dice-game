@@ -82,8 +82,10 @@ class Game {
    * The game is over.
    */
   public boolean gameOver () {
-    return false; //alive == 1;  // because idk how we gonna set 
-                                 //how the game is over yet sooo
+      if (players.size() == 1)
+          return true;
+      else 
+          return false;
   }
   
   /**
@@ -96,6 +98,12 @@ class Game {
       //System.out.println(players);
       previousPlayer = nextPlayer;
       nextPlayer = otherPlayer(nextPlayer);
+    }
+    for (int i = 0; i < players.size(); i++){
+        if (players.get(i).getHealth() == 0){
+            System.out.println(players.get(i).getName() + " has died!");
+            players.remove(i);
+        }
     }
   }
   
