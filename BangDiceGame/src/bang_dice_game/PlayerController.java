@@ -34,10 +34,10 @@ class PlayerController implements PlayerObserver {
         currentPlayers = Game.getPlayers();
           
         dice.firstRoll();
-         for (int i = 0; i < 5; i++){
-            if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
-                countDynamite = countDynamite + 1;
-        }
+//         for (int i = 0; i < 5; i++){
+//            if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
+//                countDynamite = countDynamite + 1;
+//        }
         dice.reRoll();
         
         ArrayList<Dice.Dice_Face> diceFace = new ArrayList<Dice.Dice_Face>();
