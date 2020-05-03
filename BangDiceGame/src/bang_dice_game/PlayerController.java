@@ -30,6 +30,8 @@ class PlayerController implements PlayerObserver {
       public void update(UserPlayer player){//, Dice dice){
         int countDynamite = 0;
         int countGatling = 0;
+        ArrayList<Player> currentPlayers = new ArrayList<>();
+        currentPlayers = Game.getPlayers();
           
         dice.firstRoll();
          for (int i = 0; i <6; i++){
@@ -67,17 +69,30 @@ class PlayerController implements PlayerObserver {
                         int arrowAdd = player.getArrows();
                         arrowAdd = arrowAdd + 1;
                         player.setArrows(arrowAdd);
-                        System.out.println(player.getName() + " now has " + player.getArrows() + "!");
+                        System.out.println(player.getName() + " now has " + player.getArrows() + " arrow(s)!");
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         break;
+                        
                     case BullsEye1:
                         player.takeAim1();
                         break;
+                        
                     case BullsEye2:
-                        player.takeAim2();
+                        if (currentPlayers.size() <= 3){
+                           player.takeAim1(); 
+                        }
+                        else
+                            player.takeAim2();
                         break;
+                        
                     case Beer:
                         player.beerDice();
                         break;
+                        
                     default:
                         System.out.println("Checking next dice...");
                         try {
