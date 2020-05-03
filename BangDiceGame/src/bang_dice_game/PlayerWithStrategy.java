@@ -50,45 +50,51 @@ class PlayerWithStrategy implements Player{
         //System.out.print(karma.length);
     }
     
-  
+    @Override
     public String getName() {
         return this.name;
     }
+    @Override
     public void setName(String name) {
         this.name = name;
     }
-    
+    @Override
     public String getRole() {
         return this.role;
     }
+    @Override
     public void setRole(String role) {
         this.role = role;
     }
-
+    @Override
     public String getDescription() {
         return this.description;
     }
+    @Override
     public void setDescription(String descrip) {
         this.description = descrip;
     }
- 
+    @Override
     public int getHealth() {
         return health;
     }
+    @Override
     public void setHealth(int health) {
         this.health = health;
     }
-    
+    @Override
     public int getArrows() {
         return this.arrows;
     }
+    @Override
     public void setArrows(int arrows) { 
         this.arrows = arrows;
     }
-    
+    @Override
     public int getSpot() {
         return this.spot;
     }
+    @Override
     public void setSpot(int spot) {
         this.spot = spot;
     }
@@ -99,7 +105,7 @@ class PlayerWithStrategy implements Player{
     public void setKarma(char [][] karma) {
         this.karma = karma;
     }
-
+    @Override
     public void takeTurn () {
         System.out.println("Roling Dice for " + this.name);
             try {
