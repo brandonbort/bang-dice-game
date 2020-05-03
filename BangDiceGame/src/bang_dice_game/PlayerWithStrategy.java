@@ -34,7 +34,7 @@ class PlayerWithStrategy implements Player{
         this.arrows = 0;                    //arrows should always start at 0 but ill include it here anyways
         this.spot = spot;
         this.controller = null;             //I think this controls when its the NPC's turn
-
+        this.karma=karma;
         for (int i=0; i<karma.length; i++)  //this sets all non diagonal numbers to 5
             for (int j=0; j<karma.length; j++)
                 if(i==j)                    //if numbers match(diagonal number) dont set to 5
