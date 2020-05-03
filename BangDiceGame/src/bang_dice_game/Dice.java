@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Random; 
 import java.util.Scanner;
 import java.security.SecureRandom;
+import java.lang.*;
 
 //*
 
@@ -40,23 +41,29 @@ public class Dice {
     
         public int numOfDices = 5;
         private static int SIZE = 6;
+       
         //private static final Random RANDOM = new Random((long)( Math.random() * (double)Long.SIZE));
         private static final Random RANDOM = new SecureRandom();
 
         String yes = new String("Yes");
         String no = new String("No");
         
-        ArrayList <Dice.Dice_Face> BasicResult  = new ArrayList<>();
+        ArrayList <String> BasicResult  = new ArrayList<>();
         ArrayList <Dice.Loudmouth> Option1 = new ArrayList<>();
      public enum Dice_Face
                  
     { 
         IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
-        public static Dice_Face dice[] = Dice_Face.values();
-        public static Dice_Face getRandomDice_Face(){      
-            return dice[RANDOM.nextInt(SIZE)];
-            }
         
+        public static Dice_Face dice[] = Dice_Face.values();
+//        public  Dice_Face getRandomDice_Face(){      
+//            return dice[RANDOM.nextInt(SIZE)];
+//            }
+        
+        public String toString(){
+            return dice[RANDOM.nextInt(SIZE)].name();
+        }
+
         }
      
         
@@ -64,27 +71,36 @@ public class Dice {
         {
             IndianArrow, Dynamite, DoubleBullsEye1, DoubleBullesEye2, DoubleGatling, Bullet; 
             public static Loudmouth dice1 [] = Loudmouth.values();
-            public static Loudmouth getRandomSaloon1_Face(){      
-            return dice1[RANDOM.nextInt(SIZE)];
-            }
+//            public static Loudmouth getRandomSaloon1_Face(){      
+//            return dice1[RANDOM.nextInt(SIZE)];
+//            }
+            public String toString(){
+            return dice1[RANDOM.nextInt(SIZE)].name();
+        }
         }
         
       public enum Coward
         {
             IndianArrow, Dynamite, BullsEye1, Beer, DoubleBeers, BrokenArrow; 
             public static Coward dice2 [] = Coward.values();
-            public static Coward getRandomSaloon2_Face(){      
-            return dice2[RANDOM.nextInt(SIZE)];
-            }
+//            public static Coward getRandomSaloon2_Face(){      
+//            return dice2[RANDOM.nextInt(SIZE)];
+//            }
+            public String toString(){
+            return dice2[RANDOM.nextInt(SIZE)].name();
+        }
         }
         
        enum DuelDices
         {
             IndianArrow, Gatling, Dynamite, Duel1, Duel2, Whiskey; 
             public static DuelDices dice3 [] = DuelDices.values();
-            public static DuelDices getRandomDuel_Face(){      
-            return dice3[RANDOM.nextInt(SIZE)];
-             }
+//            public static DuelDices getRandomDuel_Face(){      
+//            return dice3[RANDOM.nextInt(SIZE)];
+//             }
+            public String toString(){
+            return dice3[RANDOM.nextInt(SIZE)].name();
+            }
         }
      
 
@@ -95,10 +111,11 @@ public class Dice {
       public void BasicDice(){
  
             for ( int i = 0; i < numOfDices; i++){
-             Dice_Face.dice[i] = Dice_Face.getRandomDice_Face();
-             BasicResult.add(Dice.Dice_Face.dice[i]);
-         
-            System.out.print("\t" + "Dice[" + i + "] = " + Dice_Face.dice[i] + "\n" );
+            
+             //BasicResult.add(name(Dice_Face.dice[i]));
+          String value = Dice_Face.toString();
+             
+            System.out.print("\t" + "Dice[" + i + "] = "  + "\n" );
         }  
       } 
       
@@ -143,7 +160,7 @@ public class Dice {
        String option = scanner.nextLine();
        if(option.equals(no)){
            BasicDice();
-           reRoll();
+         //  reRoll();
        }
        else{
            System.out.print("Saloon Dice or Duel Dice (Saloon/Duel): ");

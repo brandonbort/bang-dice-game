@@ -12,7 +12,7 @@ public class AI {
      * @param role      //  sheriff=0, deputy=1, outlaw=2, renegade=3
      * @param hp        //  how many points he has
      */
-    public int Beer (char karma[][],int spot,int role,int hp) {
+    static public int Beer (char[][] karma,int spot,int role,int hp) {
         //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=0;                                                           //  This chages as it finds better karma
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
@@ -67,7 +67,8 @@ public class AI {
      * @param role      //  Sheriff=0, deputy=1, outlaw=2, renegade=3
      * @param range     //  Range of 1 or 2?
      */
-    public int Bang (char [][] karma,int spot,int role, int range) {
+    static public int Bang (char [][] karma,int spot,int role, int range) {
+        System.out.print(karma.length+"Bang");
         //////////////////////////////////////////////////////////////////////////  Initialize variables
         int target=9;                                                           //  0 for beer, 9 for bang
         int targetSpot=spot;                                                    //  it works, dont fuc w it >:(
