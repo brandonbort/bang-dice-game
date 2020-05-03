@@ -1,7 +1,6 @@
 package bang_dice_game;
 
 import static java.lang.Thread.sleep;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -114,7 +113,6 @@ class PlayerWithStrategy implements Player{
             catch (InterruptedException ex) {
                 Logger.getLogger(PlayerWithStrategy.class.getName()).log(Level.SEVERE, null, ex);
             }        
-        int targetSpot=0;
         if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
