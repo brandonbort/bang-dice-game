@@ -138,7 +138,7 @@ public class AI {
                     if (target>5)                                               //
                     {                                                           //  
                         System.out.println("Player"+spot+" rerolls");           //  dudes in range r good people
-                        return -1;                                              //  
+                        targetSpot=-1;                                          //  
                     }                                                           //  
                     else                                                        //  
                         System.out.println("Player"+spot+" Bangs Player"+targetSpot+"!");//guns blazing
