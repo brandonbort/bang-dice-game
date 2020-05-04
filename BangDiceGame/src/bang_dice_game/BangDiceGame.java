@@ -15,8 +15,8 @@ public class BangDiceGame{
 
     
     public static void main(String[] args) {
-        StartScreenUI start = new StartScreenUI();
-        start.launchGame(args);
+        StartScreenUserInterface boardUI = new StartScreenUserInterface();
+        boardUI.launchGame(args);
     }
     
 }
