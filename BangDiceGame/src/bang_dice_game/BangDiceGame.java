@@ -28,6 +28,7 @@ static int isDepDead;
         System.out.print("You are limited to 4 to 8 players:");
         
         int playerAmount = in.nextInt();
+        playerAmount=5;                             //hardcoded bec ik yall forgot my msg
         karma = new char[playerAmount][playerAmount];
         
         
@@ -50,7 +51,7 @@ static int isDepDead;
                 players.add(playerComp3);
                 PlayerWithStrategy playerComp4 = new PlayerWithStrategy("Airi", "Deputy", "noob", 4, 0, 4, karma);
                 players.add(playerComp4);
-                isDepDead=1;    //this needs to track how may deputy are alive
+                isDepDead=1;    //this needs to track how may deputy are alive <----important
         
             Game bangGame = new Game(players);
             new PlayerController(playerHuman1,bangGame,in,dice);
