@@ -5,7 +5,10 @@
  */
 package bang_dice_game;
 
+import static java.lang.Thread.sleep;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,19 +17,15 @@ import java.util.*;
 
 class Game {
   
-  private ArrayList<Player> players = new ArrayList<Player>();
+  private static ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
-  private Player previousPlayer;               // The Player who last played;
-  //private Player player1;
-  //private Player player2;
-  //private int alive;        // maybe idk
+  private Player previousPlayer;               // The Player who last played
+  private static int gameArrows = 9;                      // total arrows in game
   
   
  
-  public Game (ArrayList<Player> players) { //, int alive) {
-    //assert sticks > 0 : "precondition: initial sticks > 0";
+  public Game (ArrayList<Player> players) { 
     this.players = players;
-    //this.alive = alive;
     this.nextPlayer = players.get(0);
     this.previousPlayer = null;
   }
@@ -45,14 +44,19 @@ class Game {
     return previousPlayer;
   }
   
-  /*// maybe idk
-  public void setAlive(int alive){
-      this.alive = alive;
+  public static ArrayList<Player> getPlayers(){
+      return Game.players;
   }
-  // maybe idk
-  public int getAlive(){
-      return alive;
-  }*/
+  public static void setPlayers(ArrayList<Player> players){
+      Game.players = players;
+  }
+  
+  public static int getGameArrows(){
+      return Game.gameArrows;
+  }
+  public static void setGameArrows(int gameArrows){
+      Game.gameArrows = gameArrows;
+  }
   
       
   
@@ -60,14 +64,16 @@ class Game {
   
   public Player winner () {
     if (gameOver()){
-        for(int i = 0; i < players.size(); i++)
-        {
-            Player temp = players.get(i);
-            if (temp.getHealth() != 0)
-            {
-                return temp; 
-            }
-        }
+        
+        return players.get(0);
+//        for(int i = 0; i < players.size(); i++)
+//        {
+//            Player temp = players.get(i);
+//            if (temp.getHealth() != 0)
+//            {
+//                return temp; 
+//            }
+//        }
     }
     
     return null;
@@ -77,8 +83,7 @@ class Game {
    * The game is over.
    */
   public boolean gameOver () {
-    return false; //alive == 1;  // because idk how we gonna set 
-                                 //how the game is over yet sooo
+      return players.size() == 1;
   }
   
   /**
@@ -88,9 +93,64 @@ class Game {
   public void play () {
     if (!gameOver()) { 
       nextPlayer.takeTurn();
+      //System.out.println(players);
       previousPlayer = nextPlayer;
       nextPlayer = otherPlayer(nextPlayer);
     }
+    System.out.println();
+    if (gameArrows == 0)
+    {
+         ArrayList<Player> attack = new ArrayList<Player>();
+        for (int i = 0; i < players.size(); i++)
+        {
+            if (players.get(i).getArrows() >= 1)
+                attack.add(players.get(i));
+        }
+        for (int i = 0; i < attack.size(); i++)
+        {
+            int amount = attack.get(i).getArrows();
+            for (int j = 0; j < amount; j++)
+            {
+                int health = attack.get(i).getHealth();
+                health = health - 1;
+                attack.get(i).setHealth(health);
+            }
+            attack.get(i).setArrows(0);
+            System.out.println(attack.get(i).getName() + " has lost " + amount + " health!");
+            System.out.println(attack.get(i).getName() + " has " + attack.get(i).getArrows() +" arrows!");
+        }
+        gameArrows = 9;
+        try {
+                sleep(3000);
+            }catch (InterruptedException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    for(int i = 0; i < players.size(); i++){
+        System.out.println(players.get(i).getName() + "  " + players.get(i).getHealth());
+    }
+    System.out.println();
+    
+    
+    ArrayList<Player> died = new ArrayList<Player>();
+    for (int i = 0; i < players.size(); i++){
+        if (players.get(i).getHealth() <= 0){
+            System.out.println(players.get(i).getName() + " has died!");
+            died.add(players.get(i));
+        }
+    }
+    for (int i = 0; i < died.size(); i++){
+        players.remove(died.get(i));
+        for(int j=0; j<BangDiceGame.karma.length;++j)
+        {
+            BangDiceGame.karma[died.get(i).getSpot()][j]='x';
+            BangDiceGame.karma[j][died.get(i).getSpot()]='x';
+        }
+        
+    }
+    System.out.println();
+        
   }
   
   /**
@@ -99,15 +159,16 @@ class Game {
   private Player otherPlayer (Player player) {
       
       Player temp = player;
+      int size = players.size() - 1;
     
     for (int i = 0; i < players.size(); i++)
     {
         if (temp == players.get(i)){
-            if (temp == (players.get(7)))
+            if (temp == (players.get(size)))
                 temp = players.get(0);
             else 
                 temp = players.get(i+1);
-            //break; // breaks for loop
+            break; // breaks for loop
         }
     }
       return temp;
