@@ -19,7 +19,7 @@ class PlayerWithStrategy implements Player{
     private int maxHealth;
     private int arrows = 0;
     private int spot;
-    private int [] karma;
+    private int [] karma = new int[5];
     private PlayerObserver controller;  //I think this controls when its the NPC's turn
     
     
@@ -34,7 +34,7 @@ class PlayerWithStrategy implements Player{
  * @param spot          //  Location on karma array
  * @param playerSize    //  Atm its used to set up karma... for now
  */
-  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, int [] karma){
+  public PlayerWithStrategy(String name, String role, String description, int health, int arrows,int spot, int karma[]){
         this.name = name;
         this.role = role;
         this.description = description;
@@ -43,7 +43,8 @@ class PlayerWithStrategy implements Player{
         this.arrows = 0;                    //arrows should always start at 0 but ill include it here anyways
         this.spot = spot;
         this.controller = null;             //I think this controls when its the NPC's turn
-        this.karma=karma;
+        for (int i = 0; i < karma.length; i++)
+            this.karma[i] = karma[i];
     }
     
     @Override
@@ -103,8 +104,9 @@ class PlayerWithStrategy implements Player{
         return this.karma;
     }
     
-    public void setKarma(int[] karma) {
-        this.karma = karma;
+    public void setKarma(int karma[]) {
+        for (int i = 0; i < karma.length; i++)
+            this.karma[i] = karma[i];
     }
     
     public void takeTurn(){
@@ -134,14 +136,14 @@ class PlayerWithStrategy implements Player{
     }
     
     
-    public void takeAim1(PlayerWithStrategy player) {
+    public void takeAim1(Player player) {
         Scanner in = new Scanner(System.in);
         ArrayList<Player> currentPlayers = new ArrayList<Player>();
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
         int health = 0;
         int placement = 0;
-        int [] karmaAdjust;
+        int [] karmaAdjust = new int[5];
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -170,9 +172,11 @@ class PlayerWithStrategy implements Player{
             health = health - 1;
             attack.get(0).setHealth(health);
             System.out.println(attack.get(0).getName() + " has lost 1 health!");
-            karmaAdjust = attack.get(0).getKarma();
-            karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1;
-            attack.get(0).setKarma(karmaAdjust);            
+                if (attack.get(0).getSpot() != 0){
+                    karmaAdjust = attack.get(0).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(0).setKarma(karmaAdjust);       
+                }          
         }
         else{
             if (karma[attack.get(0).getSpot()] == karma[attack.get(1).getSpot()]){
@@ -180,27 +184,33 @@ class PlayerWithStrategy implements Player{
                 health = health - 1;
                 attack.get(0).setHealth(health);
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
-                karmaAdjust = attack.get(0).getKarma();
-                karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1;
-                attack.get(0).setKarma(karmaAdjust);                
+                if (attack.get(0).getSpot() != 0){
+                    karmaAdjust = attack.get(0).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(0).setKarma(karmaAdjust);       
+                }               
             }
             else if (karma[attack.get(0).getSpot()] > karma[attack.get(1).getSpot()]){
                 health = attack.get(0).getHealth();
                 health = health - 1;
                 attack.get(0).setHealth(health);
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
-                karmaAdjust = attack.get(0).getKarma();
-                karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
-                attack.get(0).setKarma(karmaAdjust);                
+                if (attack.get(0).getSpot() != 0){
+                    karmaAdjust = attack.get(0).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(0).setKarma(karmaAdjust);       
+                }
             }
             else{
                 health = attack.get(1).getHealth();
                 health = health - 1;
                 attack.get(1).setHealth(health);
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
-                karmaAdjust = attack.get(1).getKarma();
-                karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
-                attack.get(1).setKarma(karmaAdjust);
+                if (attack.get(1).getSpot() != 0){
+                    karmaAdjust = attack.get(1).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(1).setKarma(karmaAdjust);       
+                }
             }        
         }
         try {
@@ -216,7 +226,7 @@ class PlayerWithStrategy implements Player{
         int amount = currentPlayers.size() - 1;
         int health = 0;
         int placement = 0;
-        int [] karmaAdjust;
+        int [] karmaAdjust = new int[5];
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -253,9 +263,11 @@ class PlayerWithStrategy implements Player{
             health = health - 1;
             attack.get(0).setHealth(health);
             System.out.println(attack.get(0).getName() + " has lost 1 health!");
-            karmaAdjust = attack.get(0).getKarma();
-            karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
-            attack.get(0).setKarma(karmaAdjust);            
+                if (attack.get(0).getSpot() != 0){
+                    karmaAdjust = attack.get(0).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(0).setKarma(karmaAdjust);       
+                }            
         }
         else{
         
@@ -264,27 +276,33 @@ class PlayerWithStrategy implements Player{
                 health = health - 1;
                 attack.get(0).setHealth(health);
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
-                karmaAdjust = attack.get(0).getKarma();
-                karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
-                attack.get(0).setKarma(karmaAdjust);                
+                if (attack.get(0).getSpot() != 0){
+                    karmaAdjust = attack.get(0).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(0).setKarma(karmaAdjust);       
+                }               
             }
             else if (karma[attack.get(0).getSpot()] > karma[attack.get(1).getSpot()]){
                 health = attack.get(0).getHealth();
                 health = health - 1;
                 attack.get(0).setHealth(health);
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
-                karmaAdjust = attack.get(0).getKarma();
-                karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1;
-                attack.get(0).setKarma(karmaAdjust);                
+                if (attack.get(0).getSpot() != 0){
+                    karmaAdjust = attack.get(0).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(0).setKarma(karmaAdjust);       
+                }             
             }
             else{
                 health = attack.get(1).getHealth();
                 health = health - 1;
                 attack.get(1).setHealth(health);
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
-                karmaAdjust = attack.get(1).getKarma();
-                karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
-                attack.get(1).setKarma(karmaAdjust);                
+                if (attack.get(1).getSpot() != 0){
+                    karmaAdjust = attack.get(1).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
+                    attack.get(1).setKarma(karmaAdjust);       
+                }               
             }
         }
         try {
@@ -340,9 +358,9 @@ class PlayerWithStrategy implements Player{
         heal = Game.getPlayers();
         int health = 0;
         int karmaSpot = 0;
-        int karmaAdjust[];
+        int [] karmaAdjust = new int[5];
         
-        if (this.getHealth() != 9){ //full health
+        if (this.getHealth() != this.getMaxHealth()){ //full health
             health = this.getHealth();
             health = health + 1;
             this.setHealth(health);
@@ -361,9 +379,11 @@ class PlayerWithStrategy implements Player{
             else{
                 System.out.println(heal.get(karmaSpot).getName() + "'s health is already full!!");
             }
-            karmaAdjust = heal.get(karmaSpot).getKarma();
-            karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] - 1;
-            heal.get(karmaSpot).setKarma(karmaAdjust);
+                if (heal.get(karmaSpot).getSpot() != 0){
+                    karmaAdjust = heal.get(karmaSpot).getKarma();
+                    karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] - 1; 
+                    heal.get(karmaSpot).setKarma(karmaAdjust);       
+                }            
         }
             
         
