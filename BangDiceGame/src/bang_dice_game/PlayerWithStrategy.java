@@ -114,16 +114,16 @@ class PlayerWithStrategy implements Player{
     if (null != this.role)
             switch (this.role) {
                 case "Sheriff":
-                     NPC.update(this);
+                     NPC.play(this);
                     break;
                 case "Deputy":
-                    NPC.update(this);
+                    NPC.play(this);
                     break;
                 case "Renegade":
-                    NPC.update(this);
+                    NPC.play(this);
                     break;
                 case "Outlaw":
-                    NPC.update(this);    
+                    NPC.play(this);    
                     break;    
                 default:
                     System.out.println("Something went wrong on " + this.name + "'s turn");
