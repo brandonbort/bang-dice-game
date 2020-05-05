@@ -16,6 +16,7 @@ class PlayerWithStrategy implements Player{
     private String role = "";
     private String description = "";
     private int health;
+    private int maxHealth;
     private int arrows = 0;
     private int spot;
     private int [] karma;
@@ -38,6 +39,7 @@ class PlayerWithStrategy implements Player{
         this.role = role;
         this.description = description;
         this.health = health;
+        this.maxHealth = health;
         this.arrows = 0;                    //arrows should always start at 0 but ill include it here anyways
         this.spot = spot;
         this.controller = null;             //I think this controls when its the NPC's turn
@@ -75,6 +77,10 @@ class PlayerWithStrategy implements Player{
     @Override
     public void setHealth(int health) {
         this.health = health;
+    }
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
     }
     @Override
     public int getArrows() {
@@ -346,11 +352,15 @@ class PlayerWithStrategy implements Player{
             for (int i = 0; i < heal.size()-1; i++)
                 if (karma[heal.get(i).getSpot()] <= karma[heal.get(i+1).getSpot()])
                     karmaSpot = i;
-            
-            health = heal.get(karmaSpot).getHealth();
-            health = health + 1;
-            heal.get(karmaSpot).setHealth(health);
-            System.out.println(heal.get(karmaSpot).getName() + " has gained 1 health!");
+            if (heal.get(karmaSpot).getMaxHealth() != heal.get(karmaSpot).getHealth()){
+                health = heal.get(karmaSpot).getHealth();
+                health = health + 1;
+                heal.get(karmaSpot).setHealth(health);
+                System.out.println(heal.get(karmaSpot).getName() + " has gained 1 health!");
+            }
+            else{
+                System.out.println(heal.get(karmaSpot).getName() + "'s health is already full!!");
+            }
             karmaAdjust = heal.get(karmaSpot).getKarma();
             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] - 1;
             heal.get(karmaSpot).setKarma(karmaAdjust);
