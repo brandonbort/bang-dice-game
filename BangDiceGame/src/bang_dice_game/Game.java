@@ -21,6 +21,7 @@ class Game {
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played
   private static int gameArrows = 9;                      // total arrows in game
+  ArrayList<Player> died = new ArrayList<Player>();
   
   
  
@@ -133,7 +134,7 @@ class Game {
     System.out.println();
     
     
-    ArrayList<Player> died = new ArrayList<Player>();
+    
     for (int i = 0; i < players.size(); i++){
         if (players.get(i).getHealth() <= 0){
             System.out.println(players.get(i).getName() + " has died!");
@@ -147,8 +148,8 @@ class Game {
             BangDiceGame.karma[died.get(i).getSpot()][j]='x';
             BangDiceGame.karma[j][died.get(i).getSpot()]='x';
         }
-        
     }
+    System.out.println(died);
     System.out.println();
         
   }
