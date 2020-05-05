@@ -29,7 +29,7 @@ public class AI {
         currentPlayers = Game.getPlayers();
         int health;
           
-        dice.firstRoll(player.getSpot());
+        dice.firstRoll();
          for (int i = 0; i < 5; i++){
             if (dice.Result.get(i).equals("Dynamite"))
                 countDynamite = countDynamite + 1;
