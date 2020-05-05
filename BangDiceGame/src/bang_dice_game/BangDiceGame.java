@@ -13,8 +13,8 @@ import User_Interface_Components.*;
  * @author Brandon
  */
 public class BangDiceGame{
-static char [][] karma;
-static int isDepDead;
+static int [] karma;
+//static int isDepDead;
 
     
     public static void main(String[] args) {
@@ -29,7 +29,10 @@ static int isDepDead;
         
         int playerAmount = in.nextInt();
         playerAmount=5;                             //hardcoded bec ik yall forgot my msg
-        karma = new char[playerAmount][playerAmount];
+        karma = new int[playerAmount];
+        
+        for (int i = 0; i < playerAmount; i++)
+            karma[i] = 0;
         
         
 //            UserPlayer playerHuman = new UserPlayer("getto", "sheriff", "is good guy :D", 4, 0);
@@ -45,13 +48,13 @@ static int isDepDead;
                 players.add(playerHuman1);
                 PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Player1", "Renegade", "description", 4, 0, 1,karma);
                 players.add(playerComp1);
-                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Mario", "Outlaw", "description", 4, 0, 2, karma);
+                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Player2", "Outlaw", "description", 4, 0, 2, karma);
                 players.add(playerComp2);
-                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Brittney", "Outlaw", "description", 4, 0, 3, karma);
+                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Player3", "Outlaw", "description", 4, 0, 3, karma);
                 players.add(playerComp3);
                 PlayerWithStrategy playerComp4 = new PlayerWithStrategy("Player4", "Deputy", "noob", 4, 0, 4, karma);
                 players.add(playerComp4);
-                isDepDead=1;    //this needs to track how may deputy are alive <----important
+                //isDepDead=1;    //this needs to track how may deputy are alive <----important
         
             Game bangGame = new Game(players);
             new PlayerController(playerHuman1,bangGame,in,dice);

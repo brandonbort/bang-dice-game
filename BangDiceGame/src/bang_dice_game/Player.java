@@ -11,6 +11,8 @@ public interface Player {
     public int getHealth();
     public void setHealth(int health);
     
+    public int getMaxHealth();
+    
     public String getRole();
     public void setRole(String role);
     
@@ -24,4 +26,7 @@ public interface Player {
 
     public int getSpot();
     public void setSpot(int spot);
+
+    public int[] getKarma();
+    public void setKarma(int [] karma);
 }
