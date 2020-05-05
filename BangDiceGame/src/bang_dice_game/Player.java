@@ -24,4 +24,7 @@ public interface Player {
 
     public int getSpot();
     public void setSpot(int spot);
+
+    public int[] getKarma();
+    public void setKarma(int [] karma);
 }
