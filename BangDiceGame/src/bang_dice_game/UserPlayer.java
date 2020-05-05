@@ -232,7 +232,7 @@ class UserPlayer implements Player{
         Game.setGameArrows(gameArrows);
         this.setArrows(0);
         System.out.println(this.getName() + " no longer has any arrows!");
-        System.out.println("There are now " + gameArrows + " left!");
+        System.out.println("There are now " + gameArrows + " arrows left!");
         try {
             sleep(1000);
         }
