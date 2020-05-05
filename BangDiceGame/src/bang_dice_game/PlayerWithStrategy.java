@@ -360,6 +360,10 @@ class PlayerWithStrategy implements Player{
         int karmaSpot = 0;
         int [] karmaAdjust = new int[5];
         
+        for (int i = 0; i < heal.size(); i++)
+            if (heal.get(i).getHealth() == 0)
+                heal.remove(i);        
+        
         if (this.getHealth() != this.getMaxHealth()){ //full health
             health = this.getHealth();
             health = health + 1;
