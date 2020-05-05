@@ -208,29 +208,33 @@ public class Dice {
        
      /**
      *To get first dice faces 
+     * @param spot
      */ 
       
-    public void firstRoll() //method to roll dices
-      {
-        System.out.print("Take an option?(Yes/No): ");
-       Scanner scanner = new Scanner(System.in);
-       String option = scanner.nextLine();
-       if(option.equals(no)){
-           BasicDice();
-       }
-       else{
-           System.out.print("Saloon Dice or Duel Dice (Saloon/Duel): ");
-           String option2 = scanner.nextLine();
-           String saloon = "Saloon";
-           if(option2.equals(saloon)){
-               Saloon();
-           }
-           else{
-               undeadOrAlive();
-           }
-       }
-       
-      }
+    public void firstRoll(int spot){ //method to roll dices
+        if (spot > 0){
+            BasicDice();
+        }
+        else{
+            System.out.print("Take an option?(Yes/No): ");
+            Scanner scanner = new Scanner(System.in);
+            String option = scanner.nextLine();
+            if(option.equals(no)){
+               BasicDice();
+            }
+            else{
+                System.out.print("Saloon Dice or Duel Dice (Saloon/Duel): ");
+                String option2 = scanner.nextLine();
+                String saloon = "Saloon";
+                if(option2.equals(saloon)){
+                   Saloon();
+                }
+                else{
+                   undeadOrAlive();
+                }
+             }
+        }
+    }
        
 //    private final Dice_Face dice_face;
 //    //setter
