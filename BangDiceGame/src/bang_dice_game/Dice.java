@@ -8,7 +8,7 @@ package bang_dice_game;
 import java.util.ArrayList;
 import java.util.Random; 
 import java.util.Scanner;
-import java.security.SecureRandom;
+//import java.security.SecureRandom;
 
 //*
 /**
@@ -31,21 +31,20 @@ public class Dice {
 //        }
 
         public int numOfDices = 5;
-        private static final int SIZE = 6;
-       
-        //private static final Random RANDOM = new Random((long)( Math.random() * (double)Long.SIZE));
-        private static final Random RANDOM = new SecureRandom();
-
         public String yes = "Yes";
         public String no = "No";
         
-        //ArrayList <String> BasicResult  = new ArrayList<>();
-        //ArrayList <String> Option = new ArrayList<>();
         public ArrayList <String> Result = new ArrayList<>();
 
     /**
      *To store basic dice faces and generate them randomly
      */
+     public static int getrandNum (){
+         final Random RANDOM = new Random();
+         int randNum = RANDOM.nextInt(6);
+         return randNum;
+     }   
+        
     public enum Dice_Face          
     { 
             IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
@@ -54,9 +53,12 @@ public class Dice {
          *To get basic dice face randomly 
          * @return basic dice faces 
           */ 
-        public static Dice_Face getRandomDice_Face(){      
-            return dice[RANDOM.nextInt(SIZE)];
-            }
+//        public static Dice_Face getRandomDice_Face(){   
+//             
+//            //return dice[RANDOM.nextInt(SIZE)];
+//            return dice[getrandNum()];
+//            
+//            }
     }
         
     /**
@@ -70,10 +72,11 @@ public class Dice {
             /**
              *To get loudmouth dice face randomly
              * @return loudmouth dice faces 
-             */ 
-            public static Loudmouth getRandomLoudmouth_Face(){      
-            return dice1[RANDOM.nextInt(SIZE)];
-            }
+//             */ 
+//            public static Loudmouth getRandomLoudmouth_Face(){   
+//
+//            return dice1[RANDOM.nextInt(SIZE)];
+//            }
         }
    
     /**
@@ -87,10 +90,10 @@ public class Dice {
             /**
              *To get coward dice face randomly
              * @return coward dice faces 
-             */ 
-            public static Coward getRandomCoward_Face(){      
-            return dice2[RANDOM.nextInt(SIZE)];
-            }
+//             */ 
+//            public static Coward getRandomCoward_Face(){      
+//            return dice2[RANDOM.nextInt(SIZE)];
+//            }
         }
      /**
      *To store duel dice faces and generate them randomly 
@@ -103,10 +106,10 @@ public class Dice {
             /**
              *To get duel dices' dice face randomly 
              * @return duel dice faces 
-             */ 
-            public static DuelDices getRandomDuel_Face(){      
-            return dice3[RANDOM.nextInt(SIZE)];
-             }
+//             */ 
+//            public static DuelDices getRandomDuel_Face(){      
+//            return dice3[RANDOM.nextInt(SIZE)];
+//             }
         }
      
     /**To get 5 basic dice faces randomly and store them as arrayList 
@@ -116,8 +119,8 @@ public class Dice {
       public void BasicDice(){
             // get 5 dice faces from basic dices
             for ( int i = 0; i < numOfDices; i++){
-             Dice_Face.dice[i] = Dice_Face.getRandomDice_Face();
-             Result.add(Dice_Face.dice[i].toString());
+             //Dice_Face.dice[i] = Dice_Face.getRandomDice_Face();
+             Result.add(Dice_Face.dice[getrandNum()].toString());
             System.out.print("\t" + "Dice[" + i + "] = "  + Result.get(i) + " (Basic Dice)"+"\n" );
         }  
       } 
@@ -134,12 +137,12 @@ public class Dice {
        String coward = "2";
        // get one loudmouth and 4 basic dice faces 
        if(response.equals(loudmouth)){
-           Loudmouth.dice1[0] = Loudmouth.getRandomLoudmouth_Face();
-             Result.add(Loudmouth.dice1[0].toString());
+           //Loudmouth.dice1[0] = Loudmouth.getRandomLoudmouth_Face();
+             Result.add(Loudmouth.dice1[getrandNum()].toString());
              System.out.print("\t" + "Dice[" + 0 + "] = " + Result.get(0) + " (Loudmouth Dice)" +"\n" );
             for(int j = 1; j < numOfDices ; j++){
-                Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
-                Result.add(Dice_Face.dice[j].toString());
+                //Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
+                Result.add(Dice_Face.dice[getrandNum()].toString());
                 System.out.print("\t" + "Dice[" + j + "] = "  + Result.get(j) + "\n" );
             }
            
@@ -158,12 +161,12 @@ public class Dice {
        }
        // when choose coward, get one coward and 4 basic dice faces 
        else {
-           Coward.dice2[0] = Coward.getRandomCoward_Face();
-           Result.add(Coward.dice2[0].toString());
+           //Coward.dice2[0] = Coward.getRandomCoward_Face();
+           Result.add(Coward.dice2[getrandNum()].toString());
            System.out.print("\t" + "Dice[" + 0 + "] = " + Result.get(0) + " (Coward Dice)" +"\n" );
            for(int j = 1; j < numOfDices ; j++){
-                Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
-                Result.add(Dice_Face.dice[j].toString());
+                //Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
+                Result.add(Dice_Face.dice[getrandNum()].toString());
                 System.out.print("\t" + "Dice[" + j + "] = "  + Result.get(j) + " (Basic Dice)" + "\n" );
             }
          // * when player is Tequila joe, add one dice(numOfDices s= 6) 
@@ -180,20 +183,20 @@ public class Dice {
       }
       
      /**
-     *To get duel dice faces and three basic dice faces and store them in arraylist 
+     *To get duel dice faces and three basic dice faces and store them in arrayList 
      */ 
       // roll 2 duel dices and 3 basic dices 
       public void undeadOrAlive() {
-          DuelDices.dice3[0] = DuelDices.getRandomDuel_Face();
-          Result.add(DuelDices.dice3[0].toString());
-          DuelDices.dice3[1] = DuelDices.getRandomDuel_Face();
-          Result.add(DuelDices.dice3[1].toString());
+          //DuelDices.dice3[0] = DuelDices.getRandomDuel_Face();
+          Result.add(DuelDices.dice3[getrandNum()].toString());
+          //DuelDices.dice3[1] = DuelDices.getRandomDuel_Face();
+          Result.add(DuelDices.dice3[getrandNum()].toString());
              System.out.print("\t" + "Dice["+ 0 +"] = " + Result.get(0) + " (Duel Dice)" +"\n" );
              System.out.print("\t" + "Dice["+ 1 +"] = " + Result.get(1) + " (Duel Dice)" +"\n" );
 
             for(int j = 2; j < numOfDices ; j++){
-                Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
-                Result.add(Dice_Face.dice[j].toString());
+                //Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
+                Result.add(Dice_Face.dice[getrandNum()].toString());
                 System.out.print("\t" + "Dice[" + j + "] = "  + Result.get(j) + " (Basic Dice)" + "\n" );
             }
 //        * when player is ghost   
@@ -208,33 +211,29 @@ public class Dice {
        
      /**
      *To get first dice faces 
-     * @param spot
      */ 
       
-    public void firstRoll(int spot){ //method to roll dices
-        if (spot > 0){
-            BasicDice();
-        }
-        else{
-            System.out.print("Take an option?(Yes/No): ");
-            Scanner scanner = new Scanner(System.in);
-            String option = scanner.nextLine();
-            if(option.equals(no)){
-               BasicDice();
-            }
-            else{
-                System.out.print("Saloon Dice or Duel Dice (Saloon/Duel): ");
-                String option2 = scanner.nextLine();
-                String saloon = "Saloon";
-                if(option2.equals(saloon)){
-                   Saloon();
-                }
-                else{
-                   undeadOrAlive();
-                }
-             }
-        }
-    }
+    public void firstRoll() //method to roll dices
+      {
+//        System.out.print("Take an option?(Yes/No): ");
+//       Scanner scanner = new Scanner(System.in);
+//       String option = scanner.nextLine();
+//       if(option.equals(no)){
+          BasicDice();
+//       }
+//       else{
+//           System.out.print("Saloon Dice or Duel Dice (Saloon/Duel): ");
+//           String option2 = scanner.nextLine();
+//           String saloon = "Saloon";
+//           if(option2.equals(saloon)){
+//               Saloon();
+//           }
+//           else{
+//               undeadOrAlive();
+//           }
+//       }
+       
+      }
        
 //    private final Dice_Face dice_face;
 //    //setter
@@ -280,22 +279,7 @@ public class Dice {
            for(int i = 0; i < params.length; i++){
                num[i] = Integer.parseInt(params[i]);
            }
-//             int size = 0;
-//		boolean isPrevCharANumber = false;
-//		for ( char c : input.toCharArray() ) 
-//			if ( c >= '0' && c <= '9' ) 
-//				if ( !isPrevCharANumber ) {
-//                                    isPrevCharANumber = true;
-//                                    size++;
-//				}
-//			else
-//                            isPrevCharANumber = false;
-//                int[] num = new int[size];
-//                String[] strArray = input.split(",");
-//                for (int i = 0; i < size; ++i)
-//                {
-//                    num[i]=Integer.parseInt(strArray[i]);
-//                }
+
                // for(int i=0;i<size;++i ){    
                // loop number of input 
                 for(int i = 0; i < num.length; i++){
@@ -315,25 +299,25 @@ public class Dice {
                 if(j == num[i])
                  {
                     //when dice is basic dice 
-                    if(Result.get(j).equals(Dice_Face.dice[j].toString())){
-                    Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
-                     Result.set(j,Dice_Face.dice[j].toString());
-                        }
-                    //when dice is loudmouth
-                    else if(Result.get(j).equals(Loudmouth.dice1[j].toString())){
-                        Loudmouth.dice1[j] = Loudmouth.getRandomLoudmouth_Face();
-                        Result.set(j,Loudmouth.dice1[j].toString());
-                        }
-                    //when dice is coward
-                    else if(Result.get(j).equals(Coward.dice2[j].toString())){
-                        Coward.dice2[j] = Coward.getRandomCoward_Face();
-                        Result.set(j,Coward.dice2[j].toString());
-                        }
-                    //when dice is duel dice 
-                    else if (Result.get(j).equals(DuelDices.dice3[j].toString())){
-                        DuelDices.dice3[j] = DuelDices.getRandomDuel_Face();
-                        Result.set(j, DuelDices.dice3[j].toString());
-                        }
+                    ///if(Result.get(j).equals(Dice_Face.dice[j].toString())){
+                        //Dice_Face.dice[j] = Dice_Face.getRandomDice_Face();
+                     Result.set(j,Dice_Face.dice[getrandNum()].toString());
+                        //}
+//                    //when dice is loudmouth
+//                    else if(Result.get(j).equals(Loudmouth.dice1[j].toString())){
+//                        //Loudmouth.dice1[j] = Loudmouth.getRandomLoudmouth_Face();
+//                        Result.set(j,Loudmouth.dice1[getrandNum()].toString());
+//                        }
+//                    //when dice is coward
+//                    else if(Result.get(j).equals(Coward.dice2[j].toString())){
+//                        //Coward.dice2[j] = Coward.getRandomCoward_Face();
+//                        Result.set(j,Coward.dice2[getrandNum()].toString());
+//                        }
+//                    //when dice is duel dice 
+//                    else if (Result.get(j).equals(DuelDices.dice3[j].toString())){
+//                        //DuelDices.dice3[j] = DuelDices.getRandomDuel_Face();
+//                        Result.set(j, DuelDices.dice3[getrandNum()].toString());
+//                        }
                     }
                    //displaying the dice face after re-roll
                     System.out.print("\tDice[" + j + "] = " + Result.get(j) + "\n"); 
