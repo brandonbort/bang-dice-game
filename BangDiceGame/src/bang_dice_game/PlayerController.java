@@ -34,7 +34,7 @@ class PlayerController implements PlayerObserver {
         currentPlayers = Game.getPlayers();
         int health;
           
-        dice.firstRoll();
+        dice.firstRoll(player.getSpot());
          for (int i = 0; i < 5; i++){
            // if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
             if (dice.Result.get(i).equals("Dynamite"))
