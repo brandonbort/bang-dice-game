@@ -276,6 +276,10 @@ class UserPlayer implements Player{
         heal = Game.getPlayers();
         int health;
         int[] karmaAdjust; 
+        
+        for (int i = 0; i < heal.size(); i++)
+            if (heal.get(i).getHealth() == 0)
+                heal.remove(i);
        
         System.out.println("Who would you like to heal?");
         for (int i = 0; i < heal.size(); i++){
