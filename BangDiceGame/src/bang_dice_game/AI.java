@@ -22,7 +22,7 @@ public class AI {
     Dice dice = new Dice();
     
     
-    public void play(PlayerWithStrategy player){
+    public void play(PlayerWithStrategy player, int morale){
         int countDynamite = 0;
         int countGatling = 0;
         ArrayList<Player> currentPlayers = new ArrayList<>();
@@ -100,19 +100,19 @@ public class AI {
                             break;
 
                         case "BullsEye1":
-                            player.takeAim1(player);
+                            player.takeAim1(player, morale);
                             break;
 
                         case "BullsEye2":
                             if (currentPlayers.size() <= 3){
-                               player.takeAim1(player); 
+                               player.takeAim1(player, morale); 
                             }
                             else
-                                player.takeAim2(player);
+                                player.takeAim2(player, morale);
                             break;
 
                         case "Beer":
-                            player.beerDice(player);
+                            player.beerDice(player, morale);
                             break;
 
                         default:
