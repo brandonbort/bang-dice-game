@@ -86,18 +86,20 @@ class PlayerController implements PlayerObserver {
                     //switch (diceFace.get(i)) {
                      switch (dice.Result.get(i)) {
                         case "IndianArrow":
-                            int arrowAdd = player.getArrows();
-                            arrowAdd = arrowAdd + 1;
-                            player.setArrows(arrowAdd);
-                            int gameArrows = Game.getGameArrows();
-                            gameArrows = gameArrows - 1;
-                            Game.setGameArrows(gameArrows);
-                            System.out.println(player.getName() + " now has " + player.getArrows() + " arrow(s)!");
-                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
-                            try {
-                                sleep(1000);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                            if (Game.getGameArrows() != 0){
+                                int arrowAdd = player.getArrows();
+                                arrowAdd = arrowAdd + 1;
+                                player.setArrows(arrowAdd);
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows - 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println(player.getName() + " now has " + player.getArrows() + " arrow(s)!");
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                                try {
+                                    sleep(1000);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             }
                             break;
 
