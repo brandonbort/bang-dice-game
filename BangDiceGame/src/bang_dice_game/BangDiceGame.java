@@ -14,7 +14,7 @@ import User_Interface_Components.*;
  */
 public class BangDiceGame{
 static int [] karma;
-static int isDepDead;
+//static int isDepDead;
 
     
     public static void main(String[] args) {
@@ -30,6 +30,9 @@ static int isDepDead;
         int playerAmount = in.nextInt();
         playerAmount=5;                             //hardcoded bec ik yall forgot my msg
         karma = new int[playerAmount];
+        
+        for (int i = 0; i < playerAmount; i++)
+            karma[i] = 0;
         
         
 //            UserPlayer playerHuman = new UserPlayer("getto", "sheriff", "is good guy :D", 4, 0);
@@ -51,7 +54,7 @@ static int isDepDead;
                 players.add(playerComp3);
                 PlayerWithStrategy playerComp4 = new PlayerWithStrategy("Player4", "Deputy", "noob", 4, 0, 4, karma);
                 players.add(playerComp4);
-                isDepDead=1;    //this needs to track how may deputy are alive <----important
+                //isDepDead=1;    //this needs to track how may deputy are alive <----important
         
             Game bangGame = new Game(players);
             new PlayerController(playerHuman1,bangGame,in,dice);
