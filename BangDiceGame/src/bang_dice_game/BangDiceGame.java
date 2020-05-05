@@ -18,8 +18,8 @@ static int isDepDead;
 
     
     public static void main(String[] args) {
-        StartScreenUserInterface start = new StartScreenUserInterface();
-        start.launchGame(args);
+        //StartScreenUserInterface start = new StartScreenUserInterface();
+        //start.launchGame(args);
         ArrayList<Player> players = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         Dice dice = new Dice();
@@ -49,7 +49,7 @@ static int isDepDead;
                 players.add(playerComp2);
                 PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Brittney", "Outlaw", "description", 4, 0, 3, karma);
                 players.add(playerComp3);
-                PlayerWithStrategy playerComp4 = new PlayerWithStrategy("unknownPlayer", "Deputy", "noob", 4, 0, 4, karma);
+                PlayerWithStrategy playerComp4 = new PlayerWithStrategy("Player4", "Deputy", "noob", 4, 0, 4, karma);
                 players.add(playerComp4);
                 isDepDead=1;    //this needs to track how may deputy are alive <----important
         
