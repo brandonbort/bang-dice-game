@@ -73,6 +73,15 @@ class UserPlayer implements Player{
     public void setSpot(int spot) { 
         this.spot = spot;
     }
+    
+    @Override
+    public int[] getKarma() {
+       return null;
+    }
+
+    @Override
+    public void setKarma(int[] karma) {
+    }
     @Override
     public void takeTurn () {
         System.out.println("Rolling Dice for " + this.name);
@@ -87,6 +96,7 @@ class UserPlayer implements Player{
         ArrayList<Player> currentPlayers = new ArrayList<Player>();
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
+        int[] karmaAdjust;
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -115,12 +125,18 @@ class UserPlayer implements Player{
                 health = health - 1;
                 attack.get(0).setHealth(health);
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
+                karmaAdjust = attack.get(0).getKarma();
+                karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
+                attack.get(0).setKarma(karmaAdjust);                 
                 break;
             case 2:
                 health = attack.get(1).getHealth();
                 health = health - 1;
                 attack.get(1).setHealth(health);
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
+                karmaAdjust = attack.get(1).getKarma();
+                karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
+                attack.get(1).setKarma(karmaAdjust);                
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
@@ -145,6 +161,7 @@ class UserPlayer implements Player{
         ArrayList<Player> currentPlayers = new ArrayList<Player>();
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
+        int[] karmaAdjust; 
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -175,12 +192,18 @@ class UserPlayer implements Player{
                 health = health - 1;
                 attack.get(0).setHealth(health);
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
+                karmaAdjust = attack.get(0).getKarma();
+                karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
+                attack.get(0).setKarma(karmaAdjust);                
                 break;
             case 2:
                 health = attack.get(1).getHealth();
                 health = health - 1;
                 attack.get(1).setHealth(health);
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
+                karmaAdjust = attack.get(1).getKarma();
+                karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
+                attack.get(1).setKarma(karmaAdjust);                
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
@@ -246,6 +269,7 @@ class UserPlayer implements Player{
         ArrayList<Player> heal = new ArrayList<Player>();
         heal = Game.getPlayers();
         int health;
+        int[] karmaAdjust; 
        
         System.out.println("Who would you like to heal?");
         for (int i = 0; i < heal.size(); i++){
@@ -261,6 +285,11 @@ class UserPlayer implements Player{
                 health = health + 1;
                 heal.get(i).setHealth(health);
                 System.out.println(heal.get(i).getName() + " has gained 1 health!");
+                if (this != heal.get(i)){
+                    karmaAdjust = heal.get(i).getKarma();
+                    karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] - 1;
+                    heal.get(i).setKarma(karmaAdjust); 
+                }
                 try {
                     sleep(1000);
                 }
