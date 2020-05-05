@@ -18,8 +18,8 @@ static int [] karma;
 
     
     public static void main(String[] args) {
-        StartScreenUserInterface start = new StartScreenUserInterface();
-        start.launchGame(args);
+        //StartScreenUserInterface start = new StartScreenUserInterface();
+        //start.launchGame(args);
         ArrayList<Player> players = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         Dice dice = new Dice();
@@ -46,13 +46,13 @@ static int [] karma;
 
                 UserPlayer playerHuman1 = new UserPlayer("ME", "Sheriff", "is good guy :D", 7, 0);
                 players.add(playerHuman1);
-                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Player1", "Renegade", "description", 4, 0, 1,karma);
+                PlayerWithStrategy playerComp1 = new PlayerWithStrategy("Player1", "Renegade", "description", 4, 1,karma);
                 players.add(playerComp1);
-                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Player2", "Outlaw", "description", 4, 0, 2, karma);
+                PlayerWithStrategy playerComp2 = new PlayerWithStrategy("Player2", "Outlaw", "description", 4, 2, karma);
                 players.add(playerComp2);
-                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Player3", "Outlaw", "description", 4, 0, 3, karma);
+                PlayerWithStrategy playerComp3 = new PlayerWithStrategy("Player3", "Outlaw", "description", 4, 3, karma);
                 players.add(playerComp3);
-                PlayerWithStrategy playerComp4 = new PlayerWithStrategy("Player4", "Deputy", "noob", 4, 0, 4, karma);
+                PlayerWithStrategy playerComp4 = new PlayerWithStrategy("Player4", "Deputy", "noob", 4, 4, karma);
                 players.add(playerComp4);
                 //isDepDead=1;    //this needs to track how may deputy are alive <----important
         
