@@ -12,6 +12,7 @@ class UserPlayer implements Player{
     private String description = "";
     private String role = "";
     private int health;
+    private int maxHealth;
     private int arrows;
     private int spot;
     private PlayerObserver controller; // Observer this Player reports to.
@@ -21,6 +22,7 @@ class UserPlayer implements Player{
         this.role = playerRole;
         this.description = playerDescription;
         this.health = playerHealth;
+        this.maxHealth = playerHealth;
         this.spot = spot;
         this.arrows = 0;
         this.controller = null;
@@ -40,6 +42,10 @@ class UserPlayer implements Player{
     @Override
     public void setHealth(int health) {
         this.health = health;
+    }
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
     }
     @Override
     public String getRole() {
@@ -280,11 +286,16 @@ class UserPlayer implements Player{
        
         for (int i = 0; i < heal.size(); i++){
             if (who == (i+1)){ 
-                health = 0;
-                health = heal.get(i).getHealth();
-                health = health + 1;
-                heal.get(i).setHealth(health);
-                System.out.println(heal.get(i).getName() + " has gained 1 health!");
+                if (heal.get(i).getMaxHealth() != heal.get(i).getHealth()){
+                    health = 0;
+                    health = heal.get(i).getHealth();
+                    health = health + 1;
+                    heal.get(i).setHealth(health);
+                    System.out.println(heal.get(i).getName() + " has gained 1 health!");
+                }
+                else{
+                    System.out.println(heal.get(i).getName() + "'s health is already full!!");
+                }
                 if (this != heal.get(i)){
                     karmaAdjust = heal.get(i).getKarma();
                     karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] - 1;
