@@ -11,6 +11,8 @@ public interface Player {
     public int getHealth();
     public void setHealth(int health);
     
+    public int getMaxHealth();
+    
     public String getRole();
     public void setRole(String role);
     
