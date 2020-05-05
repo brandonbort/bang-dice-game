@@ -98,19 +98,19 @@ public class AI {
                             break;
 
                         case "BullsEye1":
-                            player.takeAim1();
+                            player.takeAim1(player);
                             break;
 
                         case "BullsEye2":
                             if (currentPlayers.size() <= 3){
-                               player.takeAim1(); 
+                               player.takeAim1(player); 
                             }
                             else
-                                player.takeAim2();
+                                player.takeAim2(player);
                             break;
 
                         case "Beer":
-                            player.beerDice();
+                            player.beerDice(player);
                             break;
 
                         default:
