@@ -21,7 +21,7 @@ class Game {
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played
   private static int gameArrows = 9;                      // total arrows in game
-  ArrayList<Player> died = new ArrayList<Player>();
+  
   
   
  
@@ -93,64 +93,62 @@ class Game {
    */
   public void play () {
     if (!gameOver()) { 
+      System.out.println(nextPlayer.getName() + "'s TURN!!");  
       nextPlayer.takeTurn();
-      //System.out.println(players);
-      previousPlayer = nextPlayer;
-      nextPlayer = otherPlayer(nextPlayer);
-    }
-    System.out.println();
-    if (gameArrows == 0)
-    {
-         ArrayList<Player> attack = new ArrayList<Player>();
-        for (int i = 0; i < players.size(); i++)
+      
+      if (gameArrows == 0)
         {
-            if (players.get(i).getArrows() >= 1)
-                attack.add(players.get(i));
-        }
-        for (int i = 0; i < attack.size(); i++)
-        {
-            int amount = attack.get(i).getArrows();
-            for (int j = 0; j < amount; j++)
+             ArrayList<Player> attack = new ArrayList<Player>();
+            for (int i = 0; i < players.size(); i++)
             {
-                int health = attack.get(i).getHealth();
-                health = health - 1;
-                attack.get(i).setHealth(health);
+                if (players.get(i).getArrows() >= 1)
+                    attack.add(players.get(i));
             }
-            attack.get(i).setArrows(0);
-            System.out.println(attack.get(i).getName() + " has lost " + amount + " health!");
-            System.out.println(attack.get(i).getName() + " has " + attack.get(i).getArrows() +" arrows!");
-        }
-        gameArrows = 9;
-        try {
-                sleep(3000);
-            }catch (InterruptedException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            for (int i = 0; i < attack.size(); i++)
+            {
+                int amount = attack.get(i).getArrows();
+                for (int j = 0; j < amount; j++)
+                {
+                    int health = attack.get(i).getHealth();
+                    health = health - 1;
+                    attack.get(i).setHealth(health);
+                }
+                attack.get(i).setArrows(0);
+                System.out.println(attack.get(i).getName() + " has lost " + amount + " health!");
+                System.out.println(attack.get(i).getName() + " has " + attack.get(i).getArrows() +" arrows!");
             }
-    }
-    
-    for(int i = 0; i < players.size(); i++){
-        System.out.println(players.get(i).getName() + "  " + players.get(i).getHealth());
-    }
-    System.out.println();
-    
-    
-    
-    for (int i = 0; i < players.size(); i++){
-        if (players.get(i).getHealth() <= 0){
-            System.out.println(players.get(i).getName() + " has died!");
-            died.add(players.get(i));
+            gameArrows = 9;
+            try {
+                    sleep(3000);
+                }catch (InterruptedException ex) {
+                    Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
-    }
-    for (int i = 0; i < died.size(); i++){
-        players.remove(died.get(i));
-        for(int j=0; j<BangDiceGame.karma.length;++j)
-        {
-            BangDiceGame.karma[died.get(i).getSpot()][j]='x';
-            BangDiceGame.karma[j][died.get(i).getSpot()]='x';
+
+        for(int i = 0; i < players.size(); i++){
+            System.out.println(players.get(i).getName() + "  " + players.get(i).getHealth());
         }
-    }
-    System.out.println(died);
-    System.out.println();
+        System.out.println();
+
+        ArrayList<Player> died = new ArrayList<Player>();
+
+        for (int i = 0; i < players.size(); i++){
+            if (players.get(i).getHealth() <= 0){
+                System.out.println(players.get(i).getName() + " has died!");
+                died.add(players.get(i));
+            }
+        }
+        for (int i = 0; i < died.size(); i++){
+            players.remove(died.get(i));
+        }
+
+        System.out.println();
+
+          previousPlayer = nextPlayer;
+          nextPlayer = otherPlayer(nextPlayer);
+        }
+        System.out.println();
+    
         
   }
   
