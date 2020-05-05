@@ -18,8 +18,8 @@ static int isDepDead;
 
     
     public static void main(String[] args) {
-        //StartScreenUserInterface start = new StartScreenUserInterface();
-        //start.launchGame(args);
+        StartScreenUserInterface start = new StartScreenUserInterface();
+        start.launchGame(args);
         ArrayList<Player> players = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         Dice dice = new Dice();
