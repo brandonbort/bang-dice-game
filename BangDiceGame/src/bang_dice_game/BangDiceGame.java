@@ -13,7 +13,7 @@ import User_Interface_Components.*;
  * @author Brandon
  */
 public class BangDiceGame{
-static char [][] karma;
+static int [] karma;
 static int isDepDead;
 
     
@@ -29,7 +29,7 @@ static int isDepDead;
         
         int playerAmount = in.nextInt();
         playerAmount=5;                             //hardcoded bec ik yall forgot my msg
-        karma = new char[playerAmount][playerAmount];
+        karma = new int[playerAmount];
         
         
 //            UserPlayer playerHuman = new UserPlayer("getto", "sheriff", "is good guy :D", 4, 0);
