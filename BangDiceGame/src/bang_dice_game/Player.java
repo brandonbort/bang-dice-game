@@ -1,9 +1,8 @@
+/**
+ * Aaron Developed Code
+ */
 package bang_dice_game;
 
-/**
- *
- * @author sloan
- */
 public interface Player {
     public String getName();
     public void setName(String name);
