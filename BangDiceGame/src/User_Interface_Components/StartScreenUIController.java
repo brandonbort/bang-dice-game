@@ -22,6 +22,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
+import java.util.*;
+import bang_dice_game.BangDiceGame;
 
 /**
  *
@@ -33,29 +35,47 @@ public class StartScreenUIController implements Initializable, EventHandler<Acti
     @FXML
     private Button startButton;
     @FXML
-    private ChoiceBox<String> numOfPlayers;
+    public ChoiceBox<String> numOfPlayers;
     
+    static GameBoardUIController boardControl;
+    
+    static int [] karma;
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         if(event.getSource()==startButton){
+            LinkedList<String> chars;
+            
+            int playerAmount = (int) Integer.parseInt(numOfPlayers.getValue());
+            
+            //opens main game window after creating game
             Stage stage = (Stage) startButton.getScene().getWindow();
             stage.close();
-            Parent root = FXMLLoader.load(getClass().getResource("GameBoardUI.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameBoardUI.fxml"));
+            //sets the game Controller so the AI and users cant interact
+            GameBoardUIController.setLoad(fxmlLoader);
+            GameBoardUIController.setPlayerNum(playerAmount);
+            Parent root = fxmlLoader.load();
+            boardControl = (GameBoardUIController)fxmlLoader.getController();
             Scene scene = new Scene(root);
+            
             FileInputStream iconStream = new FileInputStream(System.getProperty("user.dir") + "/src/utility/bang icon.jpg");
             Image icon = new Image(iconStream);
             stage.getIcons().add(icon);
-            stage.setScene(scene);
+            stage.setScene(scene);            
             stage.show();
+            
+            GameBoardUIController.setPlayerNum(playerAmount);
+            BangDiceGame.newGame(GameBoardUIController.getPlayerNum(), GameBoardUIController.getLoad().getController());
         }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    
         startButton.setDisable(true);
         
         //add items to the FXML choice box and create an event listener for when the value is changed
-        String nums[] = {"3", "4", "5", "6", "7", "8"};
+        String nums[] = {"4", "5", "6", "7", "8"};
         numOfPlayers.setItems(FXCollections.observableArrayList(nums));
         numOfPlayers.setOnAction(this);
         // TODO
@@ -77,5 +97,5 @@ public class StartScreenUIController implements Initializable, EventHandler<Acti
             startButton.setDisable(false);
         }
     }
-
+    
 }
