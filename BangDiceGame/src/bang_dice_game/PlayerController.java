@@ -35,6 +35,10 @@ class PlayerController implements PlayerObserver {
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
         int health;
+        int bang = 0;
+        
+        if ("SidKetchum".equals(player.getName()))
+            player.beerDice();
           
         dice.firstRoll();
          for (int i = 0; i < 5; i++){
@@ -107,6 +111,7 @@ class PlayerController implements PlayerObserver {
 
                         case "BullsEye1":
                             player.takeAim1();
+                            bang = bang + 1;
                             break;
 
                         case "BullsEye2":
@@ -115,6 +120,7 @@ class PlayerController implements PlayerObserver {
                             }
                             else
                                 player.takeAim2();
+                            bang = bang + 1;
                             break;
 
                         case "Beer":
@@ -129,6 +135,15 @@ class PlayerController implements PlayerObserver {
                                 Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
+                    }
+                }
+                if("SuzyLafayette".equals(player.getName())){
+                    if(bang == 0){
+                        health = 0;
+                        health = player.getHealth();
+                        health = health + 2;
+                        player.setHealth(health);
+                        System.out.println(player.getName() + " has gained 2 health!");
                     }
                 }
             }
