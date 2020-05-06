@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package bang_dice_game;
+import User_Interface_Components.GameBoardUIController;
 import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.Scanner;
@@ -16,12 +17,13 @@ import java.util.logging.Logger;
 class PlayerController implements PlayerObserver {
     
     private Game game;
-    private Scanner in;
+//    private Scanner in;
     private Dice dice;
+    private GameBoardUIController gameControl;
     
-    public PlayerController (UserPlayer player, Game game, Scanner in, Dice dice){
+    public PlayerController (UserPlayer player, Game game, GameBoardUIController gameControl, Dice dice){
         this.game = game;
-        this.in = in;
+        this.gameControl = gameControl;
         this.dice = dice;
         player.register(this);
     

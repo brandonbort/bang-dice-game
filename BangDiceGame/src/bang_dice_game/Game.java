@@ -5,6 +5,8 @@
  */
 package bang_dice_game;
 
+import User_Interface_Components.GameBoardUIController;
+import java.io.FileNotFoundException;
 import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.logging.Level;
@@ -15,20 +17,26 @@ import java.util.logging.Logger;
  * @author sloan
  */
 
-class Game {
+public class Game {
   
   private static ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played
   private static int gameArrows = 9;                      // total arrows in game
-  
-  
-  
+  private GameBoardUIController gameControl;
+  private Player userPlayer;
+  private Player sheriff;
+
+
+
  
-  public Game (ArrayList<Player> players) { 
+  public Game (ArrayList<Player> players, GameBoardUIController gameControl, Player userPlayer, Player sheriff) { 
     this.players = players;
     this.nextPlayer = players.get(0);
     this.previousPlayer = null;
+    this.gameControl = gameControl;
+    this.userPlayer = userPlayer;
+    this.sheriff = sheriff;
   }
   
   /**
@@ -36,6 +44,14 @@ class Game {
    */
   public Player nextPlayer () {
     return nextPlayer;
+  }
+  
+  public Player getSheriff() {
+      return sheriff;
+  }
+  
+  public Player getUser(){
+      return userPlayer;
   }
   
   /**
@@ -91,9 +107,9 @@ class Game {
    * Conduct a single move in the game, allowing the appropriate Player to
    * take a turn. Has no effect if the game is over.
    */
-  public void play () {
+  public void play () throws FileNotFoundException {
     if (!gameOver()) { 
-      System.out.println(nextPlayer.getName() + "'s TURN!!");  
+      System.out.println(nextPlayer.getName() + "'s TURN!!");
       nextPlayer.takeTurn();
       
       if (gameArrows == 0)
@@ -155,7 +171,7 @@ class Game {
   /**
    * The Player who is not the one specified.
    */
-  private Player otherPlayer (Player player) {
+  public Player otherPlayer (Player player) {
       
       Player temp = player;
       int size = players.size() - 1;
@@ -172,4 +188,5 @@ class Game {
     }
       return temp;
   }
+  
 }

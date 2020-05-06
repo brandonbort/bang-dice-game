@@ -53,12 +53,12 @@ public class Dice {
          *To get basic dice face randomly 
          * @return basic dice faces 
           */ 
-//        public static Dice_Face getRandomDice_Face(){   
-//             
-//            //return dice[RANDOM.nextInt(SIZE)];
-//            return dice[getrandNum()];
-//            
-//            }
+        public static Dice_Face getRandomDice_Face(){   
+             
+            //return dice[RANDOM.nextInt(SIZE)];
+            return dice[getrandNum()];
+            
+            }
     }
         
     /**

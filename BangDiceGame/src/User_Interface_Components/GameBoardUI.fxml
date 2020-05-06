@@ -14,17 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="844.0" style="-fx-background-color: Tan;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="User_Interface_Components.GameBoardUIController">
+<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="844.0" style="-fx-background-color: Tan;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User_Interface_Components.GameBoardUIController">
    <children>
       <BorderPane prefHeight="569.0" prefWidth="844.0">
-         <top>
-            <Pane prefHeight="85.0" prefWidth="844.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="rulesButton" layoutX="802.0" layoutY="14.0" mnemonicParsing="false" onAction="#handle" text="?" />
-               </children>
-            </Pane>
-         </top>
          <right>
             <VBox prefHeight="447.0" prefWidth="844.0" BorderPane.alignment="CENTER">
                <children>
@@ -32,31 +24,11 @@
                      <children>
                         <HBox layoutX="242.0" layoutY="62.0" prefHeight="64.0" prefWidth="360.0" spacing="10.0">
                            <children>
-                              <ImageView fx:id="diOne" fitHeight="65.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../utility/Dice%20Faces/DiOne.PNG" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="diTwo" fitHeight="66.0" fitWidth="64.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../utility/Dice%20Faces/DiTwo.PNG" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="diThree" fitHeight="65.0" fitWidth="64.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../utility/Dice%20Faces/DiGatling.PNG" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="diFour" fitHeight="65.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../utility/Dice%20Faces/DiDynamite.PNG" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="diFive" fitHeight="65.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../utility/Dice%20Faces/DiBeer.PNG" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="diOne" fitHeight="82.0" fitWidth="61.0" pickOnBounds="true" />
+                              <ImageView fx:id="diTwo" fitHeight="82.0" fitWidth="66.0" pickOnBounds="true" />
+                              <ImageView fx:id="diThree" fitHeight="82.0" fitWidth="64.0" pickOnBounds="true" />
+                              <ImageView fx:id="diFour" fitHeight="82.0" fitWidth="64.0" pickOnBounds="true" />
+                              <ImageView fx:id="diFive" fitHeight="81.0" fitWidth="61.0" pickOnBounds="true" />
                            </children>
                            <opaqueInsets>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -67,7 +39,7 @@
                         <CheckBox fx:id="checkThree" layoutX="412.0" layoutY="38.0" mnemonicParsing="false" />
                         <CheckBox fx:id="checkFour" layoutX="485.0" layoutY="38.0" mnemonicParsing="false" />
                         <CheckBox fx:id="checkFive" layoutX="555.0" layoutY="38.0" mnemonicParsing="false" />
-                        <TitledPane animated="false" layoutX="14.0" layoutY="5.0" prefHeight="231.0" prefWidth="199.0" style="-fx-border-color: black;" text="Player Info">
+                        <TitledPane animated="false" layoutX="14.0" layoutY="5.0" prefHeight="231.0" prefWidth="199.0" style="-fx-border-color: black;" text="Your Info">
                            <content>
                               <VBox spacing="10.0" style="-fx-background-image: White;">
                                  <children>
@@ -108,16 +80,25 @@
                               </VBox>
                            </content>
                         </TitledPane>
+                        <Pane layoutX="1.0" layoutY="4.0" prefHeight="85.0" prefWidth="844.0">
+                           <children>
+                              <Button fx:id="rulesButton" layoutX="808.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" text="?" />
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="602.0">
                      <children>
-                        <ImageView fx:id="currentPlayer" fitHeight="183.0" fitWidth="291.0" layoutX="300.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../utility/characters/rose%20doolan.jpg" />
-                           </image>
-                        </ImageView>
-                        <TitledPane animated="false" layoutX="14.0" layoutY="85.0" prefHeight="231.0" prefWidth="199.0" style="-fx-border-color: black;" text="Player Info">
+                        <Pane layoutX="275.0" style="-fx-border-color: Black;">
+                           <children>
+                              <ImageView fx:id="currentPlayerCard" fitHeight="183.0" fitWidth="291.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../utility/characters/RoseDoolan.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <TitledPane fx:id="GameInfoBox" animated="false" layoutX="14.0" layoutY="122.0" prefHeight="231.0" prefWidth="199.0" style="-fx-border-color: black;" text="Game Info">
                            <content>
                               <VBox spacing="10.0" style="-fx-background-image: White;">
                                  <children>
@@ -139,11 +120,52 @@
                                           </HBox>
                                        </children>
                                     </HBox>
+                                    <Label fx:id="arrowLabel1" prefHeight="50.0" prefWidth="166.0" text="Arrows until attack:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="arrowsToAttack" layoutX="62.0" layoutY="17.0" prefHeight="75.0" prefWidth="113.0" style="-fx-text-alignment: right;" textAlignment="CENTER" textFill="#e10606">
+                                             <font>
+                                                <Font size="52.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="619.0" prefHeight="231.0" prefWidth="199.0" style="-fx-border-color: black;" text="Current Player Info">
+                           <content>
+                              <VBox spacing="10.0" style="-fx-background-image: White;">
+                                 <children>
+                                    <HBox fillHeight="false" prefHeight="52.0" prefWidth="175.0">
+                                       <children>
+                                          <ImageView fx:id="HeartIcon1" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../utility/heart.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="CurrentPlayerLifePointsLabel" prefHeight="52.0" prefWidth="127.0" text="Life Points">
+                                             <font>
+                                                <Font size="35.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                     <HBox prefHeight="60.0" prefWidth="175.0">
                                        <children>
-                                          <Label fx:id="arrowLabel1" prefHeight="50.0" prefWidth="166.0" text="Arrows until attack:">
+                                          <ImageView fx:id="HeartIcon11" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../utility/Dice%20Faces/DiArrow.PNG" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="currentPlayerArrowLabel" prefHeight="50.0" prefWidth="126.0" text="Arrows">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="35.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -156,10 +178,16 @@
                   </Pane>
                   <Pane prefHeight="88.0" prefWidth="844.0">
                      <children>
-                        <Button fx:id="rollButton" layoutX="338.0" layoutY="-7.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" text="Roll Dice!" />
-                        <Label fx:id="arrowsToAttack" layoutX="95.0" layoutY="15.0" prefHeight="45.0" prefWidth="111.0" textAlignment="CENTER">
+                        <Button fx:id="rollButton" layoutX="239.0" layoutY="-7.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="169.0" text="Roll Dice!" />
+                        <Button fx:id="skipRerollBtn" layoutX="239.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="171.0" text="Next Player's Turn" />
+                        <Label layoutX="422.0" layoutY="-11.0" prefHeight="53.0" prefWidth="116.0" text="Rolls left:">
                            <font>
-                              <Font size="52.0" />
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="reRollLabel" layoutX="532.0" layoutY="-1.0" text="3">
+                           <font>
+                              <Font size="23.0" />
                            </font>
                         </Label>
                      </children>
