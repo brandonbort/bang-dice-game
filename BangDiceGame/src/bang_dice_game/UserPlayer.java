@@ -17,12 +17,12 @@ class UserPlayer implements Player{
     private int spot;
     private PlayerObserver controller; // Observer this Player reports to.
     
-    public UserPlayer(String playerName, String playerRole, String playerDescription, int playerHealth, int spot){
-        this.name = playerName;
-        this.role = playerRole;
-        this.description = playerDescription;
-        this.health = playerHealth;
-        this.maxHealth = playerHealth;
+    public UserPlayer(String name, String role, String description, int health, int spot){
+        this.name = name;
+        this.role = role;
+        this.description = description;
+        this.health = health;
+        this.maxHealth = health;
         this.spot = spot;
         this.arrows = 0;
         this.controller = null;
