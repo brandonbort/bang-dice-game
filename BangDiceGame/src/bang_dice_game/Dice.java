@@ -16,19 +16,7 @@ import java.util.Scanner;
  * @author airishimamura
  */
 public class Dice {  
-//    enum Dice_Face
-//                 
-//    { 
-//        IndianArrow, Dynamite, BullsEye1, BullsEye2, Beer, Gatling;
-//        
-//        public static final Dice_Face [] dice = Dice_Face.values();
-//        private static final int SIZE = dice.length;
-//        private static final Random RANDOM = new Random((long)( Math.random() * (double)Long.SIZE));
-//        
-//        public static Dice_Face getRandomDice_Face(){      
-//            return dice[RANDOM.nextInt(SIZE)];
-//
-//        }
+
 
         public int numOfDices = 5;
         public String yes = "Yes";
@@ -213,8 +201,8 @@ public class Dice {
      *To get first dice faces 
      */ 
       
-    public void firstRoll() //method to roll dices
-      {
+    public void firstRoll() //method to roll dices  
+    {
 //        System.out.print("Take an option?(Yes/No): ");
 //       Scanner scanner = new Scanner(System.in);
 //       String option = scanner.nextLine();

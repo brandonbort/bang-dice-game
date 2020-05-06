@@ -17,9 +17,10 @@ import java.util.Collections;
  */
 public class Characters{
 
+    public static int playerSIZE = BangDiceGame.karma.length;
 //    static int playerSIZE = BangDiceGame.karma.length;
 //    private static final Random RANDOM = new SecureRandom();
-    public static int playerSIZE;
+//    public static int playerSIZE;
     public static ArrayList <String> players = new ArrayList<>();
     private static String elGringoDescrip = "When  a  player  makes  you  lose  one  or  more  life  points, he must take an arrow."
             + "Life points lost to Indians or Dynamite are not affected.";
@@ -32,19 +33,15 @@ public class Characters{
     
     public enum BasicCharNames{
 
+
         BartCassidy, BlackJack, CalamityJanet, ElGringo, JesseJones,
         Jourdonnais, KitCarlson, LuckyDuke, PaulRegret, PedroRamirez,
         RoseDoolan, SidKetchum, SlabTheKiller,SuzyLafayette, VultureSam,
         WillyTheKid;
 
+
         public static BasicCharNames playerName[] = BasicCharNames.values();
     }    
-    
-
-    public void characterDescriptions(){
-        
-        
-    }  
     
     public static LinkedList<String> getRandChars(int num){
         LinkedList<String> chars = new LinkedList<String>();
@@ -101,5 +98,26 @@ public class Characters{
     public String suzyLafayetteDescrip(){
         return this.suzyLafayetteDescrip;
     }
-}
 
+
+
+
+    public void characterDescriptions(){
+        
+        
+    }  
+
+    public void getplayers() {
+
+        for(int i = 0; i< BasicCharNames.values().length; i++){
+        players.add(BasicCharNames.playerName[i].toString());
+                }
+       Collections.shuffle(players); 
+       
+        //for testing
+//       for(int z = 0; z< playerSIZE; z++){
+//           System.out.println(players.get(z));
+//       }  
+    }
+      
+}
