@@ -1,3 +1,7 @@
+/**
+ * Carlos Developed Code
+ * Arron assisted
+ */
 package bang_dice_game;
 //LOOK AT BOTTOM OF CODE FOR EXPLANATION OF KARMA!!!
 
