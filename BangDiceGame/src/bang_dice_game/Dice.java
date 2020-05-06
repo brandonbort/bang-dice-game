@@ -108,9 +108,9 @@ public class Dice {
             // get 5 dice faces from basic dices
             for ( int i = 0; i < numOfDices; i++){
              //Dice_Face.dice[i] = Dice_Face.getRandomDice_Face();
-             Result.add(Dice_Face.dice[getrandNum()].toString());
-            System.out.print("\t" + "Dice[" + i + "] = "  + Result.get(i) + " (Basic Dice)"+"\n" );
-        }  
+               Result.add(Dice_Face.dice[getrandNum()].toString());
+//            System.out.print("\t" + "Dice[" + i + "] = "  + Result.get(i) + " (Basic Dice)"+"\n" );
+            }  
       } 
       
      /**
@@ -250,14 +250,14 @@ public class Dice {
      */
     public void reRoll (){
        Scanner scanner = new Scanner(System.in);
-       boolean rollDecision = true; 
+//       boolean rollDecision = true; 
        //while the input is "Yes"
-       while (rollDecision){
-           System.out.print("Do you want to reroll? (Yes/No): ");
-           String response = scanner.next();
+//       while (rollDecision){
+//           System.out.print("Do you want to reroll? (Yes/No): ");
+//           String response = scanner.next();
     //When you want to reroll dices 
-    if(response.equals(yes))
-    {
+//    if(response.equals(yes))
+//    {
           // get a dice number you want to reroll 
            System.out.print("\nChose number of dice you want to reroll");
            System.out.print("(eg: 2,3,0): ");
@@ -319,16 +319,16 @@ public class Dice {
      }
     }
     //when you don't want to reroll 
-    else if(response.equals(no)){
-           rollDecision = false;
-           System.out.println("Finish rolling dice");
-            }
-     //when response is not yes or no 
-    else {
-        System.out.println("Invalid >"+response+"<");     
-        }
-       }
-    } 
+//    else if(response.equals(no)){
+//           rollDecision = false;
+//           System.out.println("Finish rolling dice");
+//            }
+//     //when response is not yes or no 
+//    else {
+//        System.out.println("Invalid >"+response+"<");     
+//        }
+//       }
+//    } 
    
  }
        

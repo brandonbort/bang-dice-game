@@ -17,7 +17,7 @@ import java.util.Collections;
  */
 public class Characters{
 
-    public static int playerSIZE = BangDiceGame.karma.length;
+//    public static int playerSIZE = BangDiceGame.karma.length;
 //    static int playerSIZE = BangDiceGame.karma.length;
 //    private static final Random RANDOM = new SecureRandom();
 //    public static int playerSIZE;
@@ -59,11 +59,11 @@ public class Characters{
     }
 
     public void getPlayers() {
-        this.playerSIZE = BangDiceGame.karma.length;
+//        this.playerSIZE = BangDiceGame.karma.length;
         for(int i = 0; i< BasicCharNames.values().length; i++){
         players.add(BasicCharNames.playerName[i].toString());
                 }
-       Collections.shuffle(players); 
+        Collections.shuffle(players); 
        
         //for testing
 //       for(int z = 0; z< playerSIZE; z++){

@@ -10,23 +10,32 @@ import java.util.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 /**
  *
  * @author airishimamura
  */
-class PlayerController implements PlayerObserver {
+public class PlayerController implements PlayerObserver {
     
     private Game game;
 //    private Scanner in;
     private Dice dice;
     private GameBoardUIController gameControl;
+    private UserPlayer player;
+    CheckBox[] diceChecks = {gameControl.getCheckOne(), gameControl.getCheckTwo(), gameControl.getCheckThree(), gameControl.getCheckFour(), gameControl.getCheckFive()};
+    
+    public UserPlayer getPlayer() {
+        return player;
+    }
     
     public PlayerController (UserPlayer player, Game game, GameBoardUIController gameControl, Dice dice){
         this.game = game;
         this.gameControl = gameControl;
         this.dice = dice;
-        player.register(this);
-    
+        player.register(this);  
+        this.player = player;
     }
     
       public void update(UserPlayer player){//, Dice dice){
@@ -34,11 +43,14 @@ class PlayerController implements PlayerObserver {
         int countGatling = 0;
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
+        
         int health;
-          
-        dice.firstRoll();
-         for (int i = 0; i < 5; i++){
-           // if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
+        
+        dice.BasicDice();
+          updateDice();
+//        for(String i: dice.Result) System.out.println(i);
+        
+        for (int i = 0; i < 5; i++){
             if (dice.Result.get(i).equals("Dynamite"))
                 countDynamite = countDynamite + 1;
         }
@@ -58,6 +70,7 @@ class PlayerController implements PlayerObserver {
         }
         else{
             dice.reRoll();
+            updateDice();
             countDynamite = 0;
             for (int i = 0; i < 5; i++){
                 if(dice.Result.get(i).equals("Dynamite"))
@@ -82,6 +95,7 @@ class PlayerController implements PlayerObserver {
                 {
                     player.gatlingDice();
                 }
+//                updateDice();
                 for(int i = 0; i < 5; i++){
                    // if(null != diceFace.get(i))
                        if(null != dice.Result.get(i)) 
@@ -106,15 +120,15 @@ class PlayerController implements PlayerObserver {
                             break;
 
                         case "BullsEye1":
-                            player.takeAim1();
+//                            player.takeAim1();
                             break;
 
                         case "BullsEye2":
-                            if (currentPlayers.size() <= 3){
-                               player.takeAim1(); 
-                            }
-                            else
-                                player.takeAim2();
+//                            if (currentPlayers.size() <= 3){
+//                               player.takeAim1(); 
+//                            }
+//                            else
+//                                player.takeAim2();
                             break;
 
                         case "Beer":
@@ -134,4 +148,26 @@ class PlayerController implements PlayerObserver {
             }
         }  
      }
+      public void updateDice(){
+        ImageView[] diceImg = {gameControl.getDiOne(), gameControl.getDiTwo(), gameControl.getDiThree(), gameControl.getDiFour(), gameControl.getDiFive()};
+        Image[] diceFace = gameControl.getImageArray();
+          System.out.println("called updateDice()");
+        for(int i = 0; i < 5; i++){;
+                System.out.println("Dice: " + dice.Result.get(i));
+                 int di = Dice.Dice_Face.valueOf(dice.Result.get(i)).ordinal();
+                 diceImg[i].setImage(diceFace[di]);
+        }
+        for (int x = 0; x < 5; x++) {
+            
+             if (diceChecks[x].isSelected()) {
+                 int di = Dice.Dice_Face.valueOf(dice.Result.get(x)).ordinal();
+                 diceImg[x].setImage(diceFace[di]);
+             }
+             //user cannot reroll dynamite
+             if (diceImg[x].getImage() == diceFace[1]) {
+                 diceChecks[x].setDisable(true);
+                 diceChecks[x].setSelected(false);
+             }
+        }
+      }
 }

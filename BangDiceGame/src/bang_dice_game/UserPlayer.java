@@ -121,8 +121,6 @@ class UserPlayer implements Player{
         for (int i = 0; i < attack.size(); i++)
             System.out.print(i+1 + " ");
         
-        System.out.println();
-        
         int who = in.nextInt();
         int health = 0;
         switch (who) {

@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 import bang_dice_game.Dice;
 import javafx.scene.control.TitledPane;
 import bang_dice_game.Game;
+import bang_dice_game.PlayerController;
 
 /**
  * FXML Controller class
@@ -62,6 +63,10 @@ public class GameBoardUIController implements Initializable {
     private Label arrowLabel;
     @FXML
     private Label roleLabel;
+    @FXML
+    private Label characterLabel;
+    @FXML
+    private ImageView HeartIcon11;
 
     public Label getRoleLabel() {
         return roleLabel;
@@ -70,7 +75,6 @@ public class GameBoardUIController implements Initializable {
     public void setRoleLabel(String roleLabel) {
         this.roleLabel.setText(roleLabel);
     }
-    @FXML
     private ImageView currentPlayer;
     @FXML
     private Button rollButton;
@@ -93,6 +97,14 @@ public class GameBoardUIController implements Initializable {
     @FXML
     private ImageView HeartIcon1;
 
+    public String getCharacterLabel() {
+        return characterLabel.getText();
+    }
+
+    public void setCharacterLabel(String characterLabel) {
+        this.characterLabel.setText(characterLabel);
+    }
+
     @FXML
     private TitledPane GameInfoBox;
     @FXML
@@ -105,7 +117,18 @@ public class GameBoardUIController implements Initializable {
     private static Game game; 
     private static int playerNum;
     static FXMLLoader load;
-    private GameBoardUIController boardControl;
+    private static GameBoardUIController boardControl;
+    private static PlayerController playerController;
+
+    public static PlayerController getPlayerController() {
+        return playerController;
+    }
+
+    public static void setPlayerController(PlayerController playerController) {
+        GameBoardUIController.playerController = playerController;
+    }
+
+
 
     /**
      * Initializes the controller class.
@@ -120,17 +143,6 @@ public class GameBoardUIController implements Initializable {
             diceChecks[i].setSelected(true);
             diceChecks[i].setVisible(false);
         }
-//        while (!this.game.gameOver() && this.game !=null) {
-//            this.setCurrentPlayerArrowLabel(""+this.game.nextPlayer().getArrows());
-//            this.setArrowsToAttack(""+this.game.getGameArrows());
-//            
-//            try {
-//                this.setCurrentPlayerCard(this.game.nextPlayer().getName());
-//                this.game.play();
-//            } catch (FileNotFoundException ex) {
-//                Logger.getLogger(GameBoardUIController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }
 
     @FXML
@@ -153,34 +165,38 @@ public class GameBoardUIController implements Initializable {
         } else if (event.getSource() == rollButton) {
             //arrays to associate checkboxes with ImageViews
             reRolls--;
+            
             reRollLabel.setText("" + reRolls);
-            ImageView[] dice = {diOne, diTwo, diThree, diFour, diFive};
+//            ImageView[] dice = {diOne, diTwo, diThree, diFour, diFive};
             CheckBox[] diceChecks = {checkOne, checkTwo, checkThree, checkFour, checkFive};
-            Image[] diceFace = getImageArray();
+            if(GameBoardUIController.getGame().nextPlayer() == GameBoardUIController.getGame().getUser())
+                playerController.update(playerController.getPlayer());
             for (int x = 0; x < 5; x++) {
                 diceChecks[x].setVisible(true);
             }
             //this happens after the images are changed based on the dice rolls
-            for (int x = 0; x < 5; x++) {
-                if (diceChecks[x].isSelected()) {
-                    dice[x].setImage(diceFace[Dice.Dice_Face.getRandomDice_Face().ordinal()]);
-                }
-                //user cannot reroll dynamite
-                if (dice[x].getImage() == diceFace[1]) {
-                    diceChecks[x].setDisable(true);
-                    diceChecks[x].setSelected(false);
-                }
-            }
+            //do player rolls
+//            for (int x = 0; x < 5; x++) {
+//                if (diceChecks[x].isSelected()) {
+//                    dice[x].setImage(diceFace[Dice.Dice_Face.getRandomDice_Face().ordinal()]);
+//                }
+//                //user cannot reroll dynamite
+//                if (dice[x].getImage() == diceFace[1]) {
+//                    diceChecks[x].setDisable(true);
+//                    diceChecks[x].setSelected(false);
+//                }
+//            }
+
             if (reRolls < 1) {
                 rollButton.setDisable(true);
             }
 
         } else if (event.getSource() == skipRerollBtn) {
             reRolls = 3;
-            if(!this.game.gameOver()){
-//                this.game.nextPlayer().takeTurn();
-                GameBoardUIController.update(boardControl);
-                this.game.otherPlayer(this.game.nextPlayer());
+            if(!GameBoardUIController.getGame().gameOver()){
+                GameBoardUIController.getGame().findNextPlayer();
+                GameBoardUIController.update(GameBoardUIController.getBoardControl());
+                if(GameBoardUIController.getGame().nextPlayer().getName().equals("LuckyDuke"))reRolls++;
             }
             CheckBox[] diceChecks = {checkOne, checkTwo, checkThree, checkFour, checkFive};
             for (int i = 0; i < diceChecks.length; i++) {
@@ -191,6 +207,86 @@ public class GameBoardUIController implements Initializable {
             rollButton.setDisable(false);
 //            game.AIplayer
         }
+    }
+
+    public ImageView getDiOne() {
+        return diOne;
+    }
+
+    public void setDiOne(ImageView diOne) {
+        this.diOne = diOne;
+    }
+
+    public ImageView getDiTwo() {
+        return diTwo;
+    }
+
+    public void setDiTwo(ImageView diTwo) {
+        this.diTwo = diTwo;
+    }
+
+    public ImageView getDiThree() {
+        return diThree;
+    }
+
+    public void setDiThree(ImageView diThree) {
+        this.diThree = diThree;
+    }
+
+    public ImageView getDiFour() {
+        return diFour;
+    }
+
+    public void setDiFour(ImageView diFour) {
+        this.diFour = diFour;
+    }
+
+    public ImageView getDiFive() {
+        return diFive;
+    }
+
+    public void setDiFive(ImageView diFive) {
+        this.diFive = diFive;
+    }
+
+    public CheckBox getCheckOne() {
+        return checkOne;
+    }
+
+    public void setCheckOne(CheckBox checkOne) {
+        this.checkOne = checkOne;
+    }
+
+    public CheckBox getCheckTwo() {
+        return checkTwo;
+    }
+
+    public void setCheckTwo(CheckBox checkTwo) {
+        this.checkTwo = checkTwo;
+    }
+
+    public CheckBox getCheckThree() {
+        return checkThree;
+    }
+
+    public void setCheckThree(CheckBox checkThree) {
+        this.checkThree = checkThree;
+    }
+
+    public CheckBox getCheckFour() {
+        return checkFour;
+    }
+
+    public void setCheckFour(CheckBox checkFour) {
+        this.checkFour = checkFour;
+    }
+
+    public CheckBox getCheckFive() {
+        return checkFive;
+    }
+
+    public void setCheckFive(CheckBox checkFive) {
+        this.checkFive = checkFive;
     }
 
     public Image[] getImageArray() {
@@ -216,9 +312,11 @@ public class GameBoardUIController implements Initializable {
     }
     
     public static void update(GameBoardUIController boardControl) throws FileNotFoundException{
+        GameBoardUIController.setBoardControl(boardControl);
         boardControl.setLifePointsLabel(GameBoardUIController.getGame().getUser().getHealth()+"");
         boardControl.setArrowLabel(GameBoardUIController.getGame().getUser().getArrows()+"");
         boardControl.setRoleLabel("Role:" + GameBoardUIController.getGame().getUser().getRole());
+        boardControl.setCharacterLabel(GameBoardUIController.getGame().getUser().getName());
         
         boardControl.setSheriffLabel(GameBoardUIController.getGame().getSheriff().getName());
         boardControl.setArrowsToAttack(""+Game.getGameArrows());
@@ -284,7 +382,12 @@ public class GameBoardUIController implements Initializable {
     public static FXMLLoader getLoad(){
         return GameBoardUIController.load;
     }
-//    public static void setLock(Object lock){
-//        GameBoardUIController.lock = lock;
-//    }
+    
+    public static GameBoardUIController getBoardControl() {
+        return boardControl;
+    }
+
+    public static void setBoardControl(GameBoardUIController boardControl) {
+        GameBoardUIController.boardControl = boardControl;
+    }
 }

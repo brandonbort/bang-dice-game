@@ -160,8 +160,8 @@ public class Game {
 
         System.out.println();
 
-          previousPlayer = nextPlayer;
-          nextPlayer = otherPlayer(nextPlayer);
+//          previousPlayer = nextPlayer;
+//          nextPlayer = otherPlayer(nextPlayer);
         }
         System.out.println();
     
@@ -189,4 +189,8 @@ public class Game {
       return temp;
   }
   
+  public void findNextPlayer(){
+      previousPlayer = nextPlayer;
+      nextPlayer = otherPlayer(nextPlayer);
+  }
 }

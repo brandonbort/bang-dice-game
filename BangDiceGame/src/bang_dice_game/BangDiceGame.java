@@ -66,6 +66,7 @@ static final Object lock = new Object();
         PlayerController playerController = new PlayerController(playerHuman1,bangGame,boardControl,dice);
         
 //        boardControl.setSheriffLabel(bangGame);
+        GameBoardUIController.setPlayerController(playerController);
         GameBoardUIController.update(boardControl);
 
         GameBoardUIController.setGame(bangGame);
