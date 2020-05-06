@@ -8,8 +8,8 @@ package bang_dice_game;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Random; 
-import java.util.Scanner;
-import java.security.SecureRandom;
+//import java.security.SecureRandom;
+import java.util.Collections;
 
 /**
  *
@@ -17,21 +17,29 @@ import java.security.SecureRandom;
  */
 public class Characters{
 
-    static int playerSIZE = BangDiceGame.karma.length;
-    private static final Random RANDOM = new SecureRandom();
-    public ArrayList <String> players = new ArrayList<>();
+    public static int playerSIZE = BangDiceGame.karma.length;
+    public static ArrayList <String> players = new ArrayList<>();
     
     public enum BasicCharNames{
-        BartCassidy, BlackJack, CalamityJanet, ElGringo, JesseJones,
-        Jourdonnais, KitCarlson, LuckyDuke, PaulRegret, PedroRamirez,
-        RoseDoolan, SidKetchum, SlabTheKiller,SuzyLafayette, VurltureSam,
-        WillyTheKid;
+        ElGringo, JournDonn, PaulRegret, PedroRamirez,
+        SidKetchum, VurltureSam, SuzyLafayette;
         public static BasicCharNames playerName[] = BasicCharNames.values();
-        public static BasicCharNames getRandomPlayers(){      
-            return playerName[RANDOM.nextInt(playerSIZE)];
-            }
+       
     }    
     
+    public void getplayers() {
+
+        for(int i = 0; i< BasicCharNames.values().length; i++){
+        players.add(BasicCharNames.playerName[i].toString());
+                }
+       Collections.shuffle(players); 
+       
+        //for testing
+//       for(int z = 0; z< playerSIZE; z++){
+//           System.out.println(players.get(z));
+//       }  
+    }
+     
     public void characterDescriptions(){
         
         
