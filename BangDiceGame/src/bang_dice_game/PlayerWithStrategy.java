@@ -1,3 +1,7 @@
+/**
+ * Carlos Developed Code
+ * Arron assisted
+ */
 package bang_dice_game;
 
 import static java.lang.Thread.sleep;
