@@ -1,10 +1,8 @@
-package bang_dice_game;
-
 /**
- *
- * @author airishimamura
- * 
- */ 
+ * Airi Developed Code
+ * Aaron & Carlos assisted
+ */
+package bang_dice_game;
 import java.util.ArrayList;
 import java.util.Random; 
 import java.util.Scanner;
