@@ -20,7 +20,6 @@ class PlayerWithStrategy implements Player{
     private int arrows = 0;
     private int spot;
     private int [] karma = new int[5];
-    private PlayerObserver controller;  //I think this controls when its the NPC's turn
     
     
     //karma only needs one instance so idk if this will keep it like that
@@ -42,7 +41,6 @@ class PlayerWithStrategy implements Player{
         this.maxHealth = health;
         this.arrows = 0;                    //arrows should always start at 0 but ill include it here anyways
         this.spot = spot;
-        this.controller = null;             //I think this controls when its the NPC's turn
         for (int i = 0; i < karma.length; i++)
             this.karma[i] = karma[i];
     }
