@@ -28,6 +28,10 @@ public class AI {
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
         int health;
+        
+        if ("SidKetchum".equals(player.getName()))
+            player.beerDice(player, morale);
+        
           
         dice.firstRoll();
          for (int i = 0; i < 5; i++){
