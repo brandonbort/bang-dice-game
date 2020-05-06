@@ -59,18 +59,18 @@ public class Characters{
         return chars;
     }
 
-    public void getPlayers() {
+//    public void getPlayers() {
 //        this.playerSIZE = BangDiceGame.karma.length;
-        for(int i = 0; i< BasicCharNames.values().length; i++){
-        players.add(BasicCharNames.playerName[i].toString());
-                }
-        Collections.shuffle(players); 
-       
-        //for testing
-//       for(int z = 0; z< playerSIZE; z++){
-//           System.out.println(players.get(z));
-//       }  
-    }
+//        for(int i = 0; i< BasicCharNames.values().length; i++){
+//        players.add(BasicCharNames.playerName[i].toString());
+//                }
+//       Collections.shuffle(players); 
+//       
+//        //for testing
+////       for(int z = 0; z< playerSIZE; z++){
+////           System.out.println(players.get(z));
+////       }  
+//    }
       
     public String elGringoDescrip(){
         return this.elGringoDescrip;
@@ -102,23 +102,23 @@ public class Characters{
 
 
 
+//
+//    public void characterDescriptions(){
+//        
+//        
+//    }  
 
-    public void characterDescriptions(){
-        
-        
-    }  
-
-    public void getplayers() {
-
-        for(int i = 0; i< BasicCharNames.values().length; i++){
-        players.add(BasicCharNames.playerName[i].toString());
-                }
-       Collections.shuffle(players); 
-       
-        //for testing
-//       for(int z = 0; z< playerSIZE; z++){
-//           System.out.println(players.get(z));
-//       }  
-    }
+//    public void getplayers() {
+//
+//        for(int i = 0; i< BasicCharNames.values().length; i++){
+//        players.add(BasicCharNames.playerName[i].toString());
+//                }
+//       Collections.shuffle(players); 
+//       
+//        //for testing
+////       for(int z = 0; z< playerSIZE; z++){
+////           System.out.println(players.get(z));
+////       }  
+//    }
       
 }
