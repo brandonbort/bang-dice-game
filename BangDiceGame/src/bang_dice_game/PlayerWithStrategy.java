@@ -1,3 +1,7 @@
+/**
+ * Carlos Developed Code
+ * Arron assisted
+ */
 package bang_dice_game;
 
 import static java.lang.Thread.sleep;
@@ -145,6 +149,7 @@ class PlayerWithStrategy implements Player{
         int health = 0;
         int placement = 0;
         int [] karmaAdjust = new int[5];
+        int gringoCount = 0;
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -183,6 +188,20 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(0).setKarma(karmaAdjust);       
                     }
+                if("ElGringo".equals(attack.get(0).getName()))
+                    gringoCount = gringoCount + 1;
+                if("PedroRamirez".equals(attack.get(0).getName())){
+                    if(attack.get(0).getArrows() != 0){
+                        int arrows = attack.get(0).getArrows();
+                        arrows = arrows - 1;
+                        attack.get(0).setArrows(arrows);
+                        System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                        int gameArrows = Game.getGameArrows();
+                        gameArrows = gameArrows + 1;
+                        Game.setGameArrows(gameArrows);
+                        System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                    }
+                }
             }
         }
         else{
@@ -198,6 +217,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(1).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(1).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(1).getName())){
+                            if(attack.get(1).getArrows() != 0){
+                                int arrows = attack.get(1).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(1).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }
                     }
                     else{
                         health = attack.get(0).getHealth();
@@ -208,6 +241,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust = attack.get(0).getKarma();
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(0).setKarma(karmaAdjust);       
+                        }
+                        if("ElGringo".equals(attack.get(0).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(0).getName())){
+                            if(attack.get(0).getArrows() != 0){
+                                int arrows = attack.get(0).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(0).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
                         }
                     }
                 }
@@ -220,6 +267,20 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust = attack.get(0).getKarma();
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(0).setKarma(karmaAdjust);       
+                    }
+                    if("ElGringo".equals(attack.get(0).getName()))
+                        gringoCount = gringoCount + 1;
+                    if("PedroRamirez".equals(attack.get(0).getName())){
+                        if(attack.get(0).getArrows() != 0){
+                            int arrows = attack.get(0).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(0).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                        }
                     }
                 }
             }
@@ -235,6 +296,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(1).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(1).getName()))
+                            gringoCount = gringoCount + 1; 
+                        if("PedroRamirez".equals(attack.get(1).getName())){
+                            if(attack.get(1).getArrows() != 0){
+                                int arrows = attack.get(1).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(1).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }
                     }
                     else{
                         health = attack.get(0).getHealth();
@@ -245,6 +320,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust = attack.get(0).getKarma();
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(0).setKarma(karmaAdjust);       
+                        }
+                        if("ElGringo".equals(attack.get(0).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(0).getName())){
+                            if(attack.get(0).getArrows() != 0){
+                                int arrows = attack.get(0).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(0).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
                         }
                     }
                 }
@@ -257,6 +346,20 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust = attack.get(0).getKarma();
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(0).setKarma(karmaAdjust);       
+                    }
+                    if("ElGringo".equals(attack.get(0).getName()))
+                        gringoCount = gringoCount + 1;
+                    if("PedroRamirez".equals(attack.get(0).getName())){
+                        if(attack.get(0).getArrows() != 0){
+                            int arrows = attack.get(0).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(0).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                        }
                     }
                 }
             }
@@ -272,6 +375,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(0).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(0).getName()))
+                            gringoCount = gringoCount + 1; 
+                        if("PedroRamirez".equals(attack.get(0).getName())){
+                            if(attack.get(0).getArrows() != 0){
+                                int arrows = attack.get(0).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(0).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }
                     }
                     else{
                         health = attack.get(1).getHealth();
@@ -282,6 +399,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust = attack.get(1).getKarma();
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(1).setKarma(karmaAdjust);       
+                        }
+                        if("ElGringo".equals(attack.get(1).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(1).getName())){
+                            if(attack.get(1).getArrows() != 0){
+                                int arrows = attack.get(1).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(1).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
                         }
                     }
                 }
@@ -295,8 +426,32 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(1).setKarma(karmaAdjust);       
                     }
+                    if("ElGringo".equals(attack.get(1).getName()))
+                        gringoCount = gringoCount + 1; 
+                    if("PedroRamirez".equals(attack.get(1).getName())){
+                        if(attack.get(1).getArrows() != 0){
+                            int arrows = attack.get(1).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(1).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                        }
+                    }
                 }
-            }        
+            }            
+        }
+        if(gringoCount >= 1){
+            int arrows = this.getArrows();
+            arrows = arrows + 1;
+            this.setArrows(arrows);
+            System.out.println(this.getName() + " has gained 1 arrow! From ElGringo >_<");
+            int gameArrows = Game.getGameArrows();
+            gameArrows = gameArrows - 1;
+            Game.setGameArrows(gameArrows);
+            System.out.println("There are only " + gameArrows + " arrow(s) left!");
         }
         try {
             sleep(1000);
@@ -312,6 +467,7 @@ class PlayerWithStrategy implements Player{
         int health = 0;
         int placement = 0;
         int [] karmaAdjust = new int[5];
+        int gringoCount = 0;
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -358,6 +514,20 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(0).setKarma(karmaAdjust);       
                     }
+                if("ElGringo".equals(attack.get(0).getName()))
+                    gringoCount = gringoCount + 1;
+                if("PedroRamirez".equals(attack.get(0).getName())){
+                    if(attack.get(0).getArrows() != 0){
+                        int arrows = attack.get(0).getArrows();
+                        arrows = arrows - 1;
+                        attack.get(0).setArrows(arrows);
+                        System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                        int gameArrows = Game.getGameArrows();
+                        gameArrows = gameArrows + 1;
+                        Game.setGameArrows(gameArrows);
+                        System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                    }
+                }
             }
         }
         else{
@@ -373,6 +543,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(1).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(1).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(1).getName())){
+                            if(attack.get(1).getArrows() != 0){
+                                int arrows = attack.get(1).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(1).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }                        
                     }
                     else{
                         health = attack.get(0).getHealth();
@@ -384,6 +568,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(0).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(0).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(0).getName())){
+                            if(attack.get(0).getArrows() != 0){
+                                int arrows = attack.get(0).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(0).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }                        
                     }
                 }
                 else{    
@@ -396,6 +594,20 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(0).setKarma(karmaAdjust);       
                     }
+                    if("ElGringo".equals(attack.get(0).getName()))
+                        gringoCount = gringoCount + 1;
+                    if("PedroRamirez".equals(attack.get(0).getName())){
+                        if(attack.get(0).getArrows() != 0){
+                            int arrows = attack.get(0).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(0).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                        }
+                    }                    
                 }
             }
             else if (karma[attack.get(0).getSpot()] > karma[attack.get(1).getSpot()]){
@@ -410,6 +622,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(1).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(1).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(1).getName())){
+                            if(attack.get(1).getArrows() != 0){
+                                int arrows = attack.get(1).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(1).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }                        
                     }
                     else{
                         health = attack.get(0).getHealth();
@@ -421,6 +647,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(0).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(0).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(0).getName())){
+                            if(attack.get(0).getArrows() != 0){
+                                int arrows = attack.get(0).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(0).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }                        
                     }
                 }
                 else{    
@@ -433,6 +673,20 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(0).setKarma(karmaAdjust);       
                     }
+                    if("ElGringo".equals(attack.get(0).getName()))
+                        gringoCount = gringoCount + 1;
+                    if("PedroRamirez".equals(attack.get(0).getName())){
+                        if(attack.get(0).getArrows() != 0){
+                            int arrows = attack.get(0).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(0).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                        }
+                    }                    
                 }
             }
             else{
@@ -447,6 +701,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(0).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(0).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(0).getName())){
+                            if(attack.get(0).getArrows() != 0){
+                                int arrows = attack.get(0).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(0).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }                        
                     }
                     else{
                         health = attack.get(1).getHealth();
@@ -458,6 +726,20 @@ class PlayerWithStrategy implements Player{
                             karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                             attack.get(1).setKarma(karmaAdjust);       
                         }
+                        if("ElGringo".equals(attack.get(1).getName()))
+                            gringoCount = gringoCount + 1;
+                        if("PedroRamirez".equals(attack.get(1).getName())){
+                            if(attack.get(1).getArrows() != 0){
+                                int arrows = attack.get(1).getArrows();
+                                arrows = arrows - 1;
+                                attack.get(1).setArrows(arrows);
+                                System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                                int gameArrows = Game.getGameArrows();
+                                gameArrows = gameArrows + 1;
+                                Game.setGameArrows(gameArrows);
+                                System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                            }
+                        }                        
                     }
                 }
                 else{    
@@ -470,8 +752,32 @@ class PlayerWithStrategy implements Player{
                         karmaAdjust [player.getSpot()] = karmaAdjust [player.getSpot()] + 1; 
                         attack.get(1).setKarma(karmaAdjust);       
                     }
+                    if("ElGringo".equals(attack.get(1).getName()))
+                        gringoCount = gringoCount + 1;
+                    if("PedroRamirez".equals(attack.get(1).getName())){
+                        if(attack.get(1).getArrows() != 0){
+                            int arrows = attack.get(1).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(1).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                        }
+                    }                    
                 }
-            }        
+            }           
+        }
+        if(gringoCount >= 1){
+            int arrows = this.getArrows();
+            arrows = arrows + 1;
+            this.setArrows(arrows);
+            System.out.println(this.getName() + " has gained 1 arrow! From PedroRamirez >-<");
+            int gameArrows = Game.getGameArrows();
+            gameArrows = gameArrows - 1;
+            Game.setGameArrows(gameArrows);
+            System.out.println("There are only " + gameArrows + " arrow(s) left!");
         }
             try {
                 sleep(1000);
@@ -491,7 +797,13 @@ class PlayerWithStrategy implements Player{
         
         for (int i = 0; i < currentPlayers.size(); i++)
             if (this != currentPlayers.get(i))
-                attack.add(currentPlayers.get(i));  
+                attack.add(currentPlayers.get(i));
+        for(int i = 0; i < attack.size(); i++){
+            if("PaulRegret".equals(attack.get(i).getName())){
+                attack.remove(i);
+                break;
+            }
+        }
         
 
         for (int i = 0; i < attack.size(); i++){

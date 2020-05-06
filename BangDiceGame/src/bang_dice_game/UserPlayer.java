@@ -1,12 +1,13 @@
+/**
+ * Aaron Developed Code
+ * Brandon assisted
+ */
 package bang_dice_game;
 import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author sloan
- */
+
 class UserPlayer implements Player{  
     private String name = "";
     private String description = "";
@@ -103,6 +104,7 @@ class UserPlayer implements Player{
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
         int[] karmaAdjust;
+        int gringoCount = 0;
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -131,7 +133,22 @@ class UserPlayer implements Player{
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
                 karmaAdjust = attack.get(0).getKarma();
                 karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
-                attack.get(0).setKarma(karmaAdjust);                 
+                attack.get(0).setKarma(karmaAdjust);
+                if("ElGringo".equals(attack.get(0).getName())){
+                    gringoCount =gringoCount + 1;
+                }
+                if("PedroRamirez".equals(attack.get(0).getName())){
+                    if(attack.get(0).getArrows() != 0){
+                            int arrows = attack.get(0).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(0).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                    }
+                }                
                 break;
             case 2:
                 health = attack.get(1).getHealth();
@@ -140,7 +157,22 @@ class UserPlayer implements Player{
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
                 karmaAdjust = attack.get(1).getKarma();
                 karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
-                attack.get(1).setKarma(karmaAdjust);                
+                attack.get(1).setKarma(karmaAdjust);
+                if("ElGringo".equals(attack.get(0).getName())){
+                    gringoCount =gringoCount + 1;
+                }
+                if("PedroRamirez".equals(attack.get(1).getName())){
+                    if(attack.get(1).getArrows() != 0){
+                            int arrows = attack.get(1).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(1).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                    }
+                }                
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
@@ -152,6 +184,16 @@ class UserPlayer implements Player{
                 }                
                 this.takeAim1();
                 break;
+        }
+        if(gringoCount >= 1){
+            int arrows = this.getArrows();
+            arrows = arrows + 1;
+            this.setArrows(arrows);
+            System.out.println(this.getName() + " has gained 1 arrow! From ElGringo >_<");
+            int gameArrows = Game.getGameArrows();
+            gameArrows = gameArrows - 1;
+            Game.setGameArrows(gameArrows);
+            System.out.println("There are only " + gameArrows + " arrow(s) left!");
         }
         try {
             sleep(1000);
@@ -166,6 +208,8 @@ class UserPlayer implements Player{
         currentPlayers = Game.getPlayers();
         int amount = currentPlayers.size() - 1;
         int[] karmaAdjust; 
+        int gringoCount = 0;
+        int pedroCount = 0;
         
         ArrayList<Player> attack = new ArrayList<Player>();
         
@@ -198,7 +242,21 @@ class UserPlayer implements Player{
                 System.out.println(attack.get(0).getName() + " has lost 1 health!");
                 karmaAdjust = attack.get(0).getKarma();
                 karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
-                attack.get(0).setKarma(karmaAdjust);                
+                attack.get(0).setKarma(karmaAdjust);
+                if("ElGringo".equals(attack.get(0).getName()))
+                    gringoCount = gringoCount + 1;
+                if("PedroRamirez".equals(attack.get(0).getName())){
+                    if(attack.get(0).getArrows() != 0){
+                            int arrows = attack.get(0).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(0).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                    }
+                }
                 break;
             case 2:
                 health = attack.get(1).getHealth();
@@ -207,7 +265,21 @@ class UserPlayer implements Player{
                 System.out.println(attack.get(1).getName() + " has lost 1 health!");
                 karmaAdjust = attack.get(1).getKarma();
                 karmaAdjust [this.getSpot()] = karmaAdjust [this.getSpot()] + 1;
-                attack.get(1).setKarma(karmaAdjust);                
+                attack.get(1).setKarma(karmaAdjust);
+                if("ElGringo".equals(attack.get(1).getName()))
+                    gringoCount = gringoCount + 1;
+                if("PedroRamirez".equals(attack.get(1).getName())){
+                    if(attack.get(1).getArrows() != 0){
+                            int arrows = attack.get(1).getArrows();
+                            arrows = arrows - 1;
+                            attack.get(1).setArrows(arrows);
+                            System.out.println(this.getName() + " has lost 1 arrow! From: PedroRamirez >-<");
+                            int gameArrows = Game.getGameArrows();
+                            gameArrows = gameArrows + 1;
+                            Game.setGameArrows(gameArrows);
+                            System.out.println("There are only " + gameArrows + " arrow(s) left!");
+                    }
+                }
                 break;
             default:
                 System.out.println("Did not enter a valid option... Try again.");
@@ -219,6 +291,16 @@ class UserPlayer implements Player{
                 }                
                 this.takeAim2();
                 break;
+        }
+        if(gringoCount >= 1){
+            int arrows = this.getArrows();
+            arrows = arrows + 1;
+            this.setArrows(arrows);
+            System.out.println(this.getName() + " has gained 1 arrow! From ElGringo >_<");
+            int gameArrows = Game.getGameArrows();
+            gameArrows = gameArrows - 1;
+            Game.setGameArrows(gameArrows);
+            System.out.println("There are only " + gameArrows + " arrow(s) left!");
         }
         try {
             sleep(1000);
@@ -238,7 +320,12 @@ class UserPlayer implements Player{
         for (int i = 0; i < currentPlayers.size(); i++)
             if (this != currentPlayers.get(i))
                 attack.add(currentPlayers.get(i));  
-        
+        for(int i = 0; i < attack.size(); i++){
+            if("PaulRegret".equals(attack.get(i).getName())){
+                attack.remove(i);
+                break;
+            }
+        }
 
         for (int i = 0; i < attack.size(); i++){
             health = 0;

@@ -1,3 +1,7 @@
+/**
+ * Carlos Developed Code
+ * Arron assisted
+ */
 package bang_dice_game;
 //LOOK AT BOTTOM OF CODE FOR EXPLANATION OF KARMA!!!
 
@@ -28,6 +32,10 @@ public class AI {
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
         int health;
+        
+        if ("SidKetchum".equals(player.getName()))
+            player.beerDice(player, morale);
+        
           
         dice.firstRoll();
          for (int i = 0; i < 5; i++){

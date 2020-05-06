@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Aaron Developed Code
+ * Carlos & Brandon assisted
  */
 package bang_dice_game;
 
@@ -123,6 +122,8 @@ public class Game {
             for (int i = 0; i < attack.size(); i++)
             {
                 int amount = attack.get(i).getArrows();
+                if("Jourdonnais".equals(attack.get(0).getName()))
+                    amount = 0;
                 for (int j = 0; j < amount; j++)
                 {
                     int health = attack.get(i).getHealth();
@@ -147,16 +148,28 @@ public class Game {
         System.out.println();
 
         ArrayList<Player> died = new ArrayList<Player>();
-
+        Player temp = players.get(0);
+        
+        for (int i = 0; i < players.size(); i++)
+            if("VultureSam".equals(players.get(i).getName()))
+                temp = players.get(i);
+        
         for (int i = 0; i < players.size(); i++){
             if (players.get(i).getHealth() <= 0){
                 System.out.println(players.get(i).getName() + " has died!");
                 died.add(players.get(i));
+                if("VultureSam".equals(temp.getName())){
+                    if(temp.getHealth() != temp.getMaxHealth()){
+                        int health = temp.getHealth();
+                        health = health + 1;
+                        temp.setHealth(health);
+                        System.out.println(players.get(i).getName() + " has gained 1 health!");
+                    }
+                }
             }
         }
-        for (int i = 0; i < died.size(); i++){
+        for (int i = 0; i < died.size(); i++)
             players.remove(died.get(i));
-        }
 
         System.out.println();
 

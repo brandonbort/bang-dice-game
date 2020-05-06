@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Airi Developed Code
+ * Arron & Brandon assisted
  */
 package bang_dice_game;
 import User_Interface_Components.GameBoardUIController;
@@ -45,7 +44,12 @@ public class PlayerController implements PlayerObserver {
         currentPlayers = Game.getPlayers();
         
         int health;
+        int bang = 0;
         
+        if ("SidKetchum".equals(player.getName()))
+            player.beerDice();
+          
+//        dice.firstRoll()
         dice.BasicDice();
           updateDice();
 //        for(String i: dice.Result) System.out.println(i);
@@ -143,6 +147,15 @@ public class PlayerController implements PlayerObserver {
                                 Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
+                    }
+                }
+                if("SuzyLafayette".equals(player.getName())){
+                    if(bang == 0){
+                        health = 0;
+                        health = player.getHealth();
+                        health = health + 2;
+                        player.setHealth(health);
+                        System.out.println(player.getName() + " has gained 2 health!");
                     }
                 }
             }
