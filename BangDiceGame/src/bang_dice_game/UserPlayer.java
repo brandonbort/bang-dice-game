@@ -1,12 +1,13 @@
+/**
+ * Aaron Developed Code
+ * Brandon assisted
+ */
 package bang_dice_game;
 import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author sloan
- */
+
 class UserPlayer implements Player{  
     private String name = "";
     private String description = "";
