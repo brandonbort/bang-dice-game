@@ -1,10 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Aaron Developed Code
+ * Carlos & Brandon assisted
  */
 package bang_dice_game;
 
+import User_Interface_Components.GameBoardUIController;
+import java.io.FileNotFoundException;
 import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.logging.Level;
@@ -15,15 +16,15 @@ import java.util.logging.Logger;
  * @author sloan
  */
 
-class Game {
+public class Game {
   
   private static ArrayList<Player> players = new ArrayList<Player>();
   private Player nextPlayer;                   // The Player whose turn is next.
   private Player previousPlayer;               // The Player who last played
   private static int gameArrows = 9;                      // total arrows in game
-  
-  
-  
+
+
+
  
   public Game (ArrayList<Player> players) { 
     this.players = players;
@@ -91,9 +92,9 @@ class Game {
    * Conduct a single move in the game, allowing the appropriate Player to
    * take a turn. Has no effect if the game is over.
    */
-  public void play () {
+  public void play () throws FileNotFoundException {
     if (!gameOver()) { 
-      System.out.println(nextPlayer.getName() + "'s TURN!!");  
+      System.out.println(nextPlayer.getName() + "'s TURN!!");
       nextPlayer.takeTurn();
       
       if (gameArrows == 0)
@@ -107,6 +108,8 @@ class Game {
             for (int i = 0; i < attack.size(); i++)
             {
                 int amount = attack.get(i).getArrows();
+                if("Jourdonnais".equals(attack.get(0).getName()))
+                    amount = 0;
                 for (int j = 0; j < amount; j++)
                 {
                     int health = attack.get(i).getHealth();
@@ -131,16 +134,28 @@ class Game {
         System.out.println();
 
         ArrayList<Player> died = new ArrayList<Player>();
-
+        Player temp = players.get(0);
+        
+        for (int i = 0; i < players.size(); i++)
+            if("VultureSam".equals(players.get(i).getName()))
+                temp = players.get(i);
+        
         for (int i = 0; i < players.size(); i++){
             if (players.get(i).getHealth() <= 0){
                 System.out.println(players.get(i).getName() + " has died!");
                 died.add(players.get(i));
+                if("VultureSam".equals(temp.getName())){
+                    if(temp.getHealth() != temp.getMaxHealth()){
+                        int health = temp.getHealth();
+                        health = health + 1;
+                        temp.setHealth(health);
+                        System.out.println(players.get(i).getName() + " has gained 1 health!");
+                    }
+                }
             }
         }
-        for (int i = 0; i < died.size(); i++){
+        for (int i = 0; i < died.size(); i++)
             players.remove(died.get(i));
-        }
 
         System.out.println();
 
@@ -155,7 +170,7 @@ class Game {
   /**
    * The Player who is not the one specified.
    */
-  private Player otherPlayer (Player player) {
+  public Player otherPlayer (Player player) {
       
       Player temp = player;
       int size = players.size() - 1;
@@ -172,4 +187,5 @@ class Game {
     }
       return temp;
   }
+  
 }
