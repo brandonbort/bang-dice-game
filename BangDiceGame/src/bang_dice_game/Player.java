@@ -1,9 +1,8 @@
+/**
+ * Aaron Developed Code
+ */
 package bang_dice_game;
 
-/**
- *
- * @author sloan
- */
 public interface Player {
     public String getName();
     public void setName(String name);
@@ -17,7 +16,7 @@ public interface Player {
     public void setRole(String role);
     
     public String getDescription();
-    public void setDescription(String descrip);
+    public void setDescription(String description);
     
     public int getArrows();
     public void setArrows(int arrows);
@@ -27,6 +26,7 @@ public interface Player {
     public int getSpot();
     public void setSpot(int spot);
 
+    
     public int[] getKarma();
     public void setKarma(int [] karma);
 }
