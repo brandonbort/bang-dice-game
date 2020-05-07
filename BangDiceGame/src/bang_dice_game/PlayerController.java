@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Airi Developed Code
+ * Aaron & Brandon assisted
  */
 package bang_dice_game;
+import User_Interface_Components.GameBoardUIController;
 import static java.lang.Thread.sleep;
 import java.util.*;
 import java.util.Scanner;
@@ -16,12 +16,13 @@ import java.util.logging.Logger;
 class PlayerController implements PlayerObserver {
     
     private Game game;
-    private Scanner in;
+//    private Scanner in;
     private Dice dice;
+    private GameBoardUIController gameControl;
     
-    public PlayerController (UserPlayer player, Game game, Scanner in, Dice dice){
+    public PlayerController (UserPlayer player, Game game, Dice dice){
         this.game = game;
-        this.in = in;
+        this.gameControl = gameControl;
         this.dice = dice;
         player.register(this);
     
@@ -33,8 +34,12 @@ class PlayerController implements PlayerObserver {
         ArrayList<Player> currentPlayers = new ArrayList<>();
         currentPlayers = Game.getPlayers();
         int health;
+        int bang = 0;
+        
+        if ("SidKetchum".equals(player.getName()))
+            player.beerDice();
           
-        dice.firstRoll(player.getSpot());
+        dice.firstRoll();
          for (int i = 0; i < 5; i++){
            // if (Dice.Dice_Face.dice[i] == Dice.Dice_Face.Dynamite)
             if (dice.Result.get(i).equals("Dynamite"))
@@ -105,6 +110,7 @@ class PlayerController implements PlayerObserver {
 
                         case "BullsEye1":
                             player.takeAim1();
+                            bang = bang + 1;
                             break;
 
                         case "BullsEye2":
@@ -113,6 +119,7 @@ class PlayerController implements PlayerObserver {
                             }
                             else
                                 player.takeAim2();
+                            bang = bang + 1;
                             break;
 
                         case "Beer":
@@ -127,6 +134,15 @@ class PlayerController implements PlayerObserver {
                                 Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
+                    }
+                }
+                if("SuzyLafayette".equals(player.getName())){
+                    if(bang == 0){
+                        health = 0;
+                        health = player.getHealth();
+                        health = health + 2;
+                        player.setHealth(health);
+                        System.out.println(player.getName() + " has gained 2 health!");
                     }
                 }
             }
