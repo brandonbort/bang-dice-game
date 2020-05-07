@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Airi Developed Code
  */
 package bang_dice_game;
 
@@ -12,5 +10,4 @@ package bang_dice_game;
  interface PlayerObserver {
    public void update (UserPlayer player);//, Dice dice);   
  
-  
 }
